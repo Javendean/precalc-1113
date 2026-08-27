@@ -1,0 +1,122 @@
+{
+  "kc": "linear_models",
+  "items": [
+    {
+      "id": "linear_models-01",
+      "kc": "linear_models",
+      "difficulty": 2,
+      "est_seconds": 50,
+      "stem": "A car rental company charges a fixed fee plus a daily rate, so the total cost of a rental lasting $d$ days is $R(d)=32d+45$ dollars. Which statement about this model is true?",
+      "hint": "Ask which number is attached to the variable $d$ and which number is not; only one of them is charged again for each extra day.",
+      "worked": [
+        "In a linear model the coefficient of the variable is the rate of change, so the $32$ is charged once per day.",
+        "The constant term has no $d$ attached to it, so the $45$ dollars is charged one time no matter how long the rental lasts.",
+        "Check with numbers: $R(1)=32+45=77$ and $R(2)=64+45=109$, a difference of $32$ dollars for one extra day.",
+        "So each additional day adds $32$ dollars, and the $45$ dollars is a one-time charge."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The notation $R(3)$ means $R$ multiplied by $3$, so a three-day rental costs $3R$ dollars.",
+          "correct": false,
+          "mis": "NOT_FN_AS_MULT"
+        },
+        {
+          "key": "b",
+          "text": "A rental that lasts $4$ days longer than $d$ days costs $R(d)+4$ dollars.",
+          "correct": false,
+          "mis": "DIR_INSIDE_OUTSIDE"
+        },
+        {
+          "key": "c",
+          "text": "Each additional day adds $32$ dollars to the cost, and the $45$ dollars is charged once no matter how many days the rental lasts.",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "The $45$ dollars is charged for each day, and the $32$ dollars is the one-time fixed fee.",
+          "correct": false,
+          "mis": null
+        }
+      ]
+    },
+    {
+      "id": "linear_models-02",
+      "kc": "linear_models",
+      "difficulty": 3,
+      "est_seconds": 90,
+      "stem": "A candle burns at a constant rate. Two hours after it is lit it is $20$ centimeters tall, and five hours after it is lit it is $14$ centimeters tall. If $h(t)$ is the height in centimeters $t$ hours after lighting, how tall is the candle $7$ hours after it is lit?",
+      "hint": "Get the rate of change first: the candle loses a fixed number of centimeters during the three hours between the two measurements.",
+      "worked": [
+        "Rate of change: $\\dfrac{14-20}{5-2}=\\dfrac{-6}{3}=-2$ centimeters per hour.",
+        "Point-slope through $(2,20)$: $h-20=-2(t-2)$, so $h(t)=-2t+4+20=-2t+24$.",
+        "Check the second measurement: $h(5)=-10+24=14$, which matches.",
+        "$h(7)=-2(7)+24=-14+24=10$ centimeters."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$34$ centimeters",
+          "correct": false,
+          "mis": "LIN_FN_ADD"
+        },
+        {
+          "key": "b",
+          "text": "$10$ centimeters",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$2$ centimeters",
+          "correct": false,
+          "mis": "SIGN_DISTRIB_NEG"
+        },
+        {
+          "key": "d",
+          "text": "$6$ centimeters",
+          "correct": false,
+          "mis": null
+        }
+      ]
+    },
+    {
+      "id": "linear_models-03",
+      "kc": "linear_models",
+      "difficulty": 4,
+      "est_seconds": 95,
+      "stem": "A generator's remaining fuel is modeled by $L(t)=60-4t$ liters, where $t$ is the number of hours it has been running. Which expression is $L(t+3)$, the fuel remaining three hours later, in simplified form?",
+      "hint": "Substitute the whole quantity $(t+3)$, brackets included, for every $t$ in the formula before you simplify anything.",
+      "worked": [
+        "$L(t+3)=60-4(t+3)$.",
+        "Distribute the $-4$ across both terms inside the brackets: $-4(t+3)=-4t-12$.",
+        "$L(t+3)=60-4t-12=48-4t$.",
+        "Check at $t=0$: the formula gives $L(3)=60-12=48$, and $48-4(0)=48$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$108-4t$",
+          "correct": false,
+          "mis": "LIN_FN_ADD"
+        },
+        {
+          "key": "b",
+          "text": "$63-4t$",
+          "correct": false,
+          "mis": "DIR_INSIDE_OUTSIDE"
+        },
+        {
+          "key": "c",
+          "text": "$72-4t$",
+          "correct": false,
+          "mis": "SIGN_DISTRIB_NEG"
+        },
+        {
+          "key": "d",
+          "text": "$48-4t$",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

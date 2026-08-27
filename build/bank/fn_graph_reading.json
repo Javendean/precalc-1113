@@ -1,0 +1,64 @@
+{
+  "kc": "fn_graph_reading",
+  "items": [
+    {
+      "id": "fn_graph_reading-01",
+      "kc": "fn_graph_reading",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "The graph of $y=f(x)$ is a curve that passes through the labeled points $(1,4)$, $(2,7)$, $(3,1)$, $(5,-2)$ and $(7,3)$. Use the graph to find $f(2+5)$.",
+      "hint": "The parentheses hold a single input, so simplify what is inside them before you go looking on the graph.",
+      "worked": [
+        "Inside the parentheses, $2+5=7$, so the question is asking for $f(7)$.",
+        "The labeled point whose $x$-coordinate is $7$ is $(7,3)$.",
+        "The output is the $y$-coordinate of that point, so $f(2+5)=3$."
+      ],
+      "options": [
+        {"key": "a", "text": "$7$", "correct": false, "mis": null},
+        {"key": "b", "text": "$3$", "correct": true},
+        {"key": "c", "text": "$5$", "correct": false, "mis": "LIN_FN_ADD"},
+        {"key": "d", "text": "$2$", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"}
+      ]
+    },
+    {
+      "id": "fn_graph_reading-02",
+      "kc": "fn_graph_reading",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "The graph of $y=g(x)$ is made of straight segments joining, in order, the points $(-4,6)$, $(-1,-3)$, $(2,-3)$ and $(5,6)$, and $g$ is defined only for $-4 \\le x \\le 5$. Which statement is true?",
+      "hint": "Decide what each of the three segments does -- falls, stays level, or rises -- before you judge any of the statements.",
+      "worked": [
+        "From $(-4,6)$ to $(-1,-3)$ the segment falls; from $(-1,-3)$ to $(2,-3)$ it is level; from $(2,-3)$ to $(5,6)$ it rises.",
+        "An interval of increase is reported with input values, so the rising piece gives $(2,5)$.",
+        "Test the other claim: $-1+2=1$, and $x=1$ sits on the level piece, so $g(1)=-3$, not $-6$.",
+        "Only the statement that $g$ is increasing on $(2,5)$ survives."
+      ],
+      "options": [
+        {"key": "a", "text": "$g$ is increasing on the interval $(-3,6)$.", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"},
+        {"key": "b", "text": "$g(-1+2)=-6$", "correct": false, "mis": "LIN_FN_ADD"},
+        {"key": "c", "text": "$g$ is increasing on the interval $(-1,2)$.", "correct": false, "mis": null},
+        {"key": "d", "text": "$g$ is increasing on the interval $(2,5)$.", "correct": true}
+      ]
+    },
+    {
+      "id": "fn_graph_reading-03",
+      "kc": "fn_graph_reading",
+      "difficulty": 4,
+      "est_seconds": 90,
+      "stem": "The graph of $y=f(x)$ is a smooth curve defined for every real number. Reading from left to right, it comes down from far above the horizontal axis, just touches the axis at $x=-4$ without crossing it, turns and rises to a high point at $(-2,8)$, then falls and crosses the axis at $x=1$, reaches a low point at $(3,-5)$, and rises from there, crossing the axis at $x=6$ and continuing upward. On which interval is $f(x)<0$ for every $x$ in that interval?",
+      "hint": "Cut the number line at $x=-4$, $x=1$ and $x=6$, then decide on each piece whether the curve sits above or below the axis.",
+      "worked": [
+        "The curve meets the axis at $x=-4$, $x=1$ and $x=6$, which cuts the line into four pieces.",
+        "It comes down from above and only touches at $x=-4$, so it never gets below the axis there: $f>0$ on $(-\\infty,-4)$ and on $(-4,1)$, confirmed by the high point $(-2,8)$.",
+        "It crosses at $x=1$, dips to $(3,-5)$, and crosses back at $x=6$, so $f>0$ again for $x>6$.",
+        "The only piece on which every value is negative is $(1,6)$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(-4,1)$", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"},
+        {"key": "b", "text": "$(-\\infty,-4)$", "correct": false, "mis": null},
+        {"key": "c", "text": "$(1,6)$", "correct": true},
+        {"key": "d", "text": "$(-5,0)$", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"}
+      ]
+    }
+  ]
+}

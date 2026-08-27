@@ -1,0 +1,103 @@
+{
+  "kc": "inequalities",
+  "items": [
+    {
+      "id": "inequalities-01",
+      "kc": "inequalities",
+      "difficulty": 1,
+      "est_seconds": 45,
+      "stem": "Solve $-2(x-3)\\ge 8$ and write the solution set in interval notation.",
+      "hint": "Distribute the $-2$ to both terms, and watch what happens to the inequality symbol on the step where you divide by a negative number.",
+      "worked": [
+        "Distribute: $-2x+6\\ge 8$.",
+        "Subtract $6$ from both sides: $-2x\\ge 2$.",
+        "Divide by $-2$ and reverse the symbol: $x\\le -1$.",
+        "Since $x=-1$ makes the original a true statement, the endpoint is included: $(-\\infty,-1]$."
+      ],
+      "options": [
+        {"key": "a", "text": "$[-1,\\infty)$", "correct": false, "mis": "DOM_INEQ_NO_FLIP"},
+        {"key": "b", "text": "$(-\\infty,-7]$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "c", "text": "$(-\\infty,-1]$", "correct": true},
+        {"key": "d", "text": "$(-\\infty,-1)$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "inequalities-02",
+      "kc": "inequalities",
+      "difficulty": 2,
+      "est_seconds": 75,
+      "stem": "Exactly one of the statements below is true for every value of $x$ that makes it meaningful. Which one is it?",
+      "hint": "Try to break each claim with one well-chosen number, and make sure at least one of your test numbers is negative.",
+      "worked": [
+        "Test $x^{2}>9$ at $x=-4$: $16>9$ is true but $-4>3$ is false, so that claim breaks.",
+        "Test $\\dfrac{1}{x}<5$ at $x=-1$: $-1<5$ is true but $1<-5$ is false, because multiplying by $x$ is not allowed while the sign of $x$ is unknown.",
+        "Dividing $-4x>12$ by $-4$ reverses the symbol and gives $x<-3$, so that is the statement that always holds."
+      ],
+      "options": [
+        {"key": "a", "text": "If $-4x>12$, then $x<-3$.", "correct": true},
+        {"key": "b", "text": "If $-4x>12$, then $x>-3$.", "correct": false, "mis": "DOM_INEQ_NO_FLIP"},
+        {"key": "c", "text": "If $x^{2}>9$, then $x>3$.", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "d", "text": "If $\\dfrac{1}{x}<5$, then $1<5x$.", "correct": false, "mis": "DOM_INEQ_CROSS_MULT"}
+      ]
+    },
+    {
+      "id": "inequalities-03",
+      "kc": "inequalities",
+      "difficulty": 3,
+      "est_seconds": 75,
+      "stem": "Solve $(x+1)^{2}\\le 9$ and write the solution set in interval notation.",
+      "hint": "Ask which numbers have a square no bigger than $9$, and remember that negative numbers qualify too.",
+      "worked": [
+        "A quantity has square at most $9$ exactly when that quantity sits between $-3$ and $3$, so $-3\\le x+1\\le 3$.",
+        "Subtract $1$ from all three parts: $-4\\le x\\le 2$.",
+        "Both endpoints give $(x+1)^{2}=9$, which satisfies $\\le$, so the answer is $[-4,2]$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(-\\infty,2]$", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "b", "text": "$[-2,4]$", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "c", "text": "$[-2\\sqrt{2},2\\sqrt{2}]$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "d", "text": "$[-4,2]$", "correct": true}
+      ]
+    },
+    {
+      "id": "inequalities-04",
+      "kc": "inequalities",
+      "difficulty": 4,
+      "est_seconds": 120,
+      "stem": "A student solves $\\dfrac{x+4}{x-2}\\ge 3$ by multiplying both sides by $x-2$ to get $x+4\\ge 3x-6$, then $10\\ge 2x$, and reports $(-\\infty,5]$. What is the correct solution set?",
+      "hint": "Multiplying by $x-2$ is only legal once you know its sign, so instead move everything to one side, combine into one fraction, and run a sign chart.",
+      "worked": [
+        "Subtract $3$: $\\dfrac{x+4}{x-2}-3\\ge 0$.",
+        "Combine over the common denominator: $\\dfrac{x+4-3(x-2)}{x-2}=\\dfrac{-2x+10}{x-2}\\ge 0$.",
+        "The critical values are $x=5$, where the numerator is $0$, and $x=2$, where the expression is undefined. Testing $x=0$, $x=3$ and $x=6$ gives negative, positive, negative.",
+        "Keep the interval where the quotient is positive, include $5$ and exclude $2$: $(2,5]$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(-\\infty,5]$", "correct": false, "mis": "DOM_INEQ_CROSS_MULT"},
+        {"key": "b", "text": "$(2,5]$", "correct": true},
+        {"key": "c", "text": "$[2,5]$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "d", "text": "$[-1,2)$", "correct": false, "mis": "SIGN_DISTRIB_NEG"}
+      ]
+    },
+    {
+      "id": "inequalities-05",
+      "kc": "inequalities",
+      "difficulty": 5,
+      "est_seconds": 120,
+      "stem": "Solve $\\dfrac{(x-3)^{2}}{x+1}\\ge 0$ and write the solution set in interval notation.",
+      "hint": "The numerator is a square, so it can never be negative; decide what that forces the denominator to do, and check separately what happens at $x=3$.",
+      "worked": [
+        "$(x-3)^{2}\\ge 0$ for every $x$, and it equals $0$ only at $x=3$, so the numerator never makes the quotient negative.",
+        "Away from $x=3$ the quotient therefore has the same sign as $x+1$, and $x=-1$ must be thrown out because the denominator is $0$ there.",
+        "So the quotient is positive exactly when $x+1>0$, and at $x=3$ it equals $0$, which $\\ge$ allows; $x=3$ already lies in that set.",
+        "Solution: $(-1,\\infty)$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(-\\infty,-1)\\cup[3,\\infty)$", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"},
+        {"key": "b", "text": "$[-1,\\infty)$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "c", "text": "$(-1,\\infty)$", "correct": true},
+        {"key": "d", "text": "$(-\\infty,\\infty)$", "correct": false, "mis": "DOM_INEQ_CROSS_MULT"}
+      ]
+    }
+  ]
+}

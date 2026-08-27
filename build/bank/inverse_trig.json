@@ -1,0 +1,101 @@
+{
+  "kc": "inverse_trig",
+  "items": [
+    {
+      "id": "inverse_trig-01",
+      "kc": "inverse_trig",
+      "difficulty": 1,
+      "est_seconds": 35,
+      "stem": "Which statement about the notation $\\sin^{-1}$ is true?",
+      "hint": "Ask what kind of thing goes in and what kind of thing comes out: a ratio between $-1$ and $1$, or an angle?",
+      "worked": [
+        "The $-1$ sits on the function NAME, not on the input, so here it means undo rather than reciprocal.",
+        "Undoing sine means: you are handed the ratio $x$ and you must name the angle that produced it.",
+        "To make that angle unique the outputs are restricted to $\\left[-\\dfrac{\\pi}{2},\\dfrac{\\pi}{2}\\right]$.",
+        "So $\\sin^{-1}$ accepts a ratio in $[-1,1]$ and returns an angle."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\sin^{-1}(x)$ means $\\sin\\left(x^{-1}\\right)$, that is, the sine of $\\dfrac{1}{x}$.", "correct": false, "mis": "NOT_TRIG_SQUARED"},
+        {"key": "b", "text": "$\\sin^{-1}(x)$ takes a ratio $x$ in $[-1,1]$ and returns the angle in $\\left[-\\dfrac{\\pi}{2},\\dfrac{\\pi}{2}\\right]$ whose sine is $x$.", "correct": true},
+        {"key": "c", "text": "$\\sin^{-1}(x)$ is another way to write $\\dfrac{1}{\\sin(x)}$, the cosecant of $x$.", "correct": false, "mis": "INV_TRIG_RECIPROCAL"},
+        {"key": "d", "text": "$\\sin^{-1}$ takes an angle as its input and returns a ratio between $-1$ and $1$.", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"}
+      ]
+    },
+    {
+      "id": "inverse_trig-02",
+      "kc": "inverse_trig",
+      "difficulty": 2,
+      "est_seconds": 50,
+      "stem": "Find the exact radian value of $\\cos^{-1}\\left(-\\dfrac{1}{2}\\right)$.",
+      "hint": "The answer must be an angle between $0$ and $\\pi$, and a negative cosine cannot come from a first-quadrant angle.",
+      "worked": [
+        "$\\cos^{-1}$ asks for the angle in $[0,\\pi]$ whose cosine is $-\\dfrac{1}{2}$.",
+        "The reference angle for the size $\\dfrac{1}{2}$ is $\\dfrac{\\pi}{3}$, and cosine is negative only in quadrant II here.",
+        "The quadrant II angle with that reference is $\\pi-\\dfrac{\\pi}{3}=\\dfrac{2\\pi}{3}$, which does lie in $[0,\\pi]$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{2\\pi}{3}$", "correct": true},
+        {"key": "b", "text": "$\\dfrac{\\pi}{3}$", "correct": false, "mis": "TRIG_QUADRANT_SIGN"},
+        {"key": "c", "text": "$\\dfrac{4\\pi}{3}$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "d", "text": "$-\\dfrac{\\pi}{6}$", "correct": false, "mis": "TRIG_COORD_SWAP"}
+      ]
+    },
+    {
+      "id": "inverse_trig-03",
+      "kc": "inverse_trig",
+      "difficulty": 3,
+      "est_seconds": 45,
+      "stem": "The function $y=\\sin^{-1}(x)$ has domain $[-1,1]$. Which set is its range?",
+      "hint": "The outputs of an inverse sine are angles, cut down to one piece of the sine graph so that each input has exactly one output.",
+      "worked": [
+        "Sine repeats, so it is not one-to-one and cannot be inverted until its domain is cut down.",
+        "The standard cut keeps $-\\dfrac{\\pi}{2} \\le \\theta \\le \\dfrac{\\pi}{2}$, where sine rises from $-1$ to $1$ exactly once.",
+        "Inverting swaps the two sets: the ratios $[-1,1]$ become the domain, and that restricted angle interval becomes the range."
+      ],
+      "options": [
+        {"key": "a", "text": "$[-1,1]$", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"},
+        {"key": "b", "text": "$[0,\\pi]$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+        {"key": "c", "text": "$(-\\infty,-1] \\cup [1,\\infty)$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"},
+        {"key": "d", "text": "$\\left[-\\dfrac{\\pi}{2},\\dfrac{\\pi}{2}\\right]$", "correct": true}
+      ]
+    },
+    {
+      "id": "inverse_trig-04",
+      "kc": "inverse_trig",
+      "difficulty": 4,
+      "est_seconds": 85,
+      "stem": "A student simplifies $\\sin^{-1}\\left(\\sin\\left(\\dfrac{5\\pi}{6}\\right)\\right)$ to $\\dfrac{5\\pi}{6}$, saying the sine and the inverse sine cancel. What is the correct exact value?",
+      "hint": "Work the inside first, then check whether the angle you started with is even allowed to be an output of $\\sin^{-1}$.",
+      "worked": [
+        "Inside first: the reference angle of $\\dfrac{5\\pi}{6}$ is $\\dfrac{\\pi}{6}$ and sine is positive in quadrant II, so $\\sin\\left(\\dfrac{5\\pi}{6}\\right)=\\dfrac{1}{2}$.",
+        "Now evaluate $\\sin^{-1}\\left(\\dfrac{1}{2}\\right)$, whose output must lie in $\\left[-\\dfrac{\\pi}{2},\\dfrac{\\pi}{2}\\right]$.",
+        "$\\dfrac{5\\pi}{6}$ is outside that interval, so the cancellation is illegal; the angle in range with sine $\\dfrac{1}{2}$ is $\\dfrac{\\pi}{6}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{5\\pi}{6}$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "b", "text": "$2$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"},
+        {"key": "c", "text": "$\\dfrac{\\pi}{6}$", "correct": true},
+        {"key": "d", "text": "$-\\dfrac{\\pi}{6}$", "correct": false, "mis": "TRIG_QUADRANT_SIGN"}
+      ]
+    },
+    {
+      "id": "inverse_trig-05",
+      "kc": "inverse_trig",
+      "difficulty": 5,
+      "est_seconds": 120,
+      "stem": "Find the exact value of $\\tan\\left(\\cos^{-1}\\left(-\\dfrac{2}{3}\\right)\\right)$.",
+      "hint": "Name the inside angle $\\theta$, decide which quadrant $[0,\\pi]$ forces it into, and get $\\sin\\theta$ from the Pythagorean identity.",
+      "worked": [
+        "Let $\\theta=\\cos^{-1}\\left(-\\dfrac{2}{3}\\right)$, so $\\cos\\theta=-\\dfrac{2}{3}$ with $0 \\le \\theta \\le \\pi$; the negative cosine puts $\\theta$ in quadrant II.",
+        "Then $\\sin^{2}\\theta=1-\\dfrac{4}{9}=\\dfrac{5}{9}$, and sine is positive in quadrant II, so $\\sin\\theta=\\dfrac{\\sqrt{5}}{3}$.",
+        "Therefore $\\tan\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}=\\dfrac{\\sqrt{5}/3}{-2/3}=-\\dfrac{\\sqrt{5}}{2}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$-\\dfrac{\\sqrt{5}}{2}$", "correct": true},
+        {"key": "b", "text": "$\\dfrac{\\sqrt{5}}{2}$", "correct": false, "mis": "TRIG_QUADRANT_SIGN"},
+        {"key": "c", "text": "$-\\dfrac{1}{2}$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "$-\\dfrac{2\\sqrt{5}}{5}$", "correct": false, "mis": "TRIG_COORD_SWAP"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "kc": "log_properties",
+  "items": [
+    {
+      "id": "log_properties-01",
+      "kc": "log_properties",
+      "difficulty": 1,
+      "est_seconds": 45,
+      "stem": "Assume $x>0$. Exactly one of the four statements below is a true logarithm property. Which one is true?",
+      "hint": "Test each claim with a friendly number such as $x=5$, where $\\log_{5}x=1$.",
+      "worked": [
+        "The product rule turns a product into a sum, so a sum inside a logarithm cannot be split: $\\log_{5}(x+3)$ stays as it is.",
+        "The quotient rule produces a difference, $\\log_{5}x-\\log_{5}3$, not a quotient of two logarithms.",
+        "The power rule moves an exponent that sits on the argument out in front: $\\log_{5}(x^{3})=3\\log_{5}x$.",
+        "Since $(\\log_{5}x)^{3}$ cubes the value of the logarithm instead of the input, the true statement is $\\log_{5}(x^{3})=3\\log_{5}x$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$\\log_{5}(x+3)=\\log_{5}x+\\log_{5}3$",
+          "correct": false,
+          "mis": "LIN_LOG_SUM"
+        },
+        {
+          "key": "b",
+          "text": "$\\log_{5}\\left(\\dfrac{x}{3}\\right)=\\dfrac{\\log_{5}x}{\\log_{5}3}$",
+          "correct": false,
+          "mis": "INV_LOG_AS_DIV"
+        },
+        {
+          "key": "c",
+          "text": "$\\log_{5}(x^{3})=3\\log_{5}x$",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "$\\log_{5}(x^{3})=(\\log_{5}x)^{3}$",
+          "correct": false,
+          "mis": "LOG_POWER_OUTSIDE"
+        }
+      ]
+    },
+    {
+      "id": "log_properties-02",
+      "kc": "log_properties",
+      "difficulty": 2,
+      "est_seconds": 50,
+      "stem": "Assume $x>0$ and $y>0$. Expand $\\log_{2}\\left(\\dfrac{x^{5}}{y}\\right)$ completely, so that no exponents and no fractions are left inside a logarithm.",
+      "hint": "Handle the fraction first, and keep the numerator's logarithm in front of the subtraction.",
+      "worked": [
+        "Quotient rule: $\\log_{2}\\left(\\dfrac{x^{5}}{y}\\right)=\\log_{2}(x^{5})-\\log_{2}y$, numerator first.",
+        "Power rule: the exponent $5$ sits on the argument, so it comes down in front as a coefficient, giving $5\\log_{2}x$.",
+        "The complete expansion is $5\\log_{2}x-\\log_{2}y$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$\\log_{2}y-5\\log_{2}x$",
+          "correct": false,
+          "mis": "EXP_QUOT_REVERSED"
+        },
+        {
+          "key": "b",
+          "text": "$5\\log_{2}x-\\log_{2}y$",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$\\dfrac{5\\log_{2}x}{\\log_{2}y}$",
+          "correct": false,
+          "mis": "INV_LOG_AS_DIV"
+        },
+        {
+          "key": "d",
+          "text": "$(\\log_{2}x)^{5}-\\log_{2}y$",
+          "correct": false,
+          "mis": "LOG_POWER_OUTSIDE"
+        }
+      ]
+    },
+    {
+      "id": "log_properties-03",
+      "kc": "log_properties",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Suppose $\\log_{b}x=3$ and $\\log_{b}y=5$ for some base $b>1$. What is the value of $\\log_{b}\\left(\\dfrac{x^{2}}{y}\\right)$?",
+      "hint": "Expand with the quotient rule and the power rule before you substitute either given number.",
+      "worked": [
+        "Quotient rule: $\\log_{b}\\left(\\dfrac{x^{2}}{y}\\right)=\\log_{b}(x^{2})-\\log_{b}y$.",
+        "Power rule on the first term: $\\log_{b}(x^{2})=2\\log_{b}x$, so the expression is $2\\log_{b}x-\\log_{b}y$.",
+        "Substitute the given values: $2(3)-5=1$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$4$",
+          "correct": false,
+          "mis": "LOG_POWER_OUTSIDE"
+        },
+        {
+          "key": "b",
+          "text": "$-1$",
+          "correct": false,
+          "mis": "EXP_QUOT_REVERSED"
+        },
+        {
+          "key": "c",
+          "text": "$\\dfrac{6}{5}$",
+          "correct": false,
+          "mis": "INV_LOG_AS_DIV"
+        },
+        {
+          "key": "d",
+          "text": "$1$",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "log_properties-04",
+      "kc": "log_properties",
+      "difficulty": 4,
+      "est_seconds": 90,
+      "stem": "Assume $x>0$ and $y>0$. A student expands $\\log_{3}\\left(\\dfrac{9x+27}{y}\\right)$ as $\\log_{3}(9x)+\\log_{3}27-\\log_{3}y$, which she simplifies to $5+\\log_{3}x-\\log_{3}y$. Splitting the logarithm of a sum is not a legal move. Which expression is the correct complete expansion?",
+      "hint": "No logarithm property can touch the numerator until it is a product, so factor $9x+27$ first.",
+      "worked": [
+        "Factor the numerator: $9x+27=9(x+3)$.",
+        "Quotient rule, then product rule: $\\log_{3}9+\\log_{3}(x+3)-\\log_{3}y$.",
+        "$\\log_{3}9=2$ because $3^{2}=9$, and $\\log_{3}(x+3)$ still has a sum inside, so it cannot be broken up any further.",
+        "The correct expansion is $2+\\log_{3}(x+3)-\\log_{3}y$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$2+\\log_{3}(x+3)-\\log_{3}y$",
+          "correct": true
+        },
+        {
+          "key": "b",
+          "text": "$3+\\log_{3}x-\\log_{3}y$",
+          "correct": false,
+          "mis": "LIN_LOG_SUM"
+        },
+        {
+          "key": "c",
+          "text": "$2\\log_{3}(x+3)-\\log_{3}y$",
+          "correct": false,
+          "mis": "LOG_POWER_OUTSIDE"
+        },
+        {
+          "key": "d",
+          "text": "$\\log_{3}y-2-\\log_{3}(x+3)$",
+          "correct": false,
+          "mis": "EXP_QUOT_REVERSED"
+        }
+      ]
+    },
+    {
+      "id": "log_properties-05",
+      "kc": "log_properties",
+      "difficulty": 5,
+      "est_seconds": 100,
+      "stem": "Write $\\log_{2}\\left(8^{x}\\cdot 4^{x+1}\\right)$ in simplest form, with no logarithm left in the answer.",
+      "hint": "Split the product into two logarithms first, then use the fact that $\\log_{2}8=3$ and $\\log_{2}4=2$.",
+      "worked": [
+        "Product rule: $\\log_{2}\\left(8^{x}\\cdot 4^{x+1}\\right)=\\log_{2}(8^{x})+\\log_{2}(4^{x+1})$.",
+        "Power rule on each piece: $x\\log_{2}8+(x+1)\\log_{2}4$.",
+        "Evaluate the two logarithms: $\\log_{2}8=3$ and $\\log_{2}4=2$, giving $3x+2(x+1)$.",
+        "Distribute and collect like terms: $3x+2x+2=5x+2$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$2x+6$",
+          "correct": false,
+          "mis": "EXP_POWER_ADD"
+        },
+        {
+          "key": "b",
+          "text": "$6x^{2}+6x$",
+          "correct": false,
+          "mis": "EXP_PROD_MULTIPLY"
+        },
+        {
+          "key": "c",
+          "text": "$5x+2$",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "$3^{x}+2^{x+1}$",
+          "correct": false,
+          "mis": "LOG_POWER_OUTSIDE"
+        }
+      ]
+    }
+  ]
+}

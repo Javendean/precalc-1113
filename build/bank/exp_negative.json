@@ -1,0 +1,63 @@
+{
+  "kc": "exp_negative",
+  "items": [
+    {
+      "id": "exp_negative-01",
+      "kc": "exp_negative",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "Simplify $x^{-5} \\cdot x^{2}$ and write the result using only positive exponents. Assume $x \\ne 0$.",
+      "hint": "Multiplying like bases adds the exponents; deal with the negative exponent only at the very end.",
+      "worked": [
+        "Same base multiplied, so add the exponents: $x^{-5} \\cdot x^{2} = x^{-5+2} = x^{-3}$.",
+        "A negative exponent means reciprocal, not a negative sign: $x^{-3} = \\dfrac{1}{x^{3}}$.",
+        "The simplified result is $\\dfrac{1}{x^{3}}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{3}$", "correct": false, "mis": "EXP_QUOT_REVERSED"},
+        {"key": "b", "text": "$\\dfrac{1}{x^{3}}$", "correct": true},
+        {"key": "c", "text": "$\\dfrac{1}{x^{10}}$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "d", "text": "$-x^{3}$", "correct": false, "mis": "EXP_NEG_AS_SIGN"}
+      ]
+    },
+    {
+      "id": "exp_negative-02",
+      "kc": "exp_negative",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Let $x$ be a nonzero real number. Exactly one of the following statements is true. Which one?",
+      "hint": "Test each claim on a small number such as $x = 2$; three of them fail immediately.",
+      "worked": [
+        "Any nonzero base raised to the zero power is $1$, and the exponent $0$ is attached only to $x$, so $3x^{0} = 3 \\cdot 1 = 3$.",
+        "A negative exponent gives a reciprocal, so $x^{-4} = \\dfrac{1}{x^{4}}$, never $-x^{4}$.",
+        "A power raised to a power multiplies exponents: $(x^{-1})^{-4} = x^{4}$, and like bases multiplied add exponents: $x^{-4} \\cdot x^{-1} = x^{-5}$.",
+        "So the true statement is $3x^{0} = 3$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{-4} = -x^{4}$", "correct": false, "mis": "EXP_NEG_AS_SIGN"},
+        {"key": "b", "text": "$(x^{-1})^{-4} = x^{-5}$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "c", "text": "$3x^{0} = 3$", "correct": true},
+        {"key": "d", "text": "$x^{-4} \\cdot x^{-1} = x^{4}$", "correct": false, "mis": "EXP_PROD_MULTIPLY"}
+      ]
+    },
+    {
+      "id": "exp_negative-03",
+      "kc": "exp_negative",
+      "difficulty": 4,
+      "est_seconds": 75,
+      "stem": "Simplify $\\dfrac{(x^{-2})^{3}}{x^{-5}}$ and write the result using only positive exponents. Assume $x \\ne 0$.",
+      "hint": "Clear the numerator with the power rule first, then subtract bottom from top and keep both minus signs.",
+      "worked": [
+        "Power raised to a power multiplies the exponents: $(x^{-2})^{3} = x^{-6}$.",
+        "Dividing like bases subtracts top minus bottom: $\\dfrac{x^{-6}}{x^{-5}} = x^{-6-(-5)} = x^{-6+5} = x^{-1}$.",
+        "A negative exponent is a reciprocal: $x^{-1} = \\dfrac{1}{x}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{6}$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "b", "text": "$-x$", "correct": false, "mis": "EXP_NEG_AS_SIGN"},
+        {"key": "c", "text": "$x$", "correct": false, "mis": "EXP_QUOT_REVERSED"},
+        {"key": "d", "text": "$\\dfrac{1}{x}$", "correct": true}
+      ]
+    }
+  ]
+}

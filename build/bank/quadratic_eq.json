@@ -1,0 +1,103 @@
+{
+  "kc": "quadratic_eq",
+  "items": [
+    {
+      "id": "quadratic_eq-01",
+      "kc": "quadratic_eq",
+      "difficulty": 1,
+      "est_seconds": 40,
+      "stem": "Solve $x^{2}-36=64$.",
+      "hint": "Get $x^{2}$ alone first; then ask yourself how many numbers square to give that result.",
+      "worked": [
+        "Add $36$ to both sides: $x^{2}=64+36=100$.",
+        "Taking a square root to SOLVE an equation keeps both signs: $x=\\pm\\sqrt{100}$.",
+        "So $x=10$ or $x=-10$, and both check: $10^{2}-36=64$ and $(-10)^{2}-36=64$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=10$ or $x=-10$", "correct": true},
+        {"key": "b", "text": "$x=10$", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "c", "text": "$x=14$ or $x=-14$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "$x=50$ or $x=-50$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "quadratic_eq-02",
+      "kc": "quadratic_eq",
+      "difficulty": 2,
+      "est_seconds": 60,
+      "stem": "Solve $(x+3)^{2}=16$ by the square-root method.",
+      "hint": "The whole quantity $x+3$ is what is being squared, so undo the square on that quantity before you touch the $3$.",
+      "worked": [
+        "Square-root both sides, keeping both signs: $x+3=\\pm 4$.",
+        "Case $x+3=4$ gives $x=1$. Case $x+3=-4$ gives $x=-7$.",
+        "Check $x=-7$: $(-7+3)^{2}=(-4)^{2}=16$, so both values are genuine solutions."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=1$ or $x=-7$", "correct": true},
+        {"key": "b", "text": "$x=1$", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "c", "text": "$x=13$", "correct": false, "mis": "INC_ZERO_PRODUCT_MISUSE"},
+        {"key": "d", "text": "$x=\\sqrt{7}$ or $x=-\\sqrt{7}$", "correct": false, "mis": "LIN_SQUARE_SUM"}
+      ]
+    },
+    {
+      "id": "quadratic_eq-03",
+      "kc": "quadratic_eq",
+      "difficulty": 3,
+      "est_seconds": 100,
+      "stem": "Exactly one of the four statements below is true. Which one?",
+      "hint": "Two of the false statements can be killed with a single number test; the third comes from misreading which sign the quadratic formula puts in front of $b$.",
+      "worked": [
+        "The zero-product property needs a $0$ on one side, so $(x+1)(x+4)=18$ must be expanded first: $x^{2}+5x+4=18$, that is $x^{2}+5x-14=0$.",
+        "Setting each factor equal to $18$ is not licensed: $x=17$ gives $(18)(21)=378$, not $18$.",
+        "For $x^{2}-7x+5=0$ the formula uses $-b=7$, so the numerator starts with $+7$, not $-7$.",
+        "And $(x+5)^{2}$ is $x^{2}+10x+25$, not $x^{2}+25$, so the last statement drops the middle term."
+      ],
+      "options": [
+        {"key": "a", "text": "To solve $(x+1)(x+4)=18$ you must expand first and rewrite it as $x^{2}+5x-14=0$, because the zero-product property applies only when one side is $0$.", "correct": true},
+        {"key": "b", "text": "$(x+1)(x+4)=18$ is solved by setting $x+1=18$ and $x+4=18$, giving $x=17$ and $x=14$.", "correct": false, "mis": "INC_ZERO_PRODUCT_MISUSE"},
+        {"key": "c", "text": "The quadratic formula applied to $x^{2}-7x+5=0$ gives $x=\\dfrac{-7\\pm\\sqrt{29}}{2}$.", "correct": false, "mis": "SIGN_QUADFORM_B"},
+        {"key": "d", "text": "$(x+5)^{2}=49$ is the same as $x^{2}+25=49$, so $x=\\pm 2\\sqrt{6}$.", "correct": false, "mis": "LIN_SQUARE_SUM"}
+      ]
+    },
+    {
+      "id": "quadratic_eq-04",
+      "kc": "quadratic_eq",
+      "difficulty": 4,
+      "est_seconds": 120,
+      "stem": "Use the quadratic formula to solve $x^{2}-10x-9=0$. Give the exact solutions.",
+      "hint": "Write $a$, $b$ and $c$ on their own line with their signs before you substitute; here $b$ is negative, so $-b$ is positive.",
+      "worked": [
+        "Here $a=1$, $b=-10$, $c=-9$, so $-b=10$ and the discriminant is $(-10)^{2}-4(1)(-9)=100+36=136$.",
+        "$\\sqrt{136}=\\sqrt{4 \\cdot 34}=2\\sqrt{34}$, so $x=\\dfrac{10\\pm 2\\sqrt{34}}{2}$.",
+        "Divide every term by $2$: $x=5\\pm\\sqrt{34}$.",
+        "So $x=5+\\sqrt{34}$ or $x=5-\\sqrt{34}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=5+\\sqrt{34}$ or $x=5-\\sqrt{34}$", "correct": true},
+        {"key": "b", "text": "$x=-5+\\sqrt{34}$ or $x=-5-\\sqrt{34}$", "correct": false, "mis": "SIGN_QUADFORM_B"},
+        {"key": "c", "text": "$x=13$ or $x=-3$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "There is no real solution.", "correct": false, "mis": "SIGN_SQUARE_NEG"}
+      ]
+    },
+    {
+      "id": "quadratic_eq-05",
+      "kc": "quadratic_eq",
+      "difficulty": 5,
+      "est_seconds": 150,
+      "stem": "A student solves $3x^{2}-4x-3=0$ and writes $x=\\dfrac{-4\\pm\\sqrt{(-4)^{2}-4(3)(-3)}}{2(3)}$. Exactly one sign in that line is wrong. Which choice gives the correct solutions?",
+      "hint": "Compare the numerator with $-b$: the coefficient $b$ is already negative here, so what should sit in front of the radical?",
+      "worked": [
+        "With $a=3$, $b=-4$, $c=-3$ the numerator must start with $-b=-(-4)=4$, so the student's $-4$ is the wrong sign.",
+        "The radicand is correct: $(-4)^{2}-4(3)(-3)=16+36=52$, and $\\sqrt{52}=2\\sqrt{13}$.",
+        "So $x=\\dfrac{4\\pm 2\\sqrt{13}}{6}$, and dividing numerator and denominator by $2$ gives $x=\\dfrac{2\\pm\\sqrt{13}}{3}$.",
+        "The solutions are $x=\\dfrac{2+\\sqrt{13}}{3}$ and $x=\\dfrac{2-\\sqrt{13}}{3}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=\\dfrac{2+\\sqrt{13}}{3}$ or $x=\\dfrac{2-\\sqrt{13}}{3}$", "correct": true},
+        {"key": "b", "text": "$x=\\dfrac{-2+\\sqrt{13}}{3}$ or $x=\\dfrac{-2-\\sqrt{13}}{3}$", "correct": false, "mis": "SIGN_QUADFORM_B"},
+        {"key": "c", "text": "$x=\\dfrac{7}{3}$ or $x=-1$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "$x=\\dfrac{2+\\sqrt{5}}{3}$ or $x=\\dfrac{2-\\sqrt{5}}{3}$", "correct": false, "mis": "SIGN_SQUARE_NEG"}
+      ]
+    }
+  ]
+}

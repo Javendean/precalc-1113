@@ -1,0 +1,198 @@
+{
+ "kc": "rational_asymptotes",
+ "items": [
+  {
+   "id": "rational_asymptotes-01",
+   "kc": "rational_asymptotes",
+   "difficulty": 1,
+   "est_seconds": 30,
+   "stem": "The graph of $f(x)=\\dfrac{x+4}{x+6}$ has exactly one vertical asymptote. Where is it?",
+   "hint": "A vertical asymptote sits at an input the function is not allowed to take, so ask what makes the bottom equal to zero.",
+   "worked": [
+    "Set the denominator equal to zero: $x+6=0$.",
+    "Solve: $x=-6$.",
+    "Check the top at that input: $-6+4=-2$, which is not $0$, so nothing cancels and the line $x=-6$ really is a vertical asymptote."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$x=6$",
+     "correct": false,
+     "mis": "DIR_SHIFT_BACKWARDS"
+    },
+    {
+     "key": "b",
+     "text": "$x=-6$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$x=0$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    },
+    {
+     "key": "d",
+     "text": "The graph has no vertical asymptote.",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    }
+   ]
+  },
+  {
+   "id": "rational_asymptotes-02",
+   "kc": "rational_asymptotes",
+   "difficulty": 2,
+   "est_seconds": 60,
+   "stem": "Let $f(x)=\\dfrac{5x+1}{2x^{2}-8}$. Which statement about the asymptotes of $f$ is true?",
+   "hint": "Factor the denominator completely for the vertical asymptotes, then compare the degree of the top with the degree of the bottom for the horizontal one.",
+   "worked": [
+    "Factor the bottom: $2x^{2}-8=2(x-2)(x+2)$, so the bottom is zero at $x=2$ and at $x=-2$.",
+    "The top, $5x+1$, is not zero at either value, so no factor cancels and both give vertical asymptotes.",
+    "The top has degree $1$ and the bottom has degree $2$. The bottom is bigger, so the outputs are squeezed toward $0$.",
+    "The horizontal asymptote is $y=0$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "Vertical asymptotes at $x=2$ and $x=-2$, and horizontal asymptote $y=0$.",
+     "correct": true
+    },
+    {
+     "key": "b",
+     "text": "Vertical asymptotes at $x=2$ and $x=-2$, and horizontal asymptote $y=\\dfrac{5}{2}$.",
+     "correct": false,
+     "mis": "RAT_ASYMPTOTE_DEGREE"
+    },
+    {
+     "key": "c",
+     "text": "A vertical asymptote only at $x=2$, and horizontal asymptote $y=0$.",
+     "correct": false,
+     "mis": "INC_SQRT_POSITIVE_ONLY"
+    },
+    {
+     "key": "d",
+     "text": "Vertical asymptotes at $x=2$ and $x=-2$, and no horizontal asymptote.",
+     "correct": false,
+     "mis": "EXP_QUOT_REVERSED"
+    }
+   ]
+  },
+  {
+   "id": "rational_asymptotes-03",
+   "kc": "rational_asymptotes",
+   "difficulty": 3,
+   "est_seconds": 80,
+   "stem": "Simplify $f(x)=\\dfrac{x^{2}-9}{x^{2}-2x-3}$ completely, then state where its vertical asymptote and its hole are.",
+   "hint": "Factor the top and the bottom before you decide anything; a factor that cancels does not create an asymptote.",
+   "worked": [
+    "Factor both parts: $f(x)=\\dfrac{(x-3)(x+3)}{(x-3)(x+1)}$.",
+    "The factor $x-3$ appears on both sides, so it cancels and leaves $\\dfrac{x+3}{x+1}$ with the restriction $x\\ne 3$.",
+    "A cancelled factor leaves a hole, so there is a hole at $x=3$.",
+    "The surviving factor $x+1$ is zero at $x=-1$, so the vertical asymptote is $x=-1$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "Vertical asymptotes at $x=3$ and $x=-1$; no hole.",
+     "correct": false,
+     "mis": "DOM_HOLE_AS_ASYMPTOTE"
+    },
+    {
+     "key": "b",
+     "text": "Vertical asymptote at $x=-\\dfrac{3}{2}$; no hole.",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "c",
+     "text": "Vertical asymptote at $x=-1$; hole at $x=3$.",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "Vertical asymptote at $x=-1$; no hole.",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    }
+   ]
+  },
+  {
+   "id": "rational_asymptotes-04",
+   "kc": "rational_asymptotes",
+   "difficulty": 4,
+   "est_seconds": 90,
+   "stem": "A student is asked for the vertical asymptotes of $f(x)=\\dfrac{x^{2}-x-6}{x^{2}-4}$. She sets the original denominator equal to zero and reports vertical asymptotes at $x=2$ and $x=-2$. Which statement correctly describes her answer?",
+   "hint": "Factor the top as well as the bottom, then ask what a shared factor does to the graph.",
+   "worked": [
+    "Factor both: $f(x)=\\dfrac{(x-3)(x+2)}{(x-2)(x+2)}$.",
+    "The factor $x+2$ cancels, so $x=-2$ is a hole rather than an asymptote, and $f(x)=\\dfrac{x-3}{x-2}$ for $x\\ne -2$.",
+    "Only $x-2$ survives in the denominator, so $x=2$ is the one vertical asymptote."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "She is right: every zero of the original denominator gives a vertical asymptote.",
+     "correct": false,
+     "mis": "DOM_HOLE_AS_ASYMPTOTE"
+    },
+    {
+     "key": "b",
+     "text": "She should cancel $x+2$ first; after cancelling, $x=2$ is the only vertical asymptote and $x=-2$ is an ordinary point of the graph.",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    },
+    {
+     "key": "c",
+     "text": "The expression reduces to $\\dfrac{x+6}{4}$, so $f$ has no vertical asymptote at all.",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "d",
+     "text": "She missed the cancellation: $x+2$ cancels, so $x=-2$ is a hole and $x=2$ is the only vertical asymptote.",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "id": "rational_asymptotes-05",
+   "kc": "rational_asymptotes",
+   "difficulty": 5,
+   "est_seconds": 120,
+   "stem": "As $x\\to\\infty$, the graph of $f(x)=\\dfrac{2x^{2}-3x+1}{x-2}$ hugs a straight line. Which line is it?",
+   "hint": "The top degree is exactly one more than the bottom degree, so divide and read the quotient rather than comparing leading coefficients.",
+   "worked": [
+    "Divide $2x^{2}-3x+1$ by $x-2$. First term: $2x^{2}\\div x=2x$, and $2x(x-2)=2x^{2}-4x$.",
+    "Subtract the whole quantity: $(2x^{2}-3x)-(2x^{2}-4x)=x$, then bring down the $+1$ to get $x+1$.",
+    "Next term: $x\\div x=1$, and $1(x-2)=x-2$; subtracting gives the remainder $3$.",
+    "So $f(x)=2x+1+\\dfrac{3}{x-2}$, and $\\dfrac{3}{x-2}\\to 0$, leaving the line $y=2x+1$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$y=2x-7$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "b",
+     "text": "$y=2x+1$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$y=2$",
+     "correct": false,
+     "mis": "RAT_ASYMPTOTE_DEGREE"
+    },
+    {
+     "key": "d",
+     "text": "$y=0$",
+     "correct": false,
+     "mis": "EXP_QUOT_REVERSED"
+    }
+   ]
+  }
+ ]
+}

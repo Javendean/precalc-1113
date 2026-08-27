@@ -1,0 +1,65 @@
+{
+  "kc": "factor_trinomial",
+  "items": [
+    {
+      "id": "factor_trinomial-01",
+      "kc": "factor_trinomial",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Factor completely: $x^{2}-9x+20$.",
+      "hint": "Look for two numbers whose product is the constant term and whose sum is the middle coefficient, sign included.",
+      "worked": [
+        "Since the leading coefficient is $1$, find two numbers with product $20$ and sum $-9$.",
+        "A positive product with a negative sum forces BOTH numbers negative: $-4$ and $-5$.",
+        "So $x^{2}-9x+20=(x-4)(x-5)$.",
+        "Check: $x^{2}-5x-4x+20=x^{2}-9x+20$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(x+4)(x+5)$", "correct": false, "mis": "SIGN_QUADFORM_B"},
+        {"key": "b", "text": "$(x-2)(x-10)$", "correct": false, "mis": null},
+        {"key": "c", "text": "$(x-4)(x-5)$", "correct": true},
+        {"key": "d", "text": "$(x-4)(x+5)$", "correct": false, "mis": "SIGN_DISTRIB_NEG"}
+      ]
+    },
+    {
+      "id": "factor_trinomial-02",
+      "kc": "factor_trinomial",
+      "difficulty": 3,
+      "est_seconds": 80,
+      "stem": "A student factors $-x^{2}+5x+6$ in two steps. Step 1: $-x^{2}+5x+6=-(x^{2}+5x+6)$. Step 2: $-(x^{2}+5x+6)=-(x+2)(x+3)$. Which choice names the first error and gives the correct complete factorization?",
+      "hint": "Multiply each candidate answer back out and see which one reproduces $-x^{2}+5x+6$ exactly.",
+      "worked": [
+        "Pulling out $-1$ changes the sign of EVERY term: $-x^{2}+5x+6=-(x^{2}-5x-6)$, so Step 1 is already wrong.",
+        "Inside, two numbers with product $-6$ and sum $-5$ are $-6$ and $1$, giving $x^{2}-5x-6=(x-6)(x+1)$.",
+        "So $-x^{2}+5x+6=-(x-6)(x+1)$.",
+        "Check: $(x-6)(x+1)=x^{2}-5x-6$, and the outside $-1$ makes it $-x^{2}+5x+6$."
+      ],
+      "options": [
+        {"key": "a", "text": "Step 2 is the first error, because $x^{2}+5x+6=(x+1)(x+6)$.", "correct": false, "mis": null},
+        {"key": "b", "text": "Step 1 is the first error; it should read $-(x^{2}-5x-6)$, so the factorization is $-(x-6)(x+1)$.", "correct": true},
+        {"key": "c", "text": "Neither step contains an error, so the factorization is $-(x+2)(x+3)$.", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "Step 1 is unnecessary, because $-x^{2}$ is the same as $(-x)^{2}$; the factorization is $(x+2)(x+3)$.", "correct": false, "mis": "SIGN_SQUARE_NEG"}
+      ]
+    },
+    {
+      "id": "factor_trinomial-03",
+      "kc": "factor_trinomial",
+      "difficulty": 4,
+      "est_seconds": 95,
+      "stem": "Exactly one of the four statements below is true. Which one?",
+      "hint": "Expand each right-hand side and compare it term by term with the left-hand side; a missing middle term is still a mismatch.",
+      "worked": [
+        "$(2x+3)^{2}=(2x+3)(2x+3)=4x^{2}+12x+9$, not $4x^{2}+9$.",
+        "Factoring $3$ out of $3x^{2}+6x-9$ must divide EVERY term: $3(x^{2}+2x-3)$, not $3(x^{2}+6x-9)$.",
+        "$(2x+2)(x+3)=2x^{2}+8x+6$, so it is not $2x^{2}+7x+6$; the correct split is $(2x+3)(x+2)$.",
+        "$(3x+1)(2x-3)=6x^{2}-9x+2x-3=6x^{2}-7x-3$, which matches, so that statement is the true one."
+      ],
+      "options": [
+        {"key": "a", "text": "$4x^{2}+9=(2x+3)^{2}$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "b", "text": "$3x^{2}+6x-9=3(x^{2}+6x-9)$", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "c", "text": "$2x^{2}+7x+6=(2x+2)(x+3)$", "correct": false, "mis": null},
+        {"key": "d", "text": "$6x^{2}-7x-3=(3x+1)(2x-3)$", "correct": true}
+      ]
+    }
+  ]
+}

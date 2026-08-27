@@ -1,0 +1,122 @@
+{
+ "kc": "complex_frac",
+ "items": [
+  {
+   "id": "complex_frac-01",
+   "kc": "complex_frac",
+   "difficulty": 2,
+   "est_seconds": 45,
+   "stem": "Exactly one of these statements is true for every value of the variable that makes both sides defined. Which one is it?",
+   "hint": "Try a friendly number such as $x=3$ in each statement and keep the one where the two sides still balance.",
+   "worked": [
+    "Dividing by a fraction means multiplying by its reciprocal, so $\\dfrac{\\dfrac{3}{5}}{\\dfrac{2}{7}}=\\dfrac{3}{5}\\cdot\\dfrac{7}{2}$ is true.",
+    "Test the others at $x=3$: $\\dfrac{5}{6}$ is not $\\dfrac{5}{3}+\\dfrac{5}{3}=\\dfrac{10}{3}$, and $\\dfrac{3+3}{3}=2$ is not $3$.",
+    "Also at $x=3$, $-\\left(\\dfrac{1}{3}-\\dfrac{1}{3}\\right)=0$ but $-\\dfrac{1}{3}-\\dfrac{1}{3}=-\\dfrac{2}{3}$.",
+    "Only the reciprocal statement survives, and that is the rule every complex fraction runs on."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{x+3}{3}=x$",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "b",
+     "text": "$\\dfrac{5}{x+3}=\\dfrac{5}{x}+\\dfrac{5}{3}$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    },
+    {
+     "key": "c",
+     "text": "$\\dfrac{\\dfrac{3}{5}}{\\dfrac{2}{7}}=\\dfrac{3}{5}\\cdot\\dfrac{7}{2}$",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "$-\\left(\\dfrac{1}{x}-\\dfrac{1}{3}\\right)=-\\dfrac{1}{x}-\\dfrac{1}{3}$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    }
+   ]
+  },
+  {
+   "id": "complex_frac-02",
+   "kc": "complex_frac",
+   "difficulty": 3,
+   "est_seconds": 70,
+   "stem": "Which expression is equal to $\\dfrac{\\dfrac{x+5}{5}}{\\dfrac{2}{x+5}}$ for every $x \\ne -5$?",
+   "hint": "Rewrite the division as multiplication by the reciprocal of the bottom fraction before you cancel or expand anything.",
+   "worked": [
+    "Dividing by $\\dfrac{2}{x+5}$ is the same as multiplying by $\\dfrac{x+5}{2}$.",
+    "$\\dfrac{x+5}{5}\\cdot\\dfrac{x+5}{2}=\\dfrac{(x+5)^{2}}{10}$; the factor $x+5$ sits only on top, so nothing cancels.",
+    "Expand the square: $(x+5)^{2}=x^{2}+10x+25$.",
+    "So the expression equals $\\dfrac{x^{2}+10x+25}{10}$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{x^{2}+25}{10}$",
+     "correct": false,
+     "mis": "LIN_SQUARE_SUM"
+    },
+    {
+     "key": "b",
+     "text": "$\\dfrac{x^{2}+10x+25}{10}$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$\\dfrac{x^{2}+5x}{2}$",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "d",
+     "text": "$\\dfrac{x}{2}$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    }
+   ]
+  },
+  {
+   "id": "complex_frac-03",
+   "kc": "complex_frac",
+   "difficulty": 4,
+   "est_seconds": 110,
+   "stem": "A student simplifies $\\dfrac{\\dfrac{2}{x+2}-\\dfrac{1}{x}}{\\dfrac{x-2}{x}}$, but she multiplies the top by $\\dfrac{x-2}{x}$ instead of by its reciprocal, so her answer is wrong. Taking $x \\ne 0$, $x \\ne 2$ and $x \\ne -2$, what is the correct simplified form?",
+   "hint": "Combine the two fractions on top into a single fraction first, then divide by multiplying by the reciprocal of the bottom.",
+   "worked": [
+    "Put the top over one denominator: $\\dfrac{2}{x+2}-\\dfrac{1}{x}=\\dfrac{2x-(x+2)}{x(x+2)}$.",
+    "The minus sign applies to the whole quantity: $2x-x-2=x-2$, so the top is $\\dfrac{x-2}{x(x+2)}$.",
+    "Divide by multiplying by the reciprocal: $\\dfrac{x-2}{x(x+2)}\\cdot\\dfrac{x}{x-2}$.",
+    "Cancel the whole factors $x$ and $x-2$ to get $\\dfrac{1}{x+2}$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{1}{x-2}$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "b",
+     "text": "$\\dfrac{x+1}{x-2}$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    },
+    {
+     "key": "c",
+     "text": "$-\\dfrac{2x}{x^{2}-4}$",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "d",
+     "text": "$\\dfrac{1}{x+2}$",
+     "correct": true
+    }
+   ]
+  }
+ ]
+}

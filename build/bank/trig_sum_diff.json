@@ -1,0 +1,63 @@
+{
+  "kc": "trig_sum_diff",
+  "items": [
+    {
+      "id": "trig_sum_diff-01",
+      "kc": "trig_sum_diff",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "Which statement is a correct double-angle identity for $\\cos(2\\theta)$?",
+      "hint": "Only one of the four can be reached from $\\cos(2\\theta)=\\cos^{2}\\theta-\\sin^{2}\\theta$ using $\\sin^{2}\\theta+\\cos^{2}\\theta=1$.",
+      "worked": [
+        "Start from $\\cos(2\\theta)=\\cos^{2}\\theta-\\sin^{2}\\theta$.",
+        "The Pythagorean identity gives $\\cos^{2}\\theta=1-\\sin^{2}\\theta$, so $\\cos(2\\theta)=\\left(1-\\sin^{2}\\theta\\right)-\\sin^{2}\\theta$.",
+        "Combine like terms: $\\cos(2\\theta)=1-2\\sin^{2}\\theta$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\cos(2\\theta)=2\\cos\\theta$", "correct": false, "mis": "LIN_FN_ADD"},
+        {"key": "b", "text": "$\\cos(2\\theta)=1-2\\sin^{2}\\theta$", "correct": true},
+        {"key": "c", "text": "$\\cos(2\\theta)=\\sin^{2}\\theta-\\cos^{2}\\theta$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+        {"key": "d", "text": "$\\cos(2\\theta)=1-2\\sin\\left(\\theta^{2}\\right)$", "correct": false, "mis": "NOT_TRIG_SQUARED"}
+      ]
+    },
+    {
+      "id": "trig_sum_diff-02",
+      "kc": "trig_sum_diff",
+      "difficulty": 3,
+      "est_seconds": 70,
+      "stem": "Use the sine sum formula to write $\\sin\\left(x+\\dfrac{2\\pi}{3}\\right)$ in terms of $\\sin x$ and $\\cos x$.",
+      "hint": "Expand with $\\sin(A+B)=\\sin A\\cos B+\\cos A\\sin B$, then locate the point on the unit circle at $\\dfrac{2\\pi}{3}$ before writing down its cosine and its sine.",
+      "worked": [
+        "$\\sin\\left(x+\\dfrac{2\\pi}{3}\\right)=\\sin x\\cos\\dfrac{2\\pi}{3}+\\cos x\\sin\\dfrac{2\\pi}{3}$.",
+        "The angle $\\dfrac{2\\pi}{3}$ sits at the unit-circle point $\\left(-\\dfrac{1}{2},\\dfrac{\\sqrt{3}}{2}\\right)$, so $\\cos\\dfrac{2\\pi}{3}=-\\dfrac{1}{2}$ and $\\sin\\dfrac{2\\pi}{3}=\\dfrac{\\sqrt{3}}{2}$.",
+        "Substitute: $\\sin x\\left(-\\dfrac{1}{2}\\right)+\\cos x\\left(\\dfrac{\\sqrt{3}}{2}\\right)=\\dfrac{\\sqrt{3}}{2}\\cos x-\\dfrac{1}{2}\\sin x$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\sin x+\\dfrac{\\sqrt{3}}{2}$", "correct": false, "mis": "LIN_SIN_SUM"},
+        {"key": "b", "text": "$\\dfrac{\\sqrt{3}}{2}\\cos x+\\dfrac{1}{2}\\sin x$", "correct": false, "mis": "TRIG_QUADRANT_SIGN"},
+        {"key": "c", "text": "$-\\dfrac{1}{2}\\cos x+\\dfrac{\\sqrt{3}}{2}\\sin x$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+        {"key": "d", "text": "$\\dfrac{\\sqrt{3}}{2}\\cos x-\\dfrac{1}{2}\\sin x$", "correct": true}
+      ]
+    },
+    {
+      "id": "trig_sum_diff-03",
+      "kc": "trig_sum_diff",
+      "difficulty": 4,
+      "est_seconds": 110,
+      "stem": "Angle $A$ lies in Quadrant II with $\\sin A=\\dfrac{4}{5}$, and angle $B$ lies in Quadrant I with $\\sin B=\\dfrac{5}{13}$. Find the exact value of $\\sin(A+B)$.",
+      "hint": "You are handed both sines, so recover each cosine from $\\sin^{2}\\theta+\\cos^{2}\\theta=1$ and let the quadrant decide the sign of each one.",
+      "worked": [
+        "$A$ is in Quadrant II, where cosine is negative: $\\cos A=-\\sqrt{1-\\dfrac{16}{25}}=-\\sqrt{\\dfrac{9}{25}}=-\\dfrac{3}{5}$.",
+        "$B$ is in Quadrant I, where cosine is positive: $\\cos B=\\sqrt{1-\\dfrac{25}{169}}=\\sqrt{\\dfrac{144}{169}}=\\dfrac{12}{13}$.",
+        "$\\sin(A+B)=\\sin A\\cos B+\\cos A\\sin B=\\dfrac{4}{5}\\cdot\\dfrac{12}{13}+\\left(-\\dfrac{3}{5}\\right)\\cdot\\dfrac{5}{13}$.",
+        "$=\\dfrac{48}{65}-\\dfrac{15}{65}=\\dfrac{33}{65}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{63}{65}$", "correct": false, "mis": "TRIG_QUADRANT_SIGN"},
+        {"key": "b", "text": "$\\dfrac{77}{65}$", "correct": false, "mis": "LIN_SIN_SUM"},
+        {"key": "c", "text": "$\\dfrac{33}{65}$", "correct": true},
+        {"key": "d", "text": "$\\dfrac{27}{65}$", "correct": false, "mis": "LIN_SQRT_SUM"}
+      ]
+    }
+  ]
+}

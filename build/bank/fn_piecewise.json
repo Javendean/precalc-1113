@@ -1,0 +1,64 @@
+{
+  "kc": "fn_piecewise",
+  "items": [
+    {
+      "id": "fn_piecewise-01",
+      "kc": "fn_piecewise",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "The function $f$ is defined by $f(x)=(x+1)^{2}$ when $x<-1$, and by $f(x)=4-x$ when $x \\ge -1$. Find $f(-4)$.",
+      "hint": "Before you substitute anything, decide which of the two conditions the input $-4$ actually satisfies.",
+      "worked": [
+        "Test the conditions: $-4<-1$ is true, so the first rule is the one that applies.",
+        "Substitute the input into that rule only: $f(-4)=(-4+1)^{2}=(-3)^{2}$.",
+        "$(-3)^{2}=9$, so $f(-4)=9$."
+      ],
+      "options": [
+        {"key": "a", "text": "$17$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "b", "text": "$8$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "c", "text": "$9$", "correct": true},
+        {"key": "d", "text": "$-9$", "correct": false, "mis": "SIGN_SQUARE_NEG"}
+      ]
+    },
+    {
+      "id": "fn_piecewise-02",
+      "kc": "fn_piecewise",
+      "difficulty": 3,
+      "est_seconds": 70,
+      "stem": "Which piecewise definition gives the same value as $f(x)=|x-3|$ for every real number $x$?",
+      "hint": "The definition splits exactly where the inside expression $x-3$ changes sign, and on the side where the inside is negative you must take its opposite.",
+      "worked": [
+        "The inside expression $x-3$ is zero at $x=3$, so that is where the definition splits.",
+        "When $x \\ge 3$ the inside is not negative, so $|x-3|=x-3$.",
+        "When $x<3$ the inside is negative, so $|x-3|=-(x-3)=3-x$.",
+        "Check at $x=0$: the rule for $x<3$ gives $3-0=3$, and $|0-3|=3$."
+      ],
+      "options": [
+        {"key": "a", "text": "$f(x)=x-3$ when $x \\ge -3$, and $f(x)=3-x$ when $x<-3$", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "b", "text": "$f(x)=x-3$ for every real number $x$", "correct": false, "mis": "INC_ABS_ONE_CASE"},
+        {"key": "c", "text": "$f(x)=x-3$ when $x \\ge 3$, and $f(x)=-x-3$ when $x<3$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$f(x)=x-3$ when $x \\ge 3$, and $f(x)=3-x$ when $x<3$", "correct": true}
+      ]
+    },
+    {
+      "id": "fn_piecewise-03",
+      "kc": "fn_piecewise",
+      "difficulty": 4,
+      "est_seconds": 110,
+      "stem": "The function $f$ is defined by $f(x)=(x+3)^{2}$ when $x<0$, and by $f(x)=2x+5$ when $x \\ge 0$. Find every value of $x$ for which $f(x)=25$.",
+      "hint": "Solve each rule separately, then keep a root only if it satisfies that rule's own condition.",
+      "worked": [
+        "First rule: $(x+3)^{2}=25$ gives $x+3=\\pm 5$, so $x=2$ or $x=-8$.",
+        "That rule is only in force when $x<0$, so $x=2$ is thrown out and $x=-8$ is kept.",
+        "Second rule: $2x+5=25$ gives $x=10$, and $10 \\ge 0$, so $x=10$ is kept.",
+        "The solutions are $x=-8$ and $x=10$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=-8$ and $x=10$", "correct": true},
+        {"key": "b", "text": "$x=-8$, $x=2$ and $x=10$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "c", "text": "$x=10$ only", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "d", "text": "$x=-4$ and $x=10$", "correct": false, "mis": "LIN_SQUARE_SUM"}
+      ]
+    }
+  ]
+}

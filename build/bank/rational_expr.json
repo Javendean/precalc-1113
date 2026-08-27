@@ -1,0 +1,122 @@
+{
+ "kc": "rational_expr",
+ "items": [
+  {
+   "id": "rational_expr-01",
+   "kc": "rational_expr",
+   "difficulty": 2,
+   "est_seconds": 50,
+   "stem": "Simplify completely: $\\dfrac{x^{2}+2x}{(x+2)^{2}}$, where $x \\ne -2$.",
+   "hint": "Factor the top before you cancel anything, and cancel only something that appears as a whole factor on both the top and the bottom.",
+   "worked": [
+    "Factor the numerator: $x^{2}+2x=x(x+2)$.",
+    "The denominator is $(x+2)(x+2)$.",
+    "Cancel one whole factor of $(x+2)$: $\\dfrac{x(x+2)}{(x+2)(x+2)}=\\dfrac{x}{x+2}$.",
+    "Stop there. In $x+2$ the $x$ is a term, not a factor, so it cannot cancel with the $x$ on top."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{1}{2}$",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "b",
+     "text": "$\\dfrac{x}{x+2}$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$\\dfrac{x^{2}+2x}{x^{2}+4}$",
+     "correct": false,
+     "mis": "LIN_SQUARE_SUM"
+    },
+    {
+     "key": "d",
+     "text": "$1+\\dfrac{x}{2}$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    }
+   ]
+  },
+  {
+   "id": "rational_expr-02",
+   "kc": "rational_expr",
+   "difficulty": 3,
+   "est_seconds": 75,
+   "stem": "Exactly one of the statements below is true for every value of $x$ for which both sides are defined. Which one is true?",
+   "hint": "If a statement looks believable, substitute one convenient number such as $x=2$ into both sides and compare the results.",
+   "worked": [
+    "Dividing a sum by a number divides EVERY term: $\\dfrac{6x+9}{3}=\\dfrac{6x}{3}+\\dfrac{9}{3}=2x+3$, so that statement is true.",
+    "In $\\dfrac{x+7}{7}$ the $7$ on top is a term, not a factor, so it cannot cancel; at $x=7$ the left side is $2$, not $7$.",
+    "Splitting is legal over a numerator sum, never over a denominator sum: at $x=3$, $\\dfrac{5}{x+2}=1$ but $\\dfrac{5}{3}+\\dfrac{5}{2}=\\dfrac{25}{6}$.",
+    "The negative must reach both terms: $-(x-4)=-x+4$, not $-x-4$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{x+7}{7}=x$",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "b",
+     "text": "$\\dfrac{5}{x+2}=\\dfrac{5}{x}+\\dfrac{5}{2}$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    },
+    {
+     "key": "c",
+     "text": "$\\dfrac{-(x-4)}{2}=\\dfrac{-x-4}{2}$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "d",
+     "text": "$\\dfrac{6x+9}{3}=2x+3$",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "id": "rational_expr-03",
+   "kc": "rational_expr",
+   "difficulty": 4,
+   "est_seconds": 95,
+   "stem": "Write $\\dfrac{3}{x+2}-\\dfrac{2}{x}$ as a single fraction in lowest terms. Assume $x \\ne 0$ and $x \\ne -2$.",
+   "hint": "Build the common denominator $x(x+2)$ first, then remember that the subtraction sign multiplies every term of the second numerator.",
+   "worked": [
+    "The least common denominator is $x(x+2)$: $\\dfrac{3x}{x(x+2)}-\\dfrac{2(x+2)}{x(x+2)}$.",
+    "Subtract the numerators, distributing the minus to BOTH terms: $3x-2x-4=x-4$.",
+    "So the result is $\\dfrac{x-4}{x(x+2)}$.",
+    "Nothing cancels: the $x$ on top is a term of $x-4$, not a factor of it."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{x+4}{x(x+2)}$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "b",
+     "text": "$\\dfrac{-4}{x+2}$",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    },
+    {
+     "key": "c",
+     "text": "$\\dfrac{x-4}{x(x+2)}$",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "$\\dfrac{1}{x}+\\dfrac{3}{2}$",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    }
+   ]
+  }
+ ]
+}

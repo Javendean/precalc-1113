@@ -1,0 +1,122 @@
+{
+  "kc": "fn_vertical_line",
+  "items": [
+    {
+      "id": "fn_vertical_line-01",
+      "kc": "fn_vertical_line",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "A student is shown the relation $S$, which consists of the ordered pairs $(-3,4)$, $(1,7)$, $(2,4)$ and $(5,9)$. She says that $S$ is not a function because the number $4$ shows up twice. Which response is correct?",
+      "hint": "Settle the two questions separately: one of them looks only at the first coordinates, the other only at the second.",
+      "worked": [
+        "List the first coordinates: $-3$, $1$, $2$, $5$. They are all different, so every input has exactly one output.",
+        "That is the function test, and $S$ passes it, so $S$ is a function.",
+        "Now list the second coordinates: $4$, $7$, $4$, $9$. The output $4$ comes from both $-3$ and $2$.",
+        "A repeated output does not break the function test; it only means $S$ is not one-to-one. The student's reason is wrong."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "The student is right: a relation is a function only when no output value is repeated, and $4$ is repeated.",
+          "correct": false,
+          "mis": "FN_DOMAIN_RANGE_SWAP"
+        },
+        {
+          "key": "b",
+          "text": "The student is wrong: no input value is repeated, so $S$ is a one-to-one function.",
+          "correct": false,
+          "mis": null
+        },
+        {
+          "key": "c",
+          "text": "The student is wrong: the inputs $-3$, $1$, $2$, $5$ are all different, so $S$ is a function; the repeated output $4$ only means $S$ is not one-to-one.",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "The student is wrong: $S$ is a function, and its inverse function consists of the pairs $(-3,\\dfrac{1}{4})$, $(1,\\dfrac{1}{7})$, $(2,\\dfrac{1}{4})$ and $(5,\\dfrac{1}{9})$.",
+          "correct": false,
+          "mis": "INV_FN_RECIPROCAL"
+        }
+      ]
+    },
+    {
+      "id": "fn_vertical_line-02",
+      "kc": "fn_vertical_line",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Solve $x=y^{2}+3$ for $y$, then decide whether the equation defines $y$ as a function of $x$.",
+      "hint": "Get $y$ by itself first, then feed in one number for $x$ and count how many values of $y$ come back.",
+      "worked": [
+        "Isolate the square: $y^{2}=x-3$.",
+        "Take square roots of both sides and keep both signs: $y=\\pm\\sqrt{x-3}$.",
+        "Test an input: at $x=7$ this gives $y^{2}=4$, so $y=2$ and $y=-2$.",
+        "One value of $x$ produces two values of $y$, so the equation does not define $y$ as a function of $x$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$y=\\sqrt{x}-\\sqrt{3}$; yes, it defines $y$ as a function of $x$.",
+          "correct": false,
+          "mis": "LIN_SQRT_SUM"
+        },
+        {
+          "key": "b",
+          "text": "$y=\\pm\\sqrt{x-3}$; no, it does not define $y$ as a function of $x$, since $x=7$ gives both $y=2$ and $y=-2$.",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$y=\\sqrt{x-3}$; yes, it defines $y$ as a function of $x$.",
+          "correct": false,
+          "mis": "INC_SQRT_POSITIVE_ONLY"
+        },
+        {
+          "key": "d",
+          "text": "$y=\\pm\\sqrt{x-3}$; yes, it defines $y$ as a function of $x$, because each value of $y$ produces exactly one value of $x$.",
+          "correct": false,
+          "mis": "FN_DOMAIN_RANGE_SWAP"
+        }
+      ]
+    },
+    {
+      "id": "fn_vertical_line-03",
+      "kc": "fn_vertical_line",
+      "difficulty": 4,
+      "est_seconds": 75,
+      "stem": "The graph of $y=f(x)$ falls from left to right for $x<0$, reaches its lowest point at $(0,-2)$, and rises for $x>0$. Every vertical line meets this graph exactly once. Which statement is true?",
+      "hint": "Two different tests are in play: vertical lines answer one question about $f$, horizontal lines answer a different one.",
+      "worked": [
+        "Every vertical line meets the graph once, so $f$ passes the vertical line test and is a function.",
+        "The graph falls to $(0,-2)$ and then rises, so the horizontal line $y=-1$ meets it twice, once on each side of the low point.",
+        "Failing the horizontal line test means two different inputs share an output, so $f$ is not one-to-one.",
+        "A function has an inverse function only when it is one-to-one, so $f$ has none as it stands; restricting the domain to $x\\ge 0$ would repair that."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$f$ is one-to-one, because every vertical line meets the graph exactly once.",
+          "correct": false,
+          "mis": "FN_DOMAIN_RANGE_SWAP"
+        },
+        {
+          "key": "b",
+          "text": "$f$ has an inverse function, namely $\\dfrac{1}{f(x)}$.",
+          "correct": false,
+          "mis": "INV_FN_RECIPROCAL"
+        },
+        {
+          "key": "c",
+          "text": "Even with the domain restricted to $x\\ge 0$, $f$ has no inverse function, because the graph still fails the horizontal line test.",
+          "correct": false,
+          "mis": "DOM_IGNORE_RESTRICTION"
+        },
+        {
+          "key": "d",
+          "text": "$f$ is a function but is not one-to-one, so it has no inverse function unless its domain is restricted.",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

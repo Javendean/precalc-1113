@@ -1,0 +1,63 @@
+{
+  "kc": "fn_even_odd",
+  "items": [
+    {
+      "id": "fn_even_odd-01",
+      "kc": "fn_even_odd",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "Let $f(x)=x^{2}-4x+1$. Simplify $f(-x)$, the expression you would compare with $f(x)$ to test for symmetry.",
+      "hint": "Substitute the whole quantity $(-x)$ wherever an $x$ used to be, parentheses included, then simplify one term at a time.",
+      "worked": [
+        "Replace every $x$ with $(-x)$: $f(-x)=(-x)^{2}-4(-x)+1$.",
+        "$(-x)^{2}=x^{2}$, since squaring removes the sign, and $-4(-x)=+4x$.",
+        "So $f(-x)=x^{2}+4x+1$. It is not $f(x)$ and not $-f(x)$, so $f$ has neither symmetry."
+      ],
+      "options": [
+        {"key": "a", "text": "$-x^{2}+4x+1$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "b", "text": "$x^{2}-4x+1$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "c", "text": "$x^{2}+4x+1$", "correct": true},
+        {"key": "d", "text": "$-x^{2}+4x-1$", "correct": false, "mis": "NOT_FN_AS_MULT"}
+      ]
+    },
+    {
+      "id": "fn_even_odd-02",
+      "kc": "fn_even_odd",
+      "difficulty": 3,
+      "est_seconds": 70,
+      "stem": "A student tests $f(x)=x^{3}-6x$ for symmetry and writes three steps. Step 1: $f(-x)=(-x)^{3}-6(-x)=-x^{3}+6x$. Step 2: $-f(x)=-(x^{3}-6x)=-x^{3}-6x$. Step 3: since $f(-x)$ matches neither $f(x)$ nor $-f(x)$, the function is neither even nor odd. Which statement about this work is correct?",
+      "hint": "Recheck Step 2 by treating $-f(x)$ as $(-1)$ times the entire bracket before you judge the conclusion.",
+      "worked": [
+        "Step 1 is fine: $(-x)^{3}=-x^{3}$ and $-6(-x)=+6x$, so $f(-x)=-x^{3}+6x$.",
+        "Step 2 gave the negative to only the first term. Distributing to both: $-f(x)=-x^{3}+6x$.",
+        "Now $f(-x)$ and $-f(x)$ agree, so $f(-x)=-f(x)$ and $f$ is odd."
+      ],
+      "options": [
+        {"key": "a", "text": "Every step is correct, so $f$ is neither even nor odd.", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "b", "text": "Step 2 is wrong: $-f(x)=-x^{3}+6x$, which equals $f(-x)$, so $f$ is odd.", "correct": true},
+        {"key": "c", "text": "Step 2 is wrong: $-f(x)=-x^{3}+6x$, which equals $f(-x)$, so $f$ is even.", "correct": false, "mis": "DIR_INSIDE_OUTSIDE"},
+        {"key": "d", "text": "Both steps are unnecessary: $f(-x)$ means $f$ times $-x$, so $f(-x)=-f(x)$ for every function, and $f$ is odd.", "correct": false, "mis": "NOT_FN_AS_MULT"}
+      ]
+    },
+    {
+      "id": "fn_even_odd-03",
+      "kc": "fn_even_odd",
+      "difficulty": 4,
+      "est_seconds": 85,
+      "stem": "Suppose $g$ is an odd function and $h$ is an even function, and both are defined for every real number. Which statement must be true for all $x$?",
+      "hint": "Replace $x$ with $-x$ in each function separately, using the rule that belongs to that function, then count how many sign changes survive.",
+      "worked": [
+        "Let $F(x)=g(x)h(x)$ and evaluate $F(-x)=g(-x)h(-x)$.",
+        "Odd gives $g(-x)=-g(x)$; even gives $h(-x)=h(x)$.",
+        "So $F(-x)=(-g(x))h(x)=-g(x)h(x)=-F(x)$.",
+        "One sign change survives, so the product $g(x)h(x)$ is odd."
+      ],
+      "options": [
+        {"key": "a", "text": "$g(x)+h(x)$ is odd.", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "b", "text": "$g(x)h(x)$ is even.", "correct": false, "mis": "DIR_INSIDE_OUTSIDE"},
+        {"key": "c", "text": "$h(g(x))$ is odd.", "correct": false, "mis": "NOT_FN_AS_MULT"},
+        {"key": "d", "text": "$g(x)h(x)$ is odd.", "correct": true}
+      ]
+    }
+  ]
+}

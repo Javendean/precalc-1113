@@ -1,0 +1,124 @@
+{
+ "kc": "rational_eq",
+ "items": [
+  {
+   "id": "rational_eq-01",
+   "kc": "rational_eq",
+   "difficulty": 2,
+   "est_seconds": 50,
+   "stem": "Exactly one statement below about solving a rational equation is true. Which one is true?",
+   "hint": "Do not judge these by how familiar they look; put one convenient number into each claim and see whether both sides really agree.",
+   "worked": [
+    "Test the splitting claim at $x=4$: $\\dfrac{8}{4+4}=1$, but $\\dfrac{8}{4}+\\dfrac{8}{4}=4$. A fraction never splits over a sum in the denominator.",
+    "Test the cancelling claim at $x=3$: $\\dfrac{3+3}{3}=2$, not $3$. The $3$ on top is a term, not a factor, so it cannot cancel.",
+    "Test the clearing claim on $\\dfrac{x}{x-4}=\\dfrac{4}{x-4}$: multiplying by $x-4$ gives $x=4$, yet $x=4$ makes both denominators zero, so it solves the cleared equation but not the original.",
+    "That last counterexample is exactly why every candidate has to go back into the original equation before it is accepted."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$\\dfrac{8}{x+4}$ may be rewritten as $\\dfrac{8}{x}+\\dfrac{8}{4}$ before solving.",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    },
+    {
+     "key": "b",
+     "text": "Once the denominators have been cleared, every root of the resulting equation is a solution of the original equation.",
+     "correct": false,
+     "mis": "INC_EXTRANEOUS_UNCHECKED"
+    },
+    {
+     "key": "c",
+     "text": "Every candidate root must be substituted into the original equation, because multiplying by the denominator can produce a root that makes a denominator zero.",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "$\\dfrac{x+3}{3}$ may be replaced by $x$ before solving.",
+     "correct": false,
+     "mis": "DOM_CANCEL_ADDEND"
+    }
+   ]
+  },
+  {
+   "id": "rational_eq-02",
+   "kc": "rational_eq",
+   "difficulty": 3,
+   "est_seconds": 90,
+   "stem": "Solve $\\dfrac{x^{2}}{x-4}-\\dfrac{5x-4}{x-4}=1$.",
+   "hint": "The two denominators already match, so subtract the numerators over that one denominator, and bracket $5x-4$ before you subtract it.",
+   "worked": [
+    "Restriction first: $x \\ne 4$.",
+    "Combine over the common denominator: $\\dfrac{x^{2}-(5x-4)}{x-4}=\\dfrac{x^{2}-5x+4}{x-4}=1$.",
+    "Multiply both sides by $x-4$: $x^{2}-5x+4=x-4$, so $x^{2}-6x+8=0$ and $(x-2)(x-4)=0$.",
+    "Candidates are $x=2$ and $x=4$; reject $x=4$ because it makes the denominator zero.",
+    "Solution: $x=2$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$x=2$ and $x=4$",
+     "correct": false,
+     "mis": "INC_EXTRANEOUS_UNCHECKED"
+    },
+    {
+     "key": "b",
+     "text": "$x=2$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$x=0$ and $x=6$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "d",
+     "text": "$x=-2$ and $x=-4$",
+     "correct": false,
+     "mis": "SIGN_QUADFORM_B"
+    }
+   ]
+  },
+  {
+   "id": "rational_eq-03",
+   "kc": "rational_eq",
+   "difficulty": 4,
+   "est_seconds": 120,
+   "stem": "Solve $\\dfrac{(x-2)(x+1)}{x-4}=\\dfrac{10}{x-4}$.",
+   "hint": "Write down what $x$ is not allowed to be before you clear anything, and remember that a product set equal to $10$ is not a zero-product situation.",
+   "worked": [
+    "Restriction first: $x \\ne 4$.",
+    "Multiply both sides by $x-4$: $(x-2)(x+1)=10$.",
+    "The right side is not zero, so expand and move everything over: $x^{2}-x-12=0$, which factors as $(x-4)(x+3)=0$.",
+    "Candidates are $x=4$ and $x=-3$; $x=4$ is excluded, so it is extraneous.",
+    "Solution: $x=-3$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$x=12$ and $x=9$",
+     "correct": false,
+     "mis": "INC_ZERO_PRODUCT_MISUSE"
+    },
+    {
+     "key": "b",
+     "text": "$x=3$ and $x=-4$",
+     "correct": false,
+     "mis": "SIGN_QUADFORM_B"
+    },
+    {
+     "key": "c",
+     "text": "$x=4$ and $x=-3$",
+     "correct": false,
+     "mis": "INC_EXTRANEOUS_UNCHECKED"
+    },
+    {
+     "key": "d",
+     "text": "$x=-3$",
+     "correct": true
+    }
+   ]
+  }
+ ]
+}

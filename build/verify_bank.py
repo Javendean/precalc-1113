@@ -44,6 +44,7 @@ begin end array matrix pmatrix bmatrix cases aligned
 quad qquad hspace  space
 circ deg prime
 overline underline vec hat bar
+langle rangle lvert rvert lfloor rfloor cdots ldots dots angle
 displaystyle limits
 neq leq geq rightarrow to leftarrow Rightarrow
 varnothing emptyset cup

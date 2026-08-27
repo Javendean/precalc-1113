@@ -1,0 +1,197 @@
+{
+ "kc": "fn_domain_range",
+ "items": [
+  {
+   "id": "fn_domain_range-01",
+   "kc": "fn_domain_range",
+   "difficulty": 1,
+   "est_seconds": 40,
+   "stem": "Find the domain of $f(x)=\\sqrt{x-4}$ and write it in interval notation.",
+   "hint": "A square root is defined only when the expression underneath it is greater than or equal to zero, so start by writing that condition down.",
+   "worked": [
+    "The radicand cannot be negative, so require $x-4 \\ge 0$.",
+    "Add $4$ to both sides: $x \\ge 4$.",
+    "Reading that as an interval, the domain is $[4,\\infty)$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$[0,\\infty)$",
+     "correct": false,
+     "mis": "FN_DOMAIN_RANGE_SWAP"
+    },
+    {
+     "key": "b",
+     "text": "$(-\\infty,\\infty)$",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    },
+    {
+     "key": "c",
+     "text": "$[4,\\infty)$",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "$[-4,\\infty)$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    }
+   ]
+  },
+  {
+   "id": "fn_domain_range-02",
+   "kc": "fn_domain_range",
+   "difficulty": 2,
+   "est_seconds": 55,
+   "stem": "Which statement about $f(x)=\\dfrac{x+1}{x^{2}-9}$ is true?",
+   "hint": "Set the denominator equal to zero and solve it completely; a squared variable usually gives back two values, not one.",
+   "worked": [
+    "A fraction is undefined only where its denominator is zero, so solve $x^{2}-9=0$.",
+    "Then $x^{2}=9$, which gives $x=3$ and $x=-3$; both inputs must be thrown out.",
+    "Every other real number is legal, so the domain is $(-\\infty,-3)\\cup(-3,3)\\cup(3,\\infty)$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "Both $x=3$ and $x=-3$ must be excluded, so the domain is $(-\\infty,-3)\\cup(-3,3)\\cup(3,\\infty)$.",
+     "correct": true
+    },
+    {
+     "key": "b",
+     "text": "Only $x=3$ must be excluded, so the domain is $(-\\infty,3)\\cup(3,\\infty)$.",
+     "correct": false,
+     "mis": "INC_SQRT_POSITIVE_ONLY"
+    },
+    {
+     "key": "c",
+     "text": "No value has to be excluded, so the domain is $(-\\infty,\\infty)$.",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    },
+    {
+     "key": "d",
+     "text": "Only $x=0$ must be excluded, so the domain is $(-\\infty,0)\\cup(0,\\infty)$.",
+     "correct": false,
+     "mis": "LIN_FRAC_SPLIT_DEN"
+    }
+   ]
+  },
+  {
+   "id": "fn_domain_range-03",
+   "kc": "fn_domain_range",
+   "difficulty": 3,
+   "est_seconds": 60,
+   "stem": "Give the range of $f(x)=(x-3)^{2}-4$ in interval notation.",
+   "hint": "A square is never negative, so ask what the smallest value $(x-3)^{2}$ can take and what that does to the output.",
+   "worked": [
+    "For every real $x$, $(x-3)^{2} \\ge 0$, and it equals $0$ exactly when $x=3$.",
+    "So the smallest output is $f(3)=0-4=-4$, and the outputs grow without bound from there.",
+    "The range is therefore $[-4,\\infty)$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$(-\\infty,\\infty)$",
+     "correct": false,
+     "mis": "FN_DOMAIN_RANGE_SWAP"
+    },
+    {
+     "key": "b",
+     "text": "$[-4,\\infty)$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$[-3,\\infty)$",
+     "correct": false,
+     "mis": "DIR_INSIDE_OUTSIDE"
+    },
+    {
+     "key": "d",
+     "text": "$[5,\\infty)$",
+     "correct": false,
+     "mis": "LIN_SQUARE_SUM"
+    }
+   ]
+  },
+  {
+   "id": "fn_domain_range-04",
+   "kc": "fn_domain_range",
+   "difficulty": 4,
+   "est_seconds": 70,
+   "stem": "A student is asked for the domain of $g(x)=\\sqrt{x^{2}+16}$. She writes $\\sqrt{x^{2}+16}=x+4$, then requires $x+4 \\ge 0$ and answers $[-4,\\infty)$. What is the actual domain of $g$?",
+   "hint": "Test her very first move with numbers before you go anywhere else: compare $\\sqrt{9+16}$ with $3+4$.",
+   "worked": [
+    "A radical does not split over a sum: $\\sqrt{9+16}=5$, while $3+4=7$, so the first line is already false.",
+    "Keep the radicand whole and ask instead when $x^{2}+16 \\ge 0$.",
+    "Since $x^{2} \\ge 0$ for every real $x$, the radicand is at least $16$, so it is never negative.",
+    "No input is blocked, so the domain is $(-\\infty,\\infty)$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$[4,\\infty)$",
+     "correct": false,
+     "mis": "FN_DOMAIN_RANGE_SWAP"
+    },
+    {
+     "key": "b",
+     "text": "$[-4,\\infty)$",
+     "correct": false,
+     "mis": "LIN_SQRT_SUM"
+    },
+    {
+     "key": "c",
+     "text": "$(-\\infty,-4]\\cup[4,\\infty)$",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "d",
+     "text": "$(-\\infty,\\infty)$",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "id": "fn_domain_range-05",
+   "kc": "fn_domain_range",
+   "difficulty": 5,
+   "est_seconds": 100,
+   "stem": "Find the domain of $h(x)=\\dfrac{\\sqrt{4-x}}{x^{2}-x-6}$ and write it in interval notation.",
+   "hint": "Two conditions have to hold at the same time here: the radicand cannot be negative and the denominator cannot be zero.",
+   "worked": [
+    "Radicand: $4-x \\ge 0$, so $4 \\ge x$, that is $x \\le 4$.",
+    "Denominator: $x^{2}-x-6=(x-3)(x+2)$, which is zero at $x=3$ and $x=-2$, so both are excluded.",
+    "Combine the two: take every $x \\le 4$ and punch out $-2$ and $3$.",
+    "The domain is $(-\\infty,-2)\\cup(-2,3)\\cup(3,4]$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$(-\\infty,4]$",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    },
+    {
+     "key": "b",
+     "text": "$[4,\\infty)$",
+     "correct": false,
+     "mis": "DOM_INEQ_NO_FLIP"
+    },
+    {
+     "key": "c",
+     "text": "$(-\\infty,-2)\\cup(-2,3)\\cup(3,4]$",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "$(-\\infty,-3)\\cup(-3,2)\\cup(2,4]$",
+     "correct": false,
+     "mis": "SIGN_QUADFORM_B"
+    }
+   ]
+  }
+ ]
+}

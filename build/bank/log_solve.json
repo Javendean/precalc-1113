@@ -1,0 +1,104 @@
+{
+  "kc": "log_solve",
+  "items": [
+    {
+      "id": "log_solve-01",
+      "kc": "log_solve",
+      "difficulty": 1,
+      "est_seconds": 30,
+      "stem": "Which equation says exactly the same thing as $\\log_{3}(x) = 4$?",
+      "hint": "A logarithm is an exponent, so read the equation aloud as the base raised to the answer gives the argument.",
+      "worked": [
+        "Name the parts: the base is $3$, the value of the log is $4$, and the argument is $x$.",
+        "Base raised to that value gives the argument: $3^{4} = x$.",
+        "So $x = 81$."
+      ],
+      "options": [
+        {"key": "a", "text": "$10^{4} = x$", "correct": false, "mis": "LOG_BASE_DROPPED"},
+        {"key": "b", "text": "$3^{4} = x$", "correct": true},
+        {"key": "c", "text": "$4^{3} = x$", "correct": false, "mis": null},
+        {"key": "d", "text": "$3x = 4$", "correct": false, "mis": "NOT_FN_AS_MULT"}
+      ]
+    },
+    {
+      "id": "log_solve-02",
+      "kc": "log_solve",
+      "difficulty": 2,
+      "est_seconds": 60,
+      "stem": "Solve for $x$: $2^{3x} = 32$.",
+      "hint": "Rewrite $32$ as a power of $2$ so that both sides of the equation have the same base.",
+      "worked": [
+        "Write the right side with base $2$: $32 = 2^{5}$.",
+        "The equation becomes $2^{3x} = 2^{5}$.",
+        "Equal bases force equal exponents: $3x = 5$.",
+        "So $x = \\dfrac{5}{3}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x = 2$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "b", "text": "$x = \\dfrac{16}{3}$", "correct": false, "mis": "NOT_FN_AS_MULT"},
+        {"key": "c", "text": "$x = \\dfrac{5}{3}$", "correct": true},
+        {"key": "d", "text": "$x = \\dfrac{\\log(32)}{3}$", "correct": false, "mis": "LOG_BASE_DROPPED"}
+      ]
+    },
+    {
+      "id": "log_solve-03",
+      "kc": "log_solve",
+      "difficulty": 3,
+      "est_seconds": 100,
+      "stem": "Solve for $x$: $\\log_{2}(x) + \\log_{2}(x+2) = 3$.",
+      "hint": "Combine the left side into a single logarithm first, then remember that every log argument must stay positive.",
+      "worked": [
+        "Product rule: $\\log_{2}\\left(x(x+2)\\right) = 3$.",
+        "Exponential form: $x(x+2) = 2^{3} = 8$, so $x^{2} + 2x - 8 = 0$.",
+        "Factor: $(x+4)(x-2) = 0$, so $x = -4$ or $x = 2$.",
+        "The value $x = -4$ makes $\\log_{2}(x)$ undefined, so the only solution is $x = 2$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x = 2$", "correct": true},
+        {"key": "b", "text": "$x = 3$", "correct": false, "mis": "LIN_LOG_SUM"},
+        {"key": "c", "text": "$x = 2$ or $x = -4$", "correct": false, "mis": "DOM_LOG_NEGATIVE"},
+        {"key": "d", "text": "$x = 6$ or $x = 8$", "correct": false, "mis": "INC_ZERO_PRODUCT_MISUSE"}
+      ]
+    },
+    {
+      "id": "log_solve-04",
+      "kc": "log_solve",
+      "difficulty": 4,
+      "est_seconds": 110,
+      "stem": "A student solves $\\log_{2}(x+3) - \\log_{2}(x-3) = 2$ in three lines. Line 1: $\\log_{2}\\left(\\dfrac{x+3}{x-3}\\right) = 2$. Line 2: $\\dfrac{x+3}{x-3} = 4$. Line 3: $x + 3 = 4x - 12$, so $x = 5$. Which statement about this work is true?",
+      "hint": "Test each line on its own: which rule turns a difference of logs into one log, and which number gets raised to the power $2$?",
+      "worked": [
+        "Line 1 uses the quotient rule correctly: a difference of logs is the log of a quotient.",
+        "Line 2 converts to exponential form using the base $2$, and $2^{2} = 4$, so it is right.",
+        "Line 3 gives $3x = 15$, so $x = 5$.",
+        "Domain check: at $x = 5$ the arguments are $8$ and $2$, both positive, so the work is correct."
+      ],
+      "options": [
+        {"key": "a", "text": "Line 1 is wrong: the left side equals $\\log_{2}\\left((x+3)-(x-3)\\right) = \\log_{2}(6)$, so the equation has no solution.", "correct": false, "mis": "LIN_LOG_SUM"},
+        {"key": "b", "text": "Line 1 is wrong: the left side should be written as $\\dfrac{\\log_{2}(x+3)}{\\log_{2}(x-3)}$.", "correct": false, "mis": "INV_LOG_AS_DIV"},
+        {"key": "c", "text": "Line 2 is wrong: it should say $\\dfrac{x+3}{x-3} = 10^{2}$.", "correct": false, "mis": "LOG_BASE_DROPPED"},
+        {"key": "d", "text": "The work is correct: $x = 5$, and both log arguments are positive there.", "correct": true}
+      ]
+    },
+    {
+      "id": "log_solve-05",
+      "kc": "log_solve",
+      "difficulty": 5,
+      "est_seconds": 95,
+      "stem": "Find every real solution of $\\log_{2}\\left(x^{2}\\right) = 6$.",
+      "hint": "Convert to exponential form first, then ask how many real numbers square to that result and whether each one leaves the argument positive.",
+      "worked": [
+        "Exponential form: $x^{2} = 2^{6} = 64$.",
+        "A squared quantity has two real square roots: $x = 8$ or $x = -8$.",
+        "Check $x = -8$: the argument is $(-8)^{2} = 64$, which is positive, and $\\log_{2}(64) = 6$.",
+        "Both values satisfy the original equation, so $x = \\pm 8$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x = 8$", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "b", "text": "$x = 8$ or $x = -8$", "correct": true},
+        {"key": "c", "text": "$x = \\sqrt{3}$ or $x = -\\sqrt{3}$", "correct": false, "mis": "NOT_FN_AS_MULT"},
+        {"key": "d", "text": "$x = 1000$ or $x = -1000$", "correct": false, "mis": "LOG_BASE_DROPPED"}
+      ]
+    }
+  ]
+}

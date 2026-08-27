@@ -1,0 +1,102 @@
+{
+  "kc": "fn_composition",
+  "items": [
+    {
+      "id": "fn_composition-01",
+      "kc": "fn_composition",
+      "difficulty": 1,
+      "est_seconds": 40,
+      "stem": "Let $f(x)=2x+1$ and $g(x)=x+3$. Find $f(g(4))$.",
+      "hint": "Work from the inside out: the number $4$ goes into $g$ first, and whatever comes out is the input for $f$.",
+      "worked": [
+        "The inner function acts first: $g(4)=4+3=7$.",
+        "That output becomes the input for $f$: $f(7)=2(7)+1=14+1$.",
+        "So $f(g(4))=15$."
+      ],
+      "options": [
+        {"key": "a", "text": "$63$", "correct": false, "mis": "NOT_COMPOSITION_MULT"},
+        {"key": "b", "text": "$12$", "correct": false, "mis": "COMP_ORDER_SWAPPED"},
+        {"key": "c", "text": "$15$", "correct": true},
+        {"key": "d", "text": "$16$", "correct": false, "mis": "LIN_FN_ADD"}
+      ]
+    },
+    {
+      "id": "fn_composition-02",
+      "kc": "fn_composition",
+      "difficulty": 2,
+      "est_seconds": 60,
+      "stem": "Let $f(x)=x^{2}$ and $g(x)=x+3$. Write $(f\\circ g)(x)$ as a simplified polynomial.",
+      "hint": "$(f\\circ g)(x)$ means $f(g(x))$, so the entire expression $x+3$ takes the place of $x$ inside $f$.",
+      "worked": [
+        "$(f\\circ g)(x)=f(g(x))=f(x+3)$.",
+        "Substitute the whole input into the squaring rule: $f(x+3)=(x+3)^{2}$.",
+        "Expand the slow way: $(x+3)(x+3)=x^{2}+3x+3x+9$.",
+        "So $(f\\circ g)(x)=x^{2}+6x+9$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{2}+6x+9$", "correct": true},
+        {"key": "b", "text": "$x^{2}+9$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "c", "text": "$x^{2}+3$", "correct": false, "mis": "COMP_ORDER_SWAPPED"},
+        {"key": "d", "text": "$x^{3}+3x^{2}$", "correct": false, "mis": "NOT_COMPOSITION_MULT"}
+      ]
+    },
+    {
+      "id": "fn_composition-03",
+      "kc": "fn_composition",
+      "difficulty": 3,
+      "est_seconds": 75,
+      "stem": "Let $f(x)=4-x$ and $g(x)=2x-7$. A student writes $(f\\circ g)(x)=4-2x-7=-2x-3$. Her substitution was right and her sign step was wrong. What is the correct simplified form of $(f\\circ g)(x)$?",
+      "hint": "Put all of $g(x)$ inside parentheses before you subtract it, then hand the minus sign to every term in those parentheses.",
+      "worked": [
+        "$(f\\circ g)(x)=f(2x-7)=4-(2x-7)$, with $g(x)$ in parentheses.",
+        "Distribute the negative to both terms: $4-2x+7$. The student stopped after the first term.",
+        "Combine the constants: $(f\\circ g)(x)=11-2x$."
+      ],
+      "options": [
+        {"key": "a", "text": "$-2x-3$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "b", "text": "$1-2x$", "correct": false, "mis": "COMP_ORDER_SWAPPED"},
+        {"key": "c", "text": "$-2x^{2}+15x-28$", "correct": false, "mis": "NOT_COMPOSITION_MULT"},
+        {"key": "d", "text": "$11-2x$", "correct": true}
+      ]
+    },
+    {
+      "id": "fn_composition-04",
+      "kc": "fn_composition",
+      "difficulty": 4,
+      "est_seconds": 90,
+      "stem": "Let $f(x)=\\sqrt{x}$ and $g(x)=x-9$. Exactly one statement below is true. Which one?",
+      "hint": "Build the composite by substituting $g(x)$ into $f$ first, then ask which inputs keep the quantity under the radical from going negative.",
+      "worked": [
+        "$(f\\circ g)(x)=f(g(x))=f(x-9)$, so the whole of $x-9$ goes under the radical: $\\sqrt{x-9}$.",
+        "A square root needs a non-negative radicand, so $x-9\\ge 0$.",
+        "That gives $x\\ge 9$, so the composite is $\\sqrt{x-9}$ with domain $x\\ge 9$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(f\\circ g)(x)=\\sqrt{x}-9$, with domain $x\\ge 0$", "correct": false, "mis": "COMP_ORDER_SWAPPED"},
+        {"key": "b", "text": "$(f\\circ g)(x)=\\sqrt{x-9}$, with domain $x\\ge 9$", "correct": true},
+        {"key": "c", "text": "$(f\\circ g)(x)=\\sqrt{x}-3$, with domain $x\\ge 0$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "$(f\\circ g)(x)=(x-9)\\sqrt{x}$, with domain $x\\ge 0$", "correct": false, "mis": "NOT_COMPOSITION_MULT"}
+      ]
+    },
+    {
+      "id": "fn_composition-05",
+      "kc": "fn_composition",
+      "difficulty": 5,
+      "est_seconds": 120,
+      "stem": "Let $f(x)=\\dfrac{1}{x-2}$ and $g(x)=\\dfrac{1}{x}$. State the domain of $(f\\circ g)(x)$.",
+      "hint": "A number must survive two tests: the inner function has to accept it, and the inner function's output has to be legal for the outer function. Simplifying first can hide the first test.",
+      "worked": [
+        "First test: $g(x)=\\dfrac{1}{x}$ is undefined at $x=0$, so $x\\ne 0$.",
+        "Second test: $f$ is undefined when its input is $2$, so we need $\\dfrac{1}{x}\\ne 2$, which gives $x\\ne\\dfrac{1}{2}$.",
+        "Simplifying gives $(f\\circ g)(x)=\\dfrac{x}{1-2x}$, which shows only $x\\ne\\dfrac{1}{2}$, so the $x\\ne 0$ restriction must be carried over from step one.",
+        "Domain: all real numbers except $x=0$ and $x=\\dfrac{1}{2}$."
+      ],
+      "options": [
+        {"key": "a", "text": "all real numbers except $x=\\dfrac{1}{2}$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "b", "text": "all real numbers except $x=2$", "correct": false, "mis": "COMP_ORDER_SWAPPED"},
+        {"key": "c", "text": "all real numbers except $x=0$ and $x=\\dfrac{1}{2}$", "correct": true},
+        {"key": "d", "text": "all real numbers except $x=0$ and $x=2$", "correct": false, "mis": "NOT_COMPOSITION_MULT"}
+      ]
+    }
+  ]
+}

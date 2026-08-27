@@ -1,0 +1,120 @@
+{
+  "kc": "trig_reference_angles",
+  "items": [
+    {
+      "id": "trig_reference_angles-01",
+      "kc": "trig_reference_angles",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "Evaluate $\\cos\\left(\\dfrac{5\\pi}{6}\\right)$ exactly, without a calculator.",
+      "hint": "Find the acute angle between the terminal side and the $x$-axis first, then decide whether the $x$-coordinate is positive or negative in that quadrant.",
+      "worked": [
+        "The terminal side of $\\dfrac{5\\pi}{6}$ lies in quadrant II.",
+        "Reference angle: $\\pi-\\dfrac{5\\pi}{6}=\\dfrac{\\pi}{6}$, and $\\cos\\left(\\dfrac{\\pi}{6}\\right)=\\dfrac{\\sqrt{3}}{2}$.",
+        "Cosine is the $x$-coordinate, and $x$ is negative in quadrant II, so $\\cos\\left(\\dfrac{5\\pi}{6}\\right)=-\\dfrac{\\sqrt{3}}{2}$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$\\dfrac{1}{2}$",
+          "correct": false,
+          "mis": "TRIG_COORD_SWAP"
+        },
+        {
+          "key": "b",
+          "text": "$-\\dfrac{\\sqrt{3}}{2}$",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$\\dfrac{\\sqrt{3}}{2}$",
+          "correct": false,
+          "mis": "TRIG_QUADRANT_SIGN"
+        },
+        {
+          "key": "d",
+          "text": "$-\\dfrac{5}{6}$",
+          "correct": false,
+          "mis": "NOT_FN_AS_MULT"
+        }
+      ]
+    },
+    {
+      "id": "trig_reference_angles-02",
+      "kc": "trig_reference_angles",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "A student evaluates $\\sin\\left(\\dfrac{7\\pi}{6}\\right)$ and writes: the terminal side is in quadrant III, the reference angle is $\\dfrac{\\pi}{6}$, and $\\sin\\left(\\dfrac{\\pi}{6}\\right)=\\dfrac{1}{2}$, so $\\sin\\left(\\dfrac{7\\pi}{6}\\right)=\\dfrac{1}{2}$. Which statement identifies what went wrong?",
+      "hint": "Her reference angle is fine, so check the sign of the $y$-coordinate at a point in quadrant III.",
+      "worked": [
+        "Reference angle: $\\dfrac{7\\pi}{6}-\\pi=\\dfrac{\\pi}{6}$, so the size of the answer really is $\\sin\\left(\\dfrac{\\pi}{6}\\right)=\\dfrac{1}{2}$.",
+        "In quadrant III both coordinates are negative, and sine is the $y$-coordinate.",
+        "The reference angle sets the size and the quadrant sets the sign, so $\\sin\\left(\\dfrac{7\\pi}{6}\\right)=-\\dfrac{1}{2}$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Nothing went wrong; $\\sin\\left(\\dfrac{7\\pi}{6}\\right)=\\dfrac{1}{2}$.",
+          "correct": false,
+          "mis": "TRIG_QUADRANT_SIGN"
+        },
+        {
+          "key": "b",
+          "text": "The reference angle is right, but sine is the $x$-coordinate, so the value is $-\\dfrac{\\sqrt{3}}{2}$.",
+          "correct": false,
+          "mis": "TRIG_COORD_SWAP"
+        },
+        {
+          "key": "c",
+          "text": "The reference angle is right, but sine is negative in quadrant III, so the value is $-\\dfrac{1}{2}$.",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "The factor $\\dfrac{7}{6}$ belongs out front: $\\sin\\left(\\dfrac{7\\pi}{6}\\right)=\\dfrac{7}{6}\\sin\\left(\\pi\\right)=0$.",
+          "correct": false,
+          "mis": "NOT_FN_AS_MULT"
+        }
+      ]
+    },
+    {
+      "id": "trig_reference_angles-03",
+      "kc": "trig_reference_angles",
+      "difficulty": 4,
+      "est_seconds": 80,
+      "stem": "Find every angle $\\theta$ in $[0,2\\pi)$ for which $\\tan\\theta=-\\sqrt{3}$.",
+      "hint": "Get the acute angle whose tangent is $\\sqrt{3}$ first, then ask in which two quadrants tangent comes out negative.",
+      "worked": [
+        "Size first: $\\tan\\left(\\dfrac{\\pi}{3}\\right)=\\sqrt{3}$, so the reference angle is $\\dfrac{\\pi}{3}$.",
+        "Sign next: $\\tan\\theta=\\dfrac{y}{x}$ is negative where $x$ and $y$ have opposite signs, which is quadrants II and IV.",
+        "Quadrant II gives $\\pi-\\dfrac{\\pi}{3}=\\dfrac{2\\pi}{3}$; quadrant IV gives $2\\pi-\\dfrac{\\pi}{3}=\\dfrac{5\\pi}{3}$.",
+        "Both lie in $[0,2\\pi)$, so $\\theta=\\dfrac{2\\pi}{3}$ and $\\theta=\\dfrac{5\\pi}{3}$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$\\theta=\\dfrac{2\\pi}{3}$ and $\\theta=\\dfrac{5\\pi}{3}$",
+          "correct": true
+        },
+        {
+          "key": "b",
+          "text": "$\\theta=\\dfrac{\\pi}{3}$ and $\\theta=\\dfrac{4\\pi}{3}$",
+          "correct": false,
+          "mis": "TRIG_QUADRANT_SIGN"
+        },
+        {
+          "key": "c",
+          "text": "$\\theta=\\dfrac{5\\pi}{3}$ only",
+          "correct": false,
+          "mis": "INC_TRIG_ONE_SOLUTION"
+        },
+        {
+          "key": "d",
+          "text": "$\\theta=\\dfrac{5\\pi}{6}$ and $\\theta=\\dfrac{11\\pi}{6}$",
+          "correct": false,
+          "mis": "TRIG_COORD_SWAP"
+        }
+      ]
+    }
+  ]
+}

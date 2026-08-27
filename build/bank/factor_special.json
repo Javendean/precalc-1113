@@ -1,0 +1,65 @@
+{
+  "kc": "factor_special",
+  "items": [
+    {
+      "id": "factor_special-01",
+      "kc": "factor_special",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Which of the following is the correct expansion of the perfect square $(x-5)^{2}$?",
+      "hint": "A squared binomial is a product: rewrite $(x-5)^{2}$ as $(x-5)(x-5)$ before touching anything else.",
+      "worked": [
+        "$(x-5)^{2}$ means $(x-5)(x-5)$; the exponent belongs to the whole bracket, not to each term separately.",
+        "Multiply term by term: $x\\cdot x=x^{2}$, and $x\\cdot(-5)$ together with $(-5)\\cdot x$ give $-5x-5x=-10x$.",
+        "The last term is $(-5)(-5)=+25$, since a negative times a negative is positive.",
+        "So $(x-5)^{2}=x^{2}-10x+25$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{2}-25$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "b", "text": "$x^{2}-10x+25$", "correct": true},
+        {"key": "c", "text": "$x^{2}-10x-25$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "$x^{2}-5x+25$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "factor_special-02",
+      "kc": "factor_special",
+      "difficulty": 3,
+      "est_seconds": 75,
+      "stem": "Exactly one of the four statements below is true. Which one?",
+      "hint": "Multiply each right-hand side back out; only the true statement gives back its left-hand side exactly.",
+      "worked": [
+        "Expand $(x-6)(x+6)$: the middle terms $+6x$ and $-6x$ cancel, leaving $x^{2}-36$, so that statement is true.",
+        "$(x+6)^{2}=x^{2}+12x+36$, not $x^{2}+36$; a sum of two squares has no factorization with real coefficients.",
+        "$(x^{4})^{2}=x^{8}$, so $(x^{4}-6)(x^{4}+6)=x^{8}-36$. To write $x^{6}$ as a square you need $(x^{3})^{2}$.",
+        "$(x-6)^{2}=x^{2}-12x+36$, so the last statement has the wrong sign on the $36$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{2}+36=(x+6)^{2}$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "b", "text": "$x^{6}-36=(x^{4}-6)(x^{4}+6)$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "c", "text": "$x^{2}-36=(x-6)(x+6)$", "correct": true},
+        {"key": "d", "text": "$(x-6)^{2}=x^{2}-12x-36$", "correct": false, "mis": "SIGN_DISTRIB_NEG"}
+      ]
+    },
+    {
+      "id": "factor_special-03",
+      "kc": "factor_special",
+      "difficulty": 4,
+      "est_seconds": 100,
+      "stem": "Factor $x^{6}-8$ completely using integer coefficients.",
+      "hint": "Ask which power of $x$ gives $x^{6}$ when it is cubed, then recall that every sign inside the second factor of a difference of cubes is a plus.",
+      "worked": [
+        "$x^{6}=(x^{2})^{3}$ because exponents multiply, and $8=2^{3}$, so this is a difference of cubes with $a=x^{2}$ and $b=2$.",
+        "The pattern is $a^{3}-b^{3}=(a-b)(a^{2}+ab+b^{2})$.",
+        "Here $a^{2}=x^{4}$, $ab=2x^{2}$ and $b^{2}=4$, and both signs inside the trinomial are $+$.",
+        "So $x^{6}-8=(x^{2}-2)(x^{4}+2x^{2}+4)$, and neither factor breaks up further over the integers."
+      ],
+      "options": [
+        {"key": "a", "text": "$(x^{2}-2)^{3}$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "b", "text": "$(x^{3}-2)(x^{5}+2x^{3}+4)$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "c", "text": "$(x^{2}-2)(x^{4}-2x^{2}+4)$", "correct": false, "mis": null},
+        {"key": "d", "text": "$(x^{2}-2)(x^{4}+2x^{2}+4)$", "correct": true}
+      ]
+    }
+  ]
+}

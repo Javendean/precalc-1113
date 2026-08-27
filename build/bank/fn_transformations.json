@@ -1,0 +1,103 @@
+{
+  "kc": "fn_transformations",
+  "items": [
+    {
+      "id": "fn_transformations-01",
+      "kc": "fn_transformations",
+      "difficulty": 1,
+      "est_seconds": 35,
+      "stem": "Exactly one statement below is true for every function $f$. Which one?",
+      "hint": "For each statement, first decide whether the $4$ is attached to the input $x$ or to the output $y$.",
+      "worked": [
+        "A change made outside the function acts on the output, so $y=f(x)-4$ lowers every $y$-value by $4$: the graph moves down $4$.",
+        "A change made inside acts on the input and runs backwards: in $y=f(x-4)$ you need an $x$ that is $4$ larger to reproduce an old output, so that graph moves right $4$.",
+        "Multiplying the input, as in $y=f(4x)$, makes the graph reach its values four times sooner: a horizontal compression by a factor of $\\dfrac{1}{4}$, not a stretch.",
+        "Only the statement that $y=f(x)-4$ moves the graph down $4$ survives."
+      ],
+      "options": [
+        {"key": "a", "text": "$y=f(x-4)$ shifts the graph of $y=f(x)$ left $4$ units.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "b", "text": "$y=f(x)-4$ shifts the graph of $y=f(x)$ left $4$ units.", "correct": false, "mis": "DIR_INSIDE_OUTSIDE"},
+        {"key": "c", "text": "$y=f(x)-4$ shifts the graph of $y=f(x)$ down $4$ units.", "correct": true},
+        {"key": "d", "text": "$y=f(4x)$ stretches the graph of $y=f(x)$ horizontally by a factor of $4$.", "correct": false, "mis": "DIR_PERIOD_MULTIPLIED"}
+      ]
+    },
+    {
+      "id": "fn_transformations-02",
+      "kc": "fn_transformations",
+      "difficulty": 2,
+      "est_seconds": 50,
+      "stem": "The graph of $f(x)=\\sqrt{x}$ is shifted $4$ units left and $1$ unit up. Which formula gives the new graph?",
+      "hint": "The left shift is an adjustment to the input, so it belongs under the radical; pick the sign that puts the corner of the graph at $x=-4$.",
+      "worked": [
+        "A horizontal shift changes the input, so replace $x$ by $x+4$: $\\sqrt{x+4}$.",
+        "Check the direction: the corner of $y=\\sqrt{x}$ sits where the inside is $0$, and $x+4=0$ at $x=-4$, which is $4$ units left.",
+        "A vertical shift changes the output, so add $1$ outside the radical: $y=\\sqrt{x+4}+1$."
+      ],
+      "options": [
+        {"key": "a", "text": "$y=\\sqrt{x-4}+1$", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "b", "text": "$y=\\sqrt{x+4}+1$", "correct": true},
+        {"key": "c", "text": "$y=\\sqrt{x+1}-4$", "correct": false, "mis": "DIR_INSIDE_OUTSIDE"},
+        {"key": "d", "text": "$y=\\sqrt{x}+3$", "correct": false, "mis": "LIN_SQRT_SUM"}
+      ]
+    },
+    {
+      "id": "fn_transformations-03",
+      "kc": "fn_transformations",
+      "difficulty": 3,
+      "est_seconds": 75,
+      "stem": "A student describes the graph of $y=-2(x+3)^{2}+1$ as the graph of $y=x^{2}$ shifted right $3$, stretched vertically by a factor of $2$, reflected across the $x$-axis, and shifted up $1$. Which correction does her description need?",
+      "hint": "Ask which value of $x$ makes the squared quantity equal to $0$; that is where the low point of $y=x^{2}$ ended up.",
+      "worked": [
+        "The turning point sits where $x+3=0$, that is at $x=-3$, so the graph moved $3$ units left.",
+        "The factor $-2$ sits outside the square, so it does stretch vertically by $2$ and reflect across the $x$-axis, and the $+1$ does raise the graph $1$ unit.",
+        "Every piece was right except the direction of the horizontal shift, so the single correction is left $3$ instead of right $3$."
+      ],
+      "options": [
+        {"key": "a", "text": "No correction is needed; the description is right as written.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "b", "text": "The $3$ moves the graph up and the $1$ moves it right, not the other way around.", "correct": false, "mis": "DIR_INSIDE_OUTSIDE"},
+        {"key": "c", "text": "There is no reflection; the negative sign gets squared away, so the graph opens upward.", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "The shift is $3$ units left, not $3$ units right.", "correct": true}
+      ]
+    },
+    {
+      "id": "fn_transformations-04",
+      "kc": "fn_transformations",
+      "difficulty": 4,
+      "est_seconds": 85,
+      "stem": "Which description of the graph of $y=f(2x-8)$ in terms of the graph of $y=f(x)$ is correct?",
+      "hint": "Factor the $2$ out of the input first; the shift is only readable once the inside looks like $2(x-c)$.",
+      "worked": [
+        "Factor the input: $2x-8=2(x-4)$, so $y=f(2(x-4))$.",
+        "The $2$ multiplying $x$ compresses the graph horizontally by a factor of $\\dfrac{1}{2}$.",
+        "The $x-4$ then shifts that compressed graph right $4$ units; the $8$ was never the shift.",
+        "Check one point: whatever $y=f(x)$ does at $x=0$, $y=f(2x-8)$ does at $x=4$."
+      ],
+      "options": [
+        {"key": "a", "text": "First compress horizontally by a factor of $\\dfrac{1}{2}$, then shift right $8$ units.", "correct": false, "mis": "DIR_TRANSFORM_ORDER"},
+        {"key": "b", "text": "First stretch horizontally by a factor of $2$, then shift right $4$ units.", "correct": false, "mis": "DIR_PERIOD_MULTIPLIED"},
+        {"key": "c", "text": "First compress horizontally by a factor of $\\dfrac{1}{2}$, then shift right $4$ units.", "correct": true},
+        {"key": "d", "text": "First compress horizontally by a factor of $\\dfrac{1}{2}$, then shift left $4$ units.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"}
+      ]
+    },
+    {
+      "id": "fn_transformations-05",
+      "kc": "fn_transformations",
+      "difficulty": 5,
+      "est_seconds": 95,
+      "stem": "Let $f(x)=(x-3)^{2}$. Reflecting the graph of $y=f(x)$ across the $y$-axis produces $y=f(-x)$. Write $f(-x)$ in expanded form.",
+      "hint": "Substitute $-x$ for every $x$ in the formula, brackets and all, before expanding anything.",
+      "worked": [
+        "Replace $x$ by $-x$ inside the brackets: $f(-x)=(-x-3)^{2}$.",
+        "Pull the $-1$ out of the base: $(-x-3)^{2}=(-(x+3))^{2}=(x+3)^{2}$, because squaring removes the negative.",
+        "Expand the square, middle term included: $(x+3)^{2}=x^{2}+6x+9$.",
+        "Check at $x=-1$: $f(1)=(1-3)^{2}=4$, and $1-6+9=4$ as well."
+      ],
+      "options": [
+        {"key": "a", "text": "$-x^{2}+6x-9$", "correct": false, "mis": "DIR_INSIDE_OUTSIDE"},
+        {"key": "b", "text": "$x^{2}+9$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "c", "text": "$-x^{2}-6x-9$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "$x^{2}+6x+9$", "correct": true}
+      ]
+    }
+  ]
+}

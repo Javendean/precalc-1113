@@ -1,0 +1,64 @@
+{
+  "kc": "order_ops",
+  "items": [
+    {
+      "id": "order_ops-01",
+      "kc": "order_ops",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Evaluate $-5^{2}+\\dfrac{18}{3+6}$ without a calculator.",
+      "hint": "Two questions before you compute anything: exactly what is the exponent attached to, and how much of what you see belongs to the denominator?",
+      "worked": [
+        "No bracket holds the minus sign, so the exponent binds first: $-5^{2}=-(5^{2})=-25$.",
+        "Everything written under the bar is one grouped denominator: $\\dfrac{18}{3+6}=\\dfrac{18}{9}=2$.",
+        "Add the two pieces: $-25+2=-23$."
+      ],
+      "options": [
+        {"key": "a", "text": "$27$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "b", "text": "$-16$", "correct": false, "mis": "LIN_FRAC_SPLIT_DEN"},
+        {"key": "c", "text": "$-23$", "correct": true},
+        {"key": "d", "text": "$-13$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "order_ops-02",
+      "kc": "order_ops",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Exactly one of the four statements below is true. Which statement is true?",
+      "hint": "Finish whatever sits inside a grouping symbol before you divide or take a root; a fraction bar and a radical each act like invisible parentheses.",
+      "worked": [
+        "The bar groups the whole numerator, so $\\dfrac{9+3}{3}=\\dfrac{12}{3}=4$. The $3$'s cannot be cancelled, because $9+3$ is a sum and only whole factors cancel.",
+        "$\\dfrac{20}{4+1}=\\dfrac{20}{5}=4$, not $25$. Test the splitting idea on easy numbers: $\\dfrac{1}{1+1}=\\dfrac{1}{2}$, but $\\dfrac{1}{1}+\\dfrac{1}{1}=2$.",
+        "$\\sqrt{25+144}=\\sqrt{169}=13$, not $17$; the radical groups everything underneath it, so the sum happens first.",
+        "Only $\\dfrac{9+3}{3}=4$ survives."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{20}{4+1}=25$", "correct": false, "mis": "LIN_FRAC_SPLIT_DEN"},
+        {"key": "b", "text": "$\\dfrac{9+3}{3}=4$", "correct": true},
+        {"key": "c", "text": "$\\sqrt{25+144}=17$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "$\\dfrac{9+3}{3}=9$", "correct": false, "mis": "DOM_CANCEL_ADDEND"}
+      ]
+    },
+    {
+      "id": "order_ops-03",
+      "kc": "order_ops",
+      "difficulty": 4,
+      "est_seconds": 80,
+      "stem": "Evaluate $-2^{2}+\\sqrt{36+64}-\\dfrac{12+4}{4}$ without a calculator.",
+      "hint": "There are three grouped pieces here; work each one out completely on its own line, then combine the three numbers left to right.",
+      "worked": [
+        "Nothing brackets the $2$, so $-2^{2}=-(2^{2})=-4$.",
+        "The radical groups the sum beneath it: $\\sqrt{36+64}=\\sqrt{100}=10$.",
+        "The bar groups the numerator: $\\dfrac{12+4}{4}=\\dfrac{16}{4}=4$.",
+        "Combine: $-4+10-4=2$."
+      ],
+      "options": [
+        {"key": "a", "text": "$10$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "b", "text": "$6$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "c", "text": "$-6$", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "d", "text": "$2$", "correct": true}
+      ]
+    }
+  ]
+}

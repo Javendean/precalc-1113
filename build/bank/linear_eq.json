@@ -1,0 +1,64 @@
+{
+  "kc": "linear_eq",
+  "items": [
+    {
+      "id": "linear_eq-01",
+      "kc": "linear_eq",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "Solve for $x$: $-3(x-6)=12$.",
+      "hint": "Either distribute the $-3$ across both terms inside the parentheses, or divide both sides by $-3$ before doing anything else.",
+      "worked": [
+        "Divide both sides by $-3$: $x-6=\\dfrac{12}{-3}=-4$.",
+        "Add $6$ to both sides: $x=2$.",
+        "Check in the original: $-3(2-6)=-3(-4)=12$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=-10$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "b", "text": "$x=18$", "correct": false, "mis": "INC_ZERO_PRODUCT_MISUSE"},
+        {"key": "c", "text": "$x=2$", "correct": true},
+        {"key": "d", "text": "$x=10$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "linear_eq-02",
+      "kc": "linear_eq",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Each option below shows the first step of a solution. Exactly one of these steps is legal. Which one is it?",
+      "hint": "For each step, ask what was actually done to both sides, and whether the piece being cancelled or combined is really a factor.",
+      "worked": [
+        "Cancelling inside $\\dfrac{x+5}{5}$ is illegal: only whole factors cancel, and the $5$ on top is added to $x$, not multiplied by it.",
+        "Distributing $-2$ over $(x-3)$ gives $-2x+6$, so that line should read $8-2x+6=4$.",
+        "Denominators are never added: $\\dfrac{x}{2}+\\dfrac{x}{3}=\\dfrac{3x+2x}{6}=\\dfrac{5x}{6}$, not $\\dfrac{x}{5}$.",
+        "Multiplying both sides by $5$ does the same thing to each side, so the legal step is $x+5=15$."
+      ],
+      "options": [
+        {"key": "a", "text": "From $\\dfrac{x+5}{5}=3$, cancelling the $5$ on top with the $5$ underneath gives $x=3$.", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "b", "text": "From $8-2(x-3)=4$, distributing gives $8-2x-6=4$.", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "c", "text": "From $\\dfrac{x+5}{5}=3$, multiplying both sides by $5$ gives $x+5=15$.", "correct": true},
+        {"key": "d", "text": "From $\\dfrac{x}{2}+\\dfrac{x}{3}=5$, adding the two fractions gives $\\dfrac{x}{5}=5$.", "correct": false, "mis": "LIN_FRAC_SPLIT_DEN"}
+      ]
+    },
+    {
+      "id": "linear_eq-03",
+      "kc": "linear_eq",
+      "difficulty": 4,
+      "est_seconds": 100,
+      "stem": "A student is solving $\\dfrac{x+3}{3}-\\dfrac{x-5}{2}=1$. Her first line reads $x-\\dfrac{x-5}{2}=1$, and that line is where she goes wrong. Solve the original equation correctly.",
+      "hint": "Multiply every term on both sides by the least common denominator $6$, and keep each numerator inside parentheses before you distribute.",
+      "worked": [
+        "Multiply every term by $6$: $2(x+3)-3(x-5)=6$.",
+        "Distribute, letting the minus sign reach both terms: $2x+6-3x+15=6$.",
+        "Combine: $-x+21=6$, so $-x=-15$ and $x=15$.",
+        "Check: $\\dfrac{18}{3}-\\dfrac{10}{2}=6-5=1$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=-3$", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "b", "text": "$x=15$", "correct": true},
+        {"key": "c", "text": "$x=-15$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$x=20$", "correct": false, "mis": null}
+      ]
+    }
+  ]
+}

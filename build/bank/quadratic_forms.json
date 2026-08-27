@@ -1,0 +1,200 @@
+{
+ "kc": "quadratic_forms",
+ "items": [
+  {
+   "id": "quadratic_forms-01",
+   "kc": "quadratic_forms",
+   "difficulty": 1,
+   "est_seconds": 30,
+   "stem": "The quadratic $f(x)=(x+5)^{2}-3$ is already written in vertex form. What is the vertex of its graph?",
+   "hint": "Vertex form is $a(x-h)^{2}+k$, so ask which value of $x$ makes the squared bracket equal to zero.",
+   "worked": [
+    "Vertex form is $f(x)=a(x-h)^{2}+k$, and the vertex is the point $(h,k)$.",
+    "Match the bracket: $x+5=x-(-5)$, so $h=-5$.",
+    "The constant sitting outside the square is $k=-3$.",
+    "The vertex is $(-5,-3)$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$(5,-3)$",
+     "correct": false,
+     "mis": "DIR_SHIFT_BACKWARDS"
+    },
+    {
+     "key": "b",
+     "text": "$(-5,-3)$",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$(-3,-5)$",
+     "correct": false,
+     "mis": "DIR_INSIDE_OUTSIDE"
+    },
+    {
+     "key": "d",
+     "text": "$(0,22)$",
+     "correct": false,
+     "mis": "LIN_SQUARE_SUM"
+    }
+   ]
+  },
+  {
+   "id": "quadratic_forms-02",
+   "kc": "quadratic_forms",
+   "difficulty": 2,
+   "est_seconds": 45,
+   "stem": "Expand $f(x)=(x-6)^{2}+2$ and write it in the standard form $ax^{2}+bx+c$.",
+   "hint": "Rewrite $(x-6)^{2}$ as the product $(x-6)(x-6)$ and multiply it out fully before you add the $2$.",
+   "worked": [
+    "$(x-6)^{2}=(x-6)(x-6)=x^{2}-6x-6x+36$.",
+    "Combine the middle terms: $(x-6)^{2}=x^{2}-12x+36$.",
+    "Now add the outside constant: $x^{2}-12x+36+2$.",
+    "$f(x)=x^{2}-12x+38$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$x^{2}-12x+38$",
+     "correct": true
+    },
+    {
+     "key": "b",
+     "text": "$x^{2}+38$",
+     "correct": false,
+     "mis": "LIN_SQUARE_SUM"
+    },
+    {
+     "key": "c",
+     "text": "$x^{2}-12x-34$",
+     "correct": false,
+     "mis": "SIGN_SQUARE_NEG"
+    },
+    {
+     "key": "d",
+     "text": "$x^{2}+12x+38$",
+     "correct": false,
+     "mis": "DIR_SHIFT_BACKWARDS"
+    }
+   ]
+  },
+  {
+   "id": "quadratic_forms-03",
+   "kc": "quadratic_forms",
+   "difficulty": 3,
+   "est_seconds": 60,
+   "stem": "A student rewrites $f(x)=x^{2}-8x+3$ first as $f(x)=(x^{2}-8x+16)+3$ and then as $f(x)=(x-4)^{2}+3$. Which statement about this work is true?",
+   "hint": "Test both expressions at $x=0$; if they are the same function they must produce the same output.",
+   "worked": [
+    "Half of $-8$ is $-4$, and $(-4)^{2}=16$, so $16$ is the right number to build the square.",
+    "But inserting $16$ makes the expression $16$ larger than $f$, so $16$ must be taken back out: $x^{2}-8x+3=(x^{2}-8x+16)+3-16$.",
+    "$f(x)=(x-4)^{2}-13$.",
+    "Check at $x=0$: $(0-4)^{2}-13=16-13=3$, which matches $f(0)=3$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "It is correct as written: $f(x)=(x-4)^{2}+3$.",
+     "correct": false,
+     "mis": null
+    },
+    {
+     "key": "b",
+     "text": "It is wrong: the $16$ must be taken back out, so $f(x)=(x-4)^{2}-13$.",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "It is wrong: the square should be $(x+4)^{2}$, so $f(x)=(x+4)^{2}-13$.",
+     "correct": false,
+     "mis": "SIGN_QUADFORM_B"
+    },
+    {
+     "key": "d",
+     "text": "It is wrong: the constant must be adjusted by $+16$, so $f(x)=(x-4)^{2}+19$.",
+     "correct": false,
+     "mis": "SIGN_SQUARE_NEG"
+    }
+   ]
+  },
+  {
+   "id": "quadratic_forms-04",
+   "kc": "quadratic_forms",
+   "difficulty": 4,
+   "est_seconds": 75,
+   "stem": "The parabola $f(x)=2x^{2}-12x+5$ opens upward, so $f$ has a minimum. What is the minimum value of $f$?",
+   "hint": "Locate the vertex first, either by completing the square or with $x=\\dfrac{-b}{2a}$, then decide which coordinate of that point the question is asking for.",
+   "worked": [
+    "Factor the leading $2$ out of the $x$ terms: $f(x)=2(x^{2}-6x)+5$.",
+    "Half of $-6$ is $-3$ and $(-3)^{2}=9$; adding $9$ inside the bracket adds $2(9)=18$ to the whole function, so subtract $18$ outside.",
+    "$f(x)=2(x^{2}-6x+9)+5-18=2(x-3)^{2}-13$.",
+    "The vertex is $(3,-13)$, so the smallest output is $-13$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$-4$",
+     "correct": false,
+     "mis": "DIR_TRANSFORM_ORDER"
+    },
+    {
+     "key": "b",
+     "text": "$3$",
+     "correct": false,
+     "mis": "DIR_INSIDE_OUTSIDE"
+    },
+    {
+     "key": "c",
+     "text": "$59$",
+     "correct": false,
+     "mis": "SIGN_QUADFORM_B"
+    },
+    {
+     "key": "d",
+     "text": "$-13$",
+     "correct": true
+    }
+   ]
+  },
+  {
+   "id": "quadratic_forms-05",
+   "kc": "quadratic_forms",
+   "difficulty": 5,
+   "est_seconds": 110,
+   "stem": "Consider $f(x)=-x^{2}+6x-4$. Which statement is true?",
+   "hint": "Factor the $-1$ out of the $x$ terms before completing the square, and keep track of what that $-1$ does to the number you insert inside the bracket.",
+   "worked": [
+    "Factor the $x$ terms: $f(x)=-(x^{2}-6x)-4$.",
+    "Half of $-6$ is $-3$ and $(-3)^{2}=9$; the $9$ placed inside the bracket is multiplied by $-1$, so it lowers the function by $9$ and must be added back outside.",
+    "$f(x)=-(x^{2}-6x+9)+9-4=-(x-3)^{2}+5$.",
+    "Since $a=-1$ the parabola opens downward, so the vertex $(3,5)$ is the highest point: the maximum value is $5$, reached at $x=3$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$f$ has a maximum value of $-13$, reached at $x=3$.",
+     "correct": false,
+     "mis": "SIGN_DISTRIB_NEG"
+    },
+    {
+     "key": "b",
+     "text": "$f$ has a maximum value of $5$, reached at $x=3$.",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "$f$ has a maximum value of $5$, reached at $x=-3$.",
+     "correct": false,
+     "mis": "SIGN_QUADFORM_B"
+    },
+    {
+     "key": "d",
+     "text": "$f$ has a maximum value of $3$, reached at $x=5$.",
+     "correct": false,
+     "mis": "DIR_INSIDE_OUTSIDE"
+    }
+   ]
+  }
+ ]
+}

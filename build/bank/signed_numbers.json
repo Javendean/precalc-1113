@@ -1,0 +1,65 @@
+{
+  "kc": "signed_numbers",
+  "items": [
+    {
+      "id": "signed_numbers-01",
+      "kc": "signed_numbers",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Evaluate $-3^{2}-(4-10)$ without a calculator.",
+      "hint": "Ask two questions before you compute: exactly what is being squared, and what does the minus in front of the bracket do to each term inside it?",
+      "worked": [
+        "Nothing brackets the $-3$, so the exponent binds first: $-3^{2}=-(3^{2})=-9$.",
+        "Inside the bracket, $4-10=-6$.",
+        "Subtracting a negative adds: $-9-(-6)=-9+6$.",
+        "The value is $-3$."
+      ],
+      "options": [
+        {"key": "a", "text": "$15$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "b", "text": "$-23$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "c", "text": "$-3$", "correct": true},
+        {"key": "d", "text": "$-5$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "signed_numbers-02",
+      "kc": "signed_numbers",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Exactly one of the four statements below is always true. Which statement is true?",
+      "hint": "Rewrite every minus sign in front of a bracket as $-1$ times that bracket, and test any statement you are unsure of with a single easy number such as $x=1$.",
+      "worked": [
+        "$-(3-x)=-1\\cdot 3+(-1)(-x)=-3+x$, and $-3+x$ is the same as $x-3$, so that statement is true.",
+        "$-(x-7)=-x+7$, not $-x-7$: the minus must reach the second term too.",
+        "$-6^{2}$ means $-(6^{2})=-36$, not $36$; only a bracket around $-6$ would give $36$.",
+        "$(x+5)^{2}=(x+5)(x+5)=x^{2}+10x+25$, so the middle term is missing from $x^{2}+25$."
+      ],
+      "options": [
+        {"key": "a", "text": "$-(x-7)=-x-7$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "b", "text": "$-(3-x)=x-3$", "correct": true},
+        {"key": "c", "text": "$-6^{2}=36$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "$(x+5)^{2}=x^{2}+25$", "correct": false, "mis": "LIN_SQUARE_SUM"}
+      ]
+    },
+    {
+      "id": "signed_numbers-03",
+      "kc": "signed_numbers",
+      "difficulty": 4,
+      "est_seconds": 90,
+      "stem": "Simplify completely: $-(x+5)^{2}-3^{2}$.",
+      "hint": "Expand the square first and keep the result inside its bracket, then hand out the leading minus sign to every term you find there.",
+      "worked": [
+        "Expand the square: $(x+5)^{2}=x^{2}+10x+25$.",
+        "The leading minus applies to all three terms: $-(x^{2}+10x+25)=-x^{2}-10x-25$.",
+        "No bracket surrounds the $3$, so $-3^{2}=-9$.",
+        "Combine the constants: $-25-9=-34$, giving $-x^{2}-10x-34$."
+      ],
+      "options": [
+        {"key": "a", "text": "$-x^{2}+10x+16$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "b", "text": "$-x^{2}-34$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "c", "text": "$-x^{2}-10x-16$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "$-x^{2}-10x-34$", "correct": true}
+      ]
+    }
+  ]
+}

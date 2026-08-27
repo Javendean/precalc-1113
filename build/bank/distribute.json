@@ -1,0 +1,64 @@
+{
+  "kc": "distribute",
+  "items": [
+    {
+      "id": "distribute-01",
+      "kc": "distribute",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Expand and simplify $-4x^{2}(3x^{3}-2x)$.",
+      "hint": "The factor in front multiplies every term inside the parentheses, and its minus sign travels with it into each product.",
+      "worked": [
+        "First term: $-4x^{2}\\cdot 3x^{3}=-12x^{5}$, multiplying the coefficients and adding the exponents.",
+        "Second term: $-4x^{2}\\cdot(-2x)=+8x^{3}$, since a negative times a negative is positive.",
+        "Putting the two products together gives $-12x^{5}+8x^{3}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$-12x^{6}+8x^{2}$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "b", "text": "$-12x^{5}+8x^{3}$", "correct": true},
+        {"key": "c", "text": "$-12x^{5}-8x^{3}$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$-12x^{5}-2x$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "distribute-02",
+      "kc": "distribute",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Exactly one of the four statements below is true for every real number $x$. Which statement is it?",
+      "hint": "Substitute $x=1$ into each statement and discard every one that fails; then expand the survivor by hand to be sure.",
+      "worked": [
+        "Take $x=1$: $(1+4)^{2}=25$ but $1^{2}+16=17$, so that statement fails.",
+        "Also at $x=1$: $\\sqrt{1+16}=\\sqrt{17}$, which is not $5$ because $5^{2}=25$; and $-(1-4)=3$ while $-1-4=-5$, so those two fail as well.",
+        "Expand the survivor by hand: $(x+4)(x+4)=x^{2}+4x+4x+16=x^{2}+8x+16$.",
+        "So $(x+4)^{2}=x^{2}+8x+16$ is the statement that holds for every $x$."
+      ],
+      "options": [
+        {"key": "a", "text": "$(x+4)^{2}=x^{2}+16$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "b", "text": "$\\sqrt{x^{2}+16}=x+4$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "c", "text": "$-(x-4)=-x-4$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$(x+4)^{2}=x^{2}+8x+16$", "correct": true}
+      ]
+    },
+    {
+      "id": "distribute-03",
+      "kc": "distribute",
+      "difficulty": 4,
+      "est_seconds": 100,
+      "stem": "Solve for $x$: $(x-3)^{2}=x^{2}-21$.",
+      "hint": "Expand the left side completely before doing anything else; the squared binomial has three terms, and the $x^{2}$ on each side will then cancel.",
+      "worked": [
+        "Expand: $(x-3)(x-3)=x^{2}-3x-3x+9=x^{2}-6x+9$.",
+        "The equation is now $x^{2}-6x+9=x^{2}-21$; subtracting $x^{2}$ from both sides leaves $-6x+9=-21$.",
+        "Then $-6x=-30$, so $x=5$.",
+        "Check: $(5-3)^{2}=4$ and $5^{2}-21=4$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=5$", "correct": true},
+        {"key": "b", "text": "$x=2$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "c", "text": "There is no solution.", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "d", "text": "$x=10$", "correct": false, "mis": null}
+      ]
+    }
+  ]
+}

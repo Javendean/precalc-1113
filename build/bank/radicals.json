@@ -1,0 +1,64 @@
+{
+  "kc": "radicals",
+  "items": [
+    {
+      "id": "radicals-01",
+      "kc": "radicals",
+      "difficulty": 2,
+      "est_seconds": 50,
+      "stem": "Let $a$ and $b$ be positive real numbers and let $x$ be a real number. Exactly one of the statements below is true for every such choice. Which one?",
+      "hint": "Do not reason about the symbols; substitute friendly numbers such as $a=9$ and $b=16$ into each statement and see which one survives.",
+      "worked": [
+        "Test the sum statement with $a=9$ and $b=16$: $\\sqrt{9+16}=\\sqrt{25}=5$, but $\\sqrt{9}+\\sqrt{16}=3+4=7$. False.",
+        "The equation $x^{2}=a$ has two solutions, $x=\\sqrt{a}$ and $x=-\\sqrt{a}$, so calling $\\sqrt{a}$ the only one is false.",
+        "In $a^{2/3}$ the denominator $3$ is the root and the numerator $2$ is the power; test $a=64$: $a^{2/3}=16$ while $\\sqrt{a^{3}}=512$. False.",
+        "The product rule survives every test, so $\\sqrt{a} \\cdot \\sqrt{b}=\\sqrt{ab}$ is the true statement."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "b", "text": "$\\sqrt{a} \\cdot \\sqrt{b}=\\sqrt{ab}$", "correct": true},
+        {"key": "c", "text": "If $x^{2}=a$, then $x=\\sqrt{a}$ is the only solution.", "correct": false, "mis": "INC_SQRT_POSITIVE_ONLY"},
+        {"key": "d", "text": "$a^{2/3}=\\sqrt{a^{3}}$", "correct": false, "mis": "EXP_RATIONAL_INVERTED"}
+      ]
+    },
+    {
+      "id": "radicals-02",
+      "kc": "radicals",
+      "difficulty": 3,
+      "est_seconds": 90,
+      "stem": "Rationalize the denominator and simplify completely: $\\dfrac{3}{2-\\sqrt{7}}$.",
+      "hint": "The denominator has two terms, so multiplying by itself will not clear the radical; multiply top and bottom by the same two terms with the sign between them reversed.",
+      "worked": [
+        "Multiply numerator and denominator by the conjugate $2+\\sqrt{7}$.",
+        "Denominator: $(2-\\sqrt{7})(2+\\sqrt{7})=4-7=-3$. Numerator: $3(2+\\sqrt{7})=6+3\\sqrt{7}$.",
+        "Divide every term of the numerator by $-3$: $\\dfrac{6+3\\sqrt{7}}{-3}=-2-\\sqrt{7}$.",
+        "The simplified value is $-2-\\sqrt{7}$, which is negative, as it must be since $2-\\sqrt{7}<0$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{3}{2}-\\dfrac{3\\sqrt{7}}{7}$", "correct": false, "mis": "LIN_FRAC_SPLIT_DEN"},
+        {"key": "b", "text": "$6-\\sqrt{7}$", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "c", "text": "$-2+\\sqrt{7}$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$-2-\\sqrt{7}$", "correct": true}
+      ]
+    },
+    {
+      "id": "radicals-03",
+      "kc": "radicals",
+      "difficulty": 4,
+      "est_seconds": 105,
+      "stem": "Simplify completely, leaving no radical in the denominator: $\\dfrac{\\sqrt{5}}{\\sqrt{5}+\\sqrt{20}}$.",
+      "hint": "Simplify $\\sqrt{20}$ first and then check whether the two terms in the denominator are like terms that can be combined.",
+      "worked": [
+        "Simplify the second radical: $\\sqrt{20}=\\sqrt{4 \\cdot 5}=2\\sqrt{5}$.",
+        "The denominator is now $\\sqrt{5}+2\\sqrt{5}=3\\sqrt{5}$, since these are like terms.",
+        "So the expression is $\\dfrac{\\sqrt{5}}{3\\sqrt{5}}=\\dfrac{1}{3}$, and no radical remains."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{1}{3}$", "correct": true},
+        {"key": "b", "text": "$\\dfrac{\\sqrt{5}}{5}$", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "c", "text": "$\\dfrac{3}{2}$", "correct": false, "mis": "LIN_FRAC_SPLIT_DEN"},
+        {"key": "d", "text": "$\\dfrac{\\sqrt{5}}{10}$", "correct": false, "mis": "DOM_CANCEL_ADDEND"}
+      ]
+    }
+  ]
+}

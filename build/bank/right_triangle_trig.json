@@ -1,0 +1,99 @@
+{
+ "kc": "right_triangle_trig",
+ "items": [
+  {
+   "id": "right_triangle_trig-01",
+   "kc": "right_triangle_trig",
+   "difficulty": 1,
+   "est_seconds": 40,
+   "stem": "In right triangle $ABC$ the right angle is at $C$. The leg opposite angle $A$ has length $3$ and the leg adjacent to angle $A$ has length $4$. Find $\\sin A$.",
+   "hint": "Sine compares the opposite side with the hypotenuse, so find the hypotenuse before you write the ratio.",
+   "worked": [
+    "Hypotenuse: $c=\\sqrt{3^{2}+4^{2}}=\\sqrt{9+16}=\\sqrt{25}=5$.",
+    "$\\sin A=\\dfrac{\\text{opposite}}{\\text{hypotenuse}}=\\dfrac{3}{5}$."
+   ],
+   "options": [
+    {"key": "a", "text": "$\\dfrac{4}{5}$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+    {"key": "b", "text": "$\\dfrac{5}{3}$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"},
+    {"key": "c", "text": "$\\dfrac{3}{5}$", "correct": true},
+    {"key": "d", "text": "$\\dfrac{3}{7}$", "correct": false, "mis": "LIN_SQRT_SUM"}
+   ]
+  },
+  {
+   "id": "right_triangle_trig-02",
+   "kc": "right_triangle_trig",
+   "difficulty": 2,
+   "est_seconds": 55,
+   "stem": "In a right triangle, the side opposite the acute angle $\\theta$ has length $4$ and the hypotenuse has length $8$. Find the exact value of $\\theta$, measured in radians.",
+   "hint": "Build the ratio that pairs the opposite side with the hypotenuse, then ask which special angle has that value.",
+   "worked": [
+    "$\\sin\\theta=\\dfrac{\\text{opposite}}{\\text{hypotenuse}}=\\dfrac{4}{8}=\\dfrac{1}{2}$.",
+    "The acute angle whose sine is $\\dfrac{1}{2}$ measures $30^{\\circ}$.",
+    "Converting, $30^{\\circ}=\\dfrac{\\pi}{6}$ radians."
+   ],
+   "options": [
+    {"key": "a", "text": "$\\dfrac{\\pi}{6}$", "correct": true},
+    {"key": "b", "text": "$\\dfrac{\\pi}{3}$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+    {"key": "c", "text": "$30$", "correct": false, "mis": "TRIG_DEGREE_RADIAN_MODE"},
+    {"key": "d", "text": "$\\dfrac{1}{\\sin\\left(\\dfrac{1}{2}\\right)}$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"}
+   ]
+  },
+  {
+   "id": "right_triangle_trig-03",
+   "kc": "right_triangle_trig",
+   "difficulty": 3,
+   "est_seconds": 75,
+   "stem": "A right triangle has legs of length $9$ and $12$, and $\\theta$ is the acute angle adjacent to the leg of length $12$. A student writes the hypotenuse as $\\sqrt{9^{2}+12^{2}}=9+12=21$ and reports $\\cos\\theta=\\dfrac{12}{21}=\\dfrac{4}{7}$. What is the correct value of $\\cos\\theta$?",
+   "hint": "A square root does not split across a plus sign; finish the addition underneath the radical before taking the root.",
+   "worked": [
+    "$\\sqrt{9^{2}+12^{2}}=\\sqrt{81+144}=\\sqrt{225}=15$, not $21$.",
+    "$\\theta$ sits next to the leg of length $12$, so $\\cos\\theta=\\dfrac{\\text{adjacent}}{\\text{hypotenuse}}=\\dfrac{12}{15}$.",
+    "Reduce: $\\cos\\theta=\\dfrac{4}{5}$."
+   ],
+   "options": [
+    {"key": "a", "text": "$\\dfrac{4}{7}$", "correct": false, "mis": "LIN_SQRT_SUM"},
+    {"key": "b", "text": "$\\dfrac{3}{5}$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+    {"key": "c", "text": "$\\dfrac{5}{4}$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"},
+    {"key": "d", "text": "$\\dfrac{4}{5}$", "correct": true}
+   ]
+  },
+  {
+   "id": "right_triangle_trig-04",
+   "kc": "right_triangle_trig",
+   "difficulty": 4,
+   "est_seconds": 90,
+   "stem": "In right triangle $ABC$ the right angle is at $C$, and $\\tan A=\\dfrac{7}{24}$. Exactly one of the four statements below is true. Which one?",
+   "hint": "Angles $A$ and $B$ add to $90^{\\circ}$, so the leg opposite $A$ is the leg adjacent to $B$.",
+   "worked": [
+    "$\\tan A=\\dfrac{7}{24}$ means the leg opposite $A$ is $7$ and the leg adjacent to $A$ is $24$, so the hypotenuse is $\\sqrt{7^{2}+24^{2}}=\\sqrt{625}=25$.",
+    "Viewed from $B$ the legs trade roles: the leg adjacent to $B$ is the $7$ and the leg opposite $B$ is the $24$.",
+    "So $\\cos B=\\dfrac{7}{25}$, while $\\sin B=\\dfrac{24}{25}$ and $\\sin A=\\dfrac{7}{25}$."
+   ],
+   "options": [
+    {"key": "a", "text": "$\\sin B=\\dfrac{7}{25}$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+    {"key": "b", "text": "$\\cos B=\\dfrac{7}{25}$", "correct": true},
+    {"key": "c", "text": "$\\cos B=\\dfrac{25}{7}$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"},
+    {"key": "d", "text": "$\\sin^{2}A=\\sin\\left(A^{2}\\right)$", "correct": false, "mis": "NOT_TRIG_SQUARED"}
+   ]
+  },
+  {
+   "id": "right_triangle_trig-05",
+   "kc": "right_triangle_trig",
+   "difficulty": 5,
+   "est_seconds": 110,
+   "stem": "In a right triangle the acute angle $\\theta$ has an adjacent leg of length $x$ and an opposite leg of length $x\\sqrt{3}$, where $x>0$. Simplify $\\sin\\theta$ completely.",
+   "hint": "Combine $x^{2}$ and $\\left(x\\sqrt{3}\\right)^{2}$ under one radical before you take the square root.",
+   "worked": [
+    "Hypotenuse: $\\sqrt{x^{2}+\\left(x\\sqrt{3}\\right)^{2}}=\\sqrt{x^{2}+3x^{2}}=\\sqrt{4x^{2}}=2x$.",
+    "$\\sin\\theta=\\dfrac{\\text{opposite}}{\\text{hypotenuse}}=\\dfrac{x\\sqrt{3}}{2x}$.",
+    "The factor $x$ cancels, leaving $\\sin\\theta=\\dfrac{\\sqrt{3}}{2}$."
+   ],
+   "options": [
+    {"key": "a", "text": "$\\dfrac{1}{2}$", "correct": false, "mis": "TRIG_COORD_SWAP"},
+    {"key": "b", "text": "$\\dfrac{\\sqrt{3}}{1+\\sqrt{3}}$", "correct": false, "mis": "LIN_SQRT_SUM"},
+    {"key": "c", "text": "$\\dfrac{\\sqrt{3}}{2}$", "correct": true},
+    {"key": "d", "text": "$\\dfrac{2\\sqrt{3}}{3}$", "correct": false, "mis": "INV_TRIG_RECIPROCAL"}
+   ]
+  }
+ ]
+}

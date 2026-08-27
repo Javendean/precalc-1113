@@ -1,0 +1,196 @@
+{
+  "kc": "exp_functions",
+  "items": [
+    {
+      "id": "exp_functions-01",
+      "kc": "exp_functions",
+      "difficulty": 1,
+      "est_seconds": 30,
+      "stem": "Let $f(x) = 3^{x}$. Find $f(-2)$.",
+      "hint": "A negative exponent tells you to flip the base; it never changes the sign of the answer.",
+      "worked": [
+        "Substitute the input: $f(-2) = 3^{-2}$.",
+        "A negative exponent means reciprocal, not a negative number: $3^{-2} = \\dfrac{1}{3^{2}}$.",
+        "Since $3^{2} = 9$, we get $f(-2) = \\dfrac{1}{9}$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$-9$",
+          "correct": false,
+          "mis": "EXP_NEG_AS_SIGN"
+        },
+        {
+          "key": "b",
+          "text": "$\\dfrac{1}{9}$",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$9$",
+          "correct": false,
+          "mis": "SIGN_SQUARE_NEG"
+        },
+        {
+          "key": "d",
+          "text": "$-\\dfrac{1}{9}$",
+          "correct": false,
+          "mis": null
+        }
+      ]
+    },
+    {
+      "id": "exp_functions-02",
+      "kc": "exp_functions",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Let $f(x) = 2^{x}$. Which statement gives both the domain and the range of $f$ correctly?",
+      "hint": "Ask two separate questions: what is allowed to go into the exponent, and what values can actually come out?",
+      "worked": [
+        "Any real number may be used as an exponent, so the domain is $(-\\infty, \\infty)$.",
+        "A positive base gives a positive output for every exponent: $2^{3} = 8$, $2^{0} = 1$, $2^{-3} = \\dfrac{1}{8}$.",
+        "The graph falls toward the horizontal asymptote $y = 0$ but never reaches it, so $0$ is excluded and the range is $(0, \\infty)$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Domain $(0, \\infty)$; range $(-\\infty, \\infty)$.",
+          "correct": false,
+          "mis": "FN_DOMAIN_RANGE_SWAP"
+        },
+        {
+          "key": "b",
+          "text": "Domain $(-\\infty, \\infty)$; range $[0, \\infty)$.",
+          "correct": false,
+          "mis": "DOM_IGNORE_RESTRICTION"
+        },
+        {
+          "key": "c",
+          "text": "Domain $(-\\infty, \\infty)$; range $(0, \\infty)$.",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "Domain $(-\\infty, \\infty)$; range $(-\\infty, \\infty)$.",
+          "correct": false,
+          "mis": "EXP_NEG_AS_SIGN"
+        }
+      ]
+    },
+    {
+      "id": "exp_functions-03",
+      "kc": "exp_functions",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "The graph of $y = 2^{x}$ is changed into the graph of $y = 2^{x-3} + 4$. Which description is correct?",
+      "hint": "Sort the two constants first: one sits inside the exponent and one sits outside, and they do different jobs.",
+      "worked": [
+        "The $-3$ is inside the exponent, so it changes the input. The exponent is $0$ when $x = 3$ instead of when $x = 0$, so the graph moves right $3$.",
+        "The $+4$ is outside, so it adds $4$ to every output and moves the graph up $4$.",
+        "The asymptote rides up with the graph: $y = 0$ becomes $y = 4$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "Shift right $3$ and up $4$; the horizontal asymptote becomes $y = 4$.",
+          "correct": true
+        },
+        {
+          "key": "b",
+          "text": "Shift left $3$ and up $4$; the horizontal asymptote becomes $y = 4$.",
+          "correct": false,
+          "mis": "DIR_SHIFT_BACKWARDS"
+        },
+        {
+          "key": "c",
+          "text": "Shift down $3$ and right $4$; the horizontal asymptote becomes $y = -3$.",
+          "correct": false,
+          "mis": "DIR_INSIDE_OUTSIDE"
+        },
+        {
+          "key": "d",
+          "text": "Shift right $3$ and up $4$; the horizontal asymptote becomes $x = 4$.",
+          "correct": false,
+          "mis": "FN_DOMAIN_RANGE_SWAP"
+        }
+      ]
+    },
+    {
+      "id": "exp_functions-04",
+      "kc": "exp_functions",
+      "difficulty": 4,
+      "est_seconds": 80,
+      "stem": "A student rewrites $f(x) = 2^{x+3}$ as $f(x) = 2^{x} + 8$ and concludes that the graph of $f$ is the graph of $y = 2^{x}$ shifted up $8$. Which statement identifies the error and repairs it?",
+      "hint": "Test the student's rewrite at $x = 0$, where $2^{0+3}$ is easy to compute directly.",
+      "worked": [
+        "Check the rewrite at $x = 0$: the original gives $2^{0+3} = 8$, but $2^{0} + 8 = 9$, so the rewrite is false.",
+        "An exponent that is a sum splits into a product of powers, not a sum of powers: $2^{x+3} = 2^{x} \\cdot 2^{3}$.",
+        "Since $2^{3} = 8$, the correct form is $f(x) = 8 \\cdot 2^{x}$, a vertical stretch by $8$ (the same picture as a shift left $3$)."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "There is no error: $2^{x+3} = 2^{x} + 2^{3} = 2^{x} + 8$.",
+          "correct": false,
+          "mis": "LIN_FN_ADD"
+        },
+        {
+          "key": "b",
+          "text": "The rewrite should be $2^{x} \\cdot 2^{3} = 2^{3x}$, so $f(x) = 8^{x}$.",
+          "correct": false,
+          "mis": "EXP_PROD_MULTIPLY"
+        },
+        {
+          "key": "c",
+          "text": "The rewrite is wrong, and $y = 2^{x+3}$ is the graph of $y = 2^{x}$ shifted right $3$.",
+          "correct": false,
+          "mis": "DIR_SHIFT_BACKWARDS"
+        },
+        {
+          "key": "d",
+          "text": "The rewrite is wrong: $2^{x+3} = 2^{x} \\cdot 2^{3} = 8 \\cdot 2^{x}$, a vertical stretch by $8$.",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "exp_functions-05",
+      "kc": "exp_functions",
+      "difficulty": 5,
+      "est_seconds": 110,
+      "stem": "An exponential function has the form $f(x) = a \\cdot b^{x}$. It satisfies $f(0) = 5$ and $f(2) = 45$. What is $b$?",
+      "hint": "Use $f(0)$ to pin down $a$ first, then recall which values a base is allowed to take.",
+      "worked": [
+        "Since $b^{0} = 1$, we get $f(0) = a = 5$.",
+        "Then $f(2) = 5b^{2} = 45$, so $b^{2} = 9$.",
+        "That gives $b = \\pm 3$, but the base of an exponential function must be positive, so $b = 3$.",
+        "Check: $5 \\cdot 3^{2} = 45$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$b = \\dfrac{1}{3}$",
+          "correct": false,
+          "mis": "EXP_QUOT_REVERSED"
+        },
+        {
+          "key": "b",
+          "text": "$b = 3$",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$b = 3$ or $b = -3$",
+          "correct": false,
+          "mis": "DOM_IGNORE_RESTRICTION"
+        },
+        {
+          "key": "d",
+          "text": "$b = 81$",
+          "correct": false,
+          "mis": "EXP_RATIONAL_INVERTED"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+ "kc": "trig_other_graphs",
+ "items": [
+  {
+   "id": "trig_other_graphs-01",
+   "kc": "trig_other_graphs",
+   "difficulty": 2,
+   "est_seconds": 45,
+   "stem": "On the interval $0\\le x<2\\pi$, where are all of the vertical asymptotes of $y=\\tan x$?",
+   "hint": "Rewrite tangent as a quotient of sine and cosine, then ask which of the two being zero is what breaks the fraction.",
+   "worked": [
+    "Write $\\tan x=\\dfrac{\\sin x}{\\cos x}$, so the graph breaks exactly where $\\cos x=0$.",
+    "On the unit circle, $\\cos x$ is the $x$-coordinate, and it is $0$ at $x=\\dfrac{\\pi}{2}$ and at $x=\\dfrac{3\\pi}{2}$.",
+    "Neither value is cancelled by anything, so both are vertical asymptotes: $x=\\dfrac{\\pi}{2}$ and $x=\\dfrac{3\\pi}{2}$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "$x=\\dfrac{\\pi}{2}$ only",
+     "correct": false,
+     "mis": "INC_TRIG_ONE_SOLUTION"
+    },
+    {
+     "key": "b",
+     "text": "$x=0$ and $x=\\pi$",
+     "correct": false,
+     "mis": "TRIG_COORD_SWAP"
+    },
+    {
+     "key": "c",
+     "text": "$x=\\dfrac{\\pi}{2}$ and $x=\\dfrac{3\\pi}{2}$",
+     "correct": true
+    },
+    {
+     "key": "d",
+     "text": "There are none; $y=\\tan x$ is defined for every real number.",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    }
+   ]
+  },
+  {
+   "id": "trig_other_graphs-02",
+   "kc": "trig_other_graphs",
+   "difficulty": 3,
+   "est_seconds": 75,
+   "stem": "A student finds the vertical asymptotes of $y=\\csc(2x)$ in three lines, where $n$ stands for any integer. Line 1: $\\csc(2x)=\\dfrac{1}{\\sin(2x)}$. Line 2: an asymptote occurs where $\\sin(2x)=0$, so $2x=\\pi n$. Line 3: therefore $x=2\\pi n$. Which choice names the first line that is wrong and corrects it?",
+   "hint": "Test her final formula against the graph: does every value it produces give a zero denominator, and does it catch all of them?",
+   "worked": [
+    "Line 1 is the correct reciprocal identity, and $\\sin u=0$ exactly when $u=\\pi n$, so Line 2 is right as well.",
+    "Line 3 undoes the $2$ backwards. From $2x=\\pi n$, divide both sides by $2$ to get $x=\\dfrac{\\pi n}{2}$.",
+    "Check it: $x=\\dfrac{\\pi}{2}$ makes $\\sin(2x)=\\sin(\\pi)=0$, so it is an asymptote, yet $x=2\\pi n$ never produces it.",
+    "The first error is in Line 3, and the asymptotes are $x=\\dfrac{\\pi n}{2}$."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "Line 3; dividing $2x=\\pi n$ by $2$ gives $x=\\dfrac{\\pi n}{2}$.",
+     "correct": true
+    },
+    {
+     "key": "b",
+     "text": "Line 2; $\\sin(2x)=0$ happens when $2x=\\dfrac{\\pi}{2}+\\pi n$.",
+     "correct": false,
+     "mis": "TRIG_COORD_SWAP"
+    },
+    {
+     "key": "c",
+     "text": "Line 2; a zero denominator does not force an asymptote, so $y=\\csc(2x)$ has no vertical asymptotes.",
+     "correct": false,
+     "mis": "DOM_IGNORE_RESTRICTION"
+    },
+    {
+     "key": "d",
+     "text": "No line is wrong; the asymptotes really are $x=2\\pi n$.",
+     "correct": false,
+     "mis": "DIR_PERIOD_MULTIPLIED"
+    }
+   ]
+  },
+  {
+   "id": "trig_other_graphs-03",
+   "kc": "trig_other_graphs",
+   "difficulty": 4,
+   "est_seconds": 90,
+   "stem": "Which statement about the graph of $y=\\cot\\left(2x-\\dfrac{\\pi}{3}\\right)$ is true?",
+   "hint": "Factor the coefficient of $x$ out of the inside expression before you read the shift off, and remember that cotangent repeats every $\\pi$, not every $2\\pi$.",
+   "worked": [
+    "Factor the inside: $\\cot\\left(2x-\\dfrac{\\pi}{3}\\right)=\\cot\\left(2\\left(x-\\dfrac{\\pi}{6}\\right)\\right)$.",
+    "Cotangent repeats every $\\pi$, so with $b=2$ the period is $\\dfrac{\\pi}{b}=\\dfrac{\\pi}{2}$.",
+    "The factored inside reads $x-\\dfrac{\\pi}{6}$, and the input that makes it zero is $x=\\dfrac{\\pi}{6}$, so the graph slides $\\dfrac{\\pi}{6}$ to the right.",
+    "Period $\\dfrac{\\pi}{2}$, shifted $\\dfrac{\\pi}{6}$ right."
+   ],
+   "options": [
+    {
+     "key": "a",
+     "text": "Its period is $\\dfrac{\\pi}{2}$, and it is the graph of $y=\\cot(2x)$ shifted $\\dfrac{\\pi}{3}$ to the right.",
+     "correct": false,
+     "mis": "DIR_TRANSFORM_ORDER"
+    },
+    {
+     "key": "b",
+     "text": "Its period is $\\dfrac{\\pi}{2}$, and it is the graph of $y=\\cot(2x)$ shifted $\\dfrac{\\pi}{6}$ to the right.",
+     "correct": true
+    },
+    {
+     "key": "c",
+     "text": "Its period is $2\\pi$, and it is the graph of $y=\\cot(2x)$ shifted $\\dfrac{\\pi}{6}$ to the right.",
+     "correct": false,
+     "mis": "DIR_PERIOD_MULTIPLIED"
+    },
+    {
+     "key": "d",
+     "text": "Its period is $\\dfrac{\\pi}{2}$, and it is the graph of $y=\\cot(2x)$ shifted $\\dfrac{\\pi}{6}$ to the left.",
+     "correct": false,
+     "mis": "DIR_SHIFT_BACKWARDS"
+    }
+   ]
+  }
+ ]
+}

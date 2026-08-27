@@ -1,0 +1,64 @@
+{
+  "kc": "exp_rational",
+  "items": [
+    {
+      "id": "exp_rational-01",
+      "kc": "exp_rational",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "For $x > 0$, which expression is equal to $\\dfrac{1}{\\sqrt[3]{x^{2}}}$?",
+      "hint": "Answer two separate questions: which number in the exponent comes from the root index, and what does sitting in a denominator do to the sign of an exponent?",
+      "worked": [
+        "In radical form the index is the denominator of the exponent and the power on $x$ is the numerator, so $\\sqrt[3]{x^{2}} = x^{\\frac{2}{3}}$.",
+        "A reciprocal flips the sign of the exponent: $\\dfrac{1}{x^{\\frac{2}{3}}} = x^{-\\frac{2}{3}}$.",
+        "The exponent turns negative, but the value stays positive, so the answer is $x^{-\\frac{2}{3}}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{-\\frac{3}{2}}$", "correct": false, "mis": "EXP_RATIONAL_INVERTED"},
+        {"key": "b", "text": "$x^{-\\frac{2}{3}}$", "correct": true},
+        {"key": "c", "text": "$-x^{\\frac{2}{3}}$", "correct": false, "mis": "EXP_NEG_AS_SIGN"},
+        {"key": "d", "text": "$x^{-\\frac{7}{3}}$", "correct": false, "mis": "EXP_POWER_ADD"}
+      ]
+    },
+    {
+      "id": "exp_rational-02",
+      "kc": "exp_rational",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Let $x > 0$. Exactly one of the following statements is true. Which one?",
+      "hint": "Handle one rule at a time: in $x^{\\frac{m}{n}}$ decide which number is the root, and for the other two decide whether the exponents should be added or multiplied.",
+      "worked": [
+        "In $x^{\\frac{m}{n}}$ the denominator $n$ is the root index and the numerator $m$ is the power, so $x^{\\frac{3}{5}} = \\sqrt[5]{x^{3}}$ and $\\sqrt[3]{x^{5}} = x^{\\frac{5}{3}}$ instead.",
+        "A power raised to a power multiplies the exponents: $\\left(x^{\\frac{1}{2}}\\right)^{\\frac{2}{3}} = x^{\\frac{1}{2} \\cdot \\frac{2}{3}} = x^{\\frac{1}{3}}$, not $x^{\\frac{7}{6}}$.",
+        "Like bases multiplied add the exponents: $x^{\\frac{1}{2}} \\cdot x^{\\frac{1}{4}} = x^{\\frac{2}{4} + \\frac{1}{4}} = x^{\\frac{3}{4}}$, not $x^{\\frac{1}{8}}$.",
+        "The one true statement is $x^{\\frac{3}{5}} = \\sqrt[5]{x^{3}}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{\\frac{1}{2}} \\cdot x^{\\frac{1}{4}} = x^{\\frac{1}{8}}$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "b", "text": "$x^{\\frac{3}{5}} = \\sqrt[3]{x^{5}}$", "correct": false, "mis": "EXP_RATIONAL_INVERTED"},
+        {"key": "c", "text": "$x^{\\frac{3}{5}} = \\sqrt[5]{x^{3}}$", "correct": true},
+        {"key": "d", "text": "$\\left(x^{\\frac{1}{2}}\\right)^{\\frac{2}{3}} = x^{\\frac{7}{6}}$", "correct": false, "mis": "EXP_POWER_ADD"}
+      ]
+    },
+    {
+      "id": "exp_rational-03",
+      "kc": "exp_rational",
+      "difficulty": 4,
+      "est_seconds": 90,
+      "stem": "Simplify $\\dfrac{x^{\\frac{2}{3}}}{x^{\\frac{3}{2}}}$ for $x > 0$ and write the result in radical form.",
+      "hint": "Subtract the exponents in the order top minus bottom over the common denominator $6$, then read the answer off in two moves: the sign, then the root.",
+      "worked": [
+        "Dividing like bases subtracts top minus bottom: $\\frac{2}{3} - \\frac{3}{2} = \\frac{4}{6} - \\frac{9}{6} = -\\frac{5}{6}$.",
+        "So the expression equals $x^{-\\frac{5}{6}}$.",
+        "The negative exponent means a reciprocal, and the denominator $6$ is the root index with the numerator $5$ as the power.",
+        "Therefore the result is $\\dfrac{1}{\\sqrt[6]{x^{5}}}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\sqrt[6]{x^{5}}$", "correct": false, "mis": "EXP_QUOT_REVERSED"},
+        {"key": "b", "text": "$-\\sqrt[6]{x^{5}}$", "correct": false, "mis": "EXP_NEG_AS_SIGN"},
+        {"key": "c", "text": "$\\dfrac{1}{\\sqrt[5]{x^{6}}}$", "correct": false, "mis": "EXP_RATIONAL_INVERTED"},
+        {"key": "d", "text": "$\\dfrac{1}{\\sqrt[6]{x^{5}}}$", "correct": true}
+      ]
+    }
+  ]
+}

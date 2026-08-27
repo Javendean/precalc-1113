@@ -1,0 +1,65 @@
+{
+  "kc": "poly_end_behavior",
+  "items": [
+    {
+      "id": "poly_end_behavior-01",
+      "kc": "poly_end_behavior",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "The polynomial $f(x) = 9x^{3} - x^{4} + 2$ has its terms written out of order. Which statement describes the end behavior of its graph?",
+      "hint": "Only the term of highest degree decides both ends, and it is not always the term written first.",
+      "worked": [
+        "The degrees present are $3$, $4$ and $0$, so the leading term is $-x^{4}$, not $9x^{3}$.",
+        "The degree $4$ is even, so both ends of the graph travel in the same direction.",
+        "The leading coefficient is $-1$, which is negative, so that shared direction is downward.",
+        "Therefore $f(x) \\to -\\infty$ as $x \\to -\\infty$ and $f(x) \\to -\\infty$ as $x \\to +\\infty$."
+      ],
+      "options": [
+        {"key": "a", "text": "$f(x) \\to +\\infty$ as $x \\to -\\infty$ and $f(x) \\to +\\infty$ as $x \\to +\\infty$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "b", "text": "$f(x) \\to 0$ as $x \\to -\\infty$ and $f(x) \\to 0$ as $x \\to +\\infty$, so the graph levels off toward $y = 0$", "correct": false, "mis": "RAT_ASYMPTOTE_DEGREE"},
+        {"key": "c", "text": "$f(x) \\to -\\infty$ as $x \\to -\\infty$ and $f(x) \\to -\\infty$ as $x \\to +\\infty$", "correct": true},
+        {"key": "d", "text": "$f(x) \\to -\\infty$ as $x \\to -\\infty$ and $f(x) \\to +\\infty$ as $x \\to +\\infty$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "poly_end_behavior-02",
+      "kc": "poly_end_behavior",
+      "difficulty": 3,
+      "est_seconds": 75,
+      "stem": "Exactly one of the four polynomials below has a graph that rises on both ends, meaning $f(x) \\to +\\infty$ as $x \\to -\\infty$ and also $f(x) \\to +\\infty$ as $x \\to +\\infty$. Which one is it?",
+      "hint": "Rewrite each choice until you can read off a single highest-power term, then ask whether that power is even and whether the number in front of it is positive.",
+      "worked": [
+        "Both ends rise only when the degree is even AND the leading coefficient is positive.",
+        "$5x^{3} - x^{4}$ has leading term $-x^{4}$: even degree but a negative coefficient, so both ends fall.",
+        "$x^{2}(x^{3}+1) = x^{5} + x^{2}$ has degree $2 + 3 = 5$, and $(x^{3})^{3} = x^{3 \\cdot 3} = x^{9}$ has degree $9$; both degrees are odd, so those ends go opposite ways.",
+        "$x^{4} + 6x^{3}$ has leading term $x^{4}$: even degree, positive coefficient, so both ends rise."
+      ],
+      "options": [
+        {"key": "a", "text": "$f(x) = 5x^{3} - x^{4}$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "b", "text": "$f(x) = x^{4} + 6x^{3}$", "correct": true},
+        {"key": "c", "text": "$f(x) = x^{2}(x^{3} + 1)$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "d", "text": "$f(x) = (x^{3})^{3} + 2$", "correct": false, "mis": "EXP_POWER_ADD"}
+      ]
+    },
+    {
+      "id": "poly_end_behavior-03",
+      "kc": "poly_end_behavior",
+      "difficulty": 4,
+      "est_seconds": 90,
+      "stem": "A student is asked for the end behavior of $p(x) = -2x^{3}(x^{2} + 7)$ and writes: 'the leading term is $-2x^{6}$, the degree is even, so the graph falls on both ends.' Which choice identifies the mistake and gives the correct end behavior?",
+      "hint": "The leading term of a product is the product of the leading terms; check what multiplying like bases does to their exponents.",
+      "worked": [
+        "The leading term of $p$ comes from $(-2x^{3})(x^{2})$.",
+        "Multiplying like bases adds the exponents: $-2x^{3+2} = -2x^{5}$. The student multiplied $3 \\cdot 2$ instead and got $x^{6}$.",
+        "Degree $5$ is odd and the leading coefficient $-2$ is negative, so the two ends go opposite ways.",
+        "As $x \\to -\\infty$, $p(x) \\to +\\infty$; as $x \\to +\\infty$, $p(x) \\to -\\infty$. The graph rises on the left and falls on the right."
+      ],
+      "options": [
+        {"key": "a", "text": "There is no mistake: the leading term is $-2x^{6}$, so the graph falls on both ends.", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "b", "text": "The degree $6$ is right; the mistake is the sign, because $-2x^{6}$ comes out positive for every nonzero $x$, so the graph rises on both ends.", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "c", "text": "Exponents add when like bases multiply, so the leading term is $-2x^{5}$; an odd degree with a negative coefficient means the graph rises on the left and falls on the right.", "correct": true},
+        {"key": "d", "text": "The leading term is $-2x^{5}$, so the degree is odd and the graph falls on the left and rises on the right.", "correct": false, "mis": null}
+      ]
+    }
+  ]
+}

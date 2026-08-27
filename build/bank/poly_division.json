@@ -1,0 +1,65 @@
+{
+  "kc": "poly_division",
+  "items": [
+    {
+      "id": "poly_division-01",
+      "kc": "poly_division",
+      "difficulty": 2,
+      "est_seconds": 50,
+      "stem": "Use the Remainder Theorem to find the remainder when $f(x)=x^{3}-2x^{2}+5x-4$ is divided by $x+1$.",
+      "hint": "The Remainder Theorem evaluates $f$ at the number that makes the divisor zero, so solve $x+1=0$ before you substitute anything.",
+      "worked": [
+        "Set the divisor equal to zero: $x+1=0$ gives $x=-1$, so the remainder is $f(-1)$.",
+        "Substitute with brackets: $f(-1)=(-1)^{3}-2(-1)^{2}+5(-1)-4$.",
+        "Evaluate each term: $(-1)^{3}=-1$ and $(-1)^{2}=1$, so this is $-1-2-5-4$.",
+        "The remainder is $-12$."
+      ],
+      "options": [
+        {"key": "a", "text": "$-12$", "correct": true},
+        {"key": "b", "text": "$0$", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "c", "text": "$-8$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "$8$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "poly_division-02",
+      "kc": "poly_division",
+      "difficulty": 3,
+      "est_seconds": 80,
+      "stem": "Divide to simplify $\\dfrac{x^{3}-8}{x-2}$.",
+      "hint": "Write the dividend with every power present, $x^{3}+0x^{2}+0x-8$, and divide it as a whole rather than a piece at a time.",
+      "worked": [
+        "The divisor $x-2$ is zero at $x=2$, so run synthetic division with $2$.",
+        "List all four coefficients, filling the gaps with zeros: $1$, $0$, $0$, $-8$.",
+        "Bring down $1$; then $0+2=2$, then $0+4=4$, then $-8+8=0$.",
+        "The bottom row $1$, $2$, $4$ with remainder $0$ gives the quotient $x^{2}+2x+4$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{2}+2x+4$", "correct": true},
+        {"key": "b", "text": "$x^{2}+4$", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "c", "text": "$x^{2}-2x+4$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$x^{2}+2x-4$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "poly_division-03",
+      "kc": "poly_division",
+      "difficulty": 4,
+      "est_seconds": 110,
+      "stem": "When $f(x)=x^{3}+kx^{2}-7x+2$ is divided by $x+2$, the remainder is $4$. What is the value of $k$?",
+      "hint": "Keep $k$ as a letter: the Remainder Theorem says $f$ evaluated at the zero of $x+2$ has to equal $4$, which leaves one equation in $k$.",
+      "worked": [
+        "The divisor $x+2$ is zero at $x=-2$, so the Remainder Theorem gives $f(-2)=4$.",
+        "Substitute: $f(-2)=(-2)^{3}+k(-2)^{2}-7(-2)+2=-8+4k+14+2$.",
+        "Collect the numbers: $-8+14+2=8$, so $f(-2)=4k+8$ and the equation is $4k+8=4$.",
+        "Then $4k=-4$, so $k=-1$."
+      ],
+      "options": [
+        {"key": "a", "text": "$k=-1$", "correct": true},
+        {"key": "b", "text": "$k=2$", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "c", "text": "$k=1$", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "$k=6$", "correct": false, "mis": "SIGN_DISTRIB_NEG"}
+      ]
+    }
+  ]
+}

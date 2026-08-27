@@ -1,0 +1,103 @@
+{
+  "kc": "poly_zeros",
+  "items": [
+    {
+      "id": "poly_zeros-01",
+      "kc": "poly_zeros",
+      "difficulty": 1,
+      "est_seconds": 40,
+      "stem": "Describe the $x$-intercept(s) of $f(x)=(x-4)^{2}$.",
+      "hint": "Set the factor equal to zero to find where the intercept is, then count how many times that factor appears.",
+      "worked": [
+        "Solve $(x-4)^{2}=0$. A square is zero only when the thing being squared is zero, so $x-4=0$ and $x=4$.",
+        "The factor $(x-4)$ appears twice, so the zero $x=4$ has multiplicity $2$, which is even.",
+        "Even multiplicity means touch and turn: $(x-4)^{2}$ is never negative, so the graph reaches the axis at $x=4$ and comes back up."
+      ],
+      "options": [
+        {"key": "a", "text": "One $x$-intercept, at $x=4$; the graph crosses the axis there.", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"},
+        {"key": "b", "text": "There is no $x$-intercept; the graph never meets the $x$-axis.", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "c", "text": "One $x$-intercept, at $x=4$; the graph touches the axis there and turns back.", "correct": true},
+        {"key": "d", "text": "One $x$-intercept, at $x=-4$; the graph touches the axis there and turns back.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"}
+      ]
+    },
+    {
+      "id": "poly_zeros-02",
+      "kc": "poly_zeros",
+      "difficulty": 2,
+      "est_seconds": 60,
+      "stem": "For $f(x)=(x+6)(x-1)^{3}$, list each real zero with its multiplicity and give the degree of $f$.",
+      "hint": "Each factor set equal to zero gives a zero of $f$, and the exponent on that factor is its multiplicity.",
+      "worked": [
+        "$x+6=0$ gives $x=-6$, and that factor appears once, so its multiplicity is $1$.",
+        "$x-1=0$ gives $x=1$, and that factor is cubed, so its multiplicity is $3$.",
+        "Multiplying the factors out uses $1+3$ linear factors in all, so the degree is $4$; exponents add when factors are multiplied, they do not multiply."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=-6$ with multiplicity $1$ and $x=1$ with multiplicity $3$; degree $3$.", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "b", "text": "$x=-6$ with multiplicity $1$ and $x=1$ with multiplicity $3$; degree $4$.", "correct": true},
+        {"key": "c", "text": "$x=-6$ with multiplicity $1$ and $x=1$ with multiplicity $1$; degree $2$.", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"},
+        {"key": "d", "text": "$x=6$ with multiplicity $1$ and $x=-1$ with multiplicity $3$; degree $4$.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"}
+      ]
+    },
+    {
+      "id": "poly_zeros-03",
+      "kc": "poly_zeros",
+      "difficulty": 3,
+      "est_seconds": 90,
+      "stem": "A student describes the graph of $f(x)=(x-2)^{2}(x+1)$ this way: \"The zeros are $x=2$ and $x=-1$, and the graph crosses the $x$-axis at both of them.\" Which choice correctly assesses her work?",
+      "hint": "Check her two zeros by setting each factor equal to zero, then look at how many times each factor appears before you accept the word \"crosses\".",
+      "worked": [
+        "Setting each factor to zero: $x-2=0$ gives $x=2$, and $x+1=0$ gives $x=-1$, so her zeros are correct.",
+        "The factor $(x-2)$ is squared, so $x=2$ has multiplicity $2$; the factor $(x+1)$ appears once, so $x=-1$ has multiplicity $1$.",
+        "Odd multiplicity crosses and even multiplicity touches and turns, so the graph touches at $x=2$ and crosses at $x=-1$.",
+        "Her zeros are right, and only her description of the behavior is wrong."
+      ],
+      "options": [
+        {"key": "a", "text": "Her zeros are wrong: the factors give $x=-2$ and $x=1$, and the graph touches the axis at $x=-2$ and crosses at $x=1$.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "b", "text": "Her work is completely correct as written.", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"},
+        {"key": "c", "text": "Both parts are wrong: the only real zero is $x=-1$, and the graph crosses the axis there.", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "d", "text": "The zeros are right but the behavior is not: $(x-2)$ is squared, so the graph touches the axis at $x=2$ and turns back, and it crosses only at $x=-1$.", "correct": true}
+      ]
+    },
+    {
+      "id": "poly_zeros-04",
+      "kc": "poly_zeros",
+      "difficulty": 4,
+      "est_seconds": 120,
+      "stem": "Decide whether $x=-2$ is a zero of $f(x)=x^{3}+2x^{2}-4x-8$, and describe the graph of $f$ at every real zero.",
+      "hint": "Substitute carefully, remembering that $(-2)^{2}$ is positive; then factor by grouping to see how many times each factor occurs.",
+      "worked": [
+        "$f(-2)=(-2)^{3}+2(-2)^{2}-4(-2)-8=-8+8+8-8=0$, so $x=-2$ is a zero.",
+        "Factor by grouping: $x^{2}(x+2)-4(x+2)=(x+2)(x^{2}-4)=(x+2)(x+2)(x-2)$.",
+        "So $f(x)=(x+2)^{2}(x-2)$: the zero $x=-2$ has multiplicity $2$ and the zero $x=2$ has multiplicity $1$.",
+        "Even multiplicity touches and turns, odd multiplicity crosses."
+      ],
+      "options": [
+        {"key": "a", "text": "Yes; $x=-2$ is a zero of multiplicity $2$, where the graph touches and turns, and $x=2$ is a zero of multiplicity $1$, where the graph crosses.", "correct": true},
+        {"key": "b", "text": "Yes; $x=-2$ and $x=2$ are both zeros, and the graph crosses the axis at each of them.", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"},
+        {"key": "c", "text": "No; substituting gives $f(-2)=-16$, not $0$, so $x=-2$ is not a zero of $f$.", "correct": false, "mis": "SIGN_SQUARE_NEG"},
+        {"key": "d", "text": "Yes; $x=2$ is a zero of multiplicity $2$, where the graph touches and turns, and $x=-2$ is a zero of multiplicity $1$, where the graph crosses.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"}
+      ]
+    },
+    {
+      "id": "poly_zeros-05",
+      "kc": "poly_zeros",
+      "difficulty": 5,
+      "est_seconds": 150,
+      "stem": "Exactly one of the following statements about $f(x)=-2(x-1)^{2}(x+3)^{5}$ is true. Which one?",
+      "hint": "Add the exponents to get the degree, then let the parity of each exponent decide touch-or-cross and the sign of the leading coefficient decide the ends.",
+      "worked": [
+        "Degree: the exponents add, so $2+5=7$, and the leading term is $-2x^{7}$.",
+        "$x=1$ has multiplicity $2$, which is even, so the graph touches the axis there and turns back.",
+        "$x=-3$ has multiplicity $5$, which is odd, so the graph crosses the axis there.",
+        "Odd degree with a negative leading coefficient sends the two ends opposite ways: as $x\\to\\infty$, $-2x^{7}\\to-\\infty$."
+      ],
+      "options": [
+        {"key": "a", "text": "The degree is $10$, so both ends of the graph fall as $x$ moves away from the origin.", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "b", "text": "The graph touches the axis at $x=-1$ and crosses it at $x=3$.", "correct": false, "mis": "DIR_SHIFT_BACKWARDS"},
+        {"key": "c", "text": "The graph touches the axis at $x=1$ and crosses it at $x=-3$, and $f(x)\\to-\\infty$ as $x\\to\\infty$.", "correct": true},
+        {"key": "d", "text": "The graph crosses the axis at both $x=1$ and $x=-3$.", "correct": false, "mis": "POLY_MULTIPLICITY_IGNORED"}
+      ]
+    }
+  ]
+}

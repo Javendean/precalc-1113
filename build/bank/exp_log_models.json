@@ -1,0 +1,121 @@
+{
+  "kc": "exp_log_models",
+  "items": [
+    {
+      "id": "exp_log_models-01",
+      "kc": "exp_log_models",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "A filtration system removes a pollutant from a tank. The number of grams of pollutant left after $t$ hours is $M(t) = \\dfrac{64}{2^{3t}}$. How many grams are left after $1$ hour?",
+      "hint": "Work out the exponent $3t$ first, then divide $64$ by that power of $2$.",
+      "worked": [
+        "Substitute the input: $M(1) = \\dfrac{64}{2^{3(1)}}$.",
+        "The denominator is $2^{3} = 8$.",
+        "So $M(1) = \\dfrac{64}{8} = 8$ grams."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$4$ grams",
+          "correct": false,
+          "mis": "EXP_POWER_ADD"
+        },
+        {
+          "key": "b",
+          "text": "$\\dfrac{1}{8}$ grams",
+          "correct": false,
+          "mis": "EXP_QUOT_REVERSED"
+        },
+        {
+          "key": "c",
+          "text": "$8$ grams",
+          "correct": true
+        },
+        {
+          "key": "d",
+          "text": "$-512$ grams",
+          "correct": false,
+          "mis": "EXP_NEG_AS_SIGN"
+        }
+      ]
+    },
+    {
+      "id": "exp_log_models-02",
+      "kc": "exp_log_models",
+      "difficulty": 3,
+      "est_seconds": 65,
+      "stem": "A culture starts with $100$ bacteria and doubles every hour, so the count after $t$ hours is $N(t) = 100 \\cdot 2^{t}$. Which expression gives the number of hours needed for the culture to reach $B$ bacteria?",
+      "hint": "Undo the model one step at a time: first undo the multiplication by $100$, then undo a base $2$ exponential with a base $2$ logarithm.",
+      "worked": [
+        "Set the model equal to the target: $100 \\cdot 2^{t} = B$.",
+        "Divide both sides by $100$ to isolate the power: $2^{t} = \\dfrac{B}{100}$.",
+        "A logarithm returns the exponent, so $t = \\log_{2}\\left(\\dfrac{B}{100}\\right)$.",
+        "Check with $B = 400$: $\\log_{2}(4) = 2$ hours, and $100 \\cdot 2^{2} = 400$."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$t = \\dfrac{\\log_{2}(B)}{\\log_{2}(100)}$",
+          "correct": false,
+          "mis": "INV_LOG_AS_DIV"
+        },
+        {
+          "key": "b",
+          "text": "$t = \\log_{2}\\left(\\dfrac{B}{100}\\right)$",
+          "correct": true
+        },
+        {
+          "key": "c",
+          "text": "$t = \\log\\left(\\dfrac{B}{100}\\right)$",
+          "correct": false,
+          "mis": "LOG_BASE_DROPPED"
+        },
+        {
+          "key": "d",
+          "text": "$t = \\dfrac{1}{100 \\cdot 2^{B}}$",
+          "correct": false,
+          "mis": "INV_FN_RECIPROCAL"
+        }
+      ]
+    },
+    {
+      "id": "exp_log_models-03",
+      "kc": "exp_log_models",
+      "difficulty": 4,
+      "est_seconds": 100,
+      "stem": "The number of subscribers to a channel, measured in thousands, is modeled by $S(t) = 200 + 50e^{0.4t}$, where $t$ is the number of months from today. Find the exact number of months until the channel reaches $350$ thousand subscribers.",
+      "hint": "Get the exponential factor completely alone before you take a logarithm; there is no rule that splits a logarithm across a sum.",
+      "worked": [
+        "Set $200 + 50e^{0.4t} = 350$, so $50e^{0.4t} = 150$.",
+        "Divide by $50$: $e^{0.4t} = 3$.",
+        "Take the natural log of both sides, which cancels the base $e$: $0.4t = \\ln 3$.",
+        "So $t = \\dfrac{\\ln 3}{0.4} = \\dfrac{5\\ln 3}{2}$ months."
+      ],
+      "options": [
+        {
+          "key": "a",
+          "text": "$t = \\dfrac{5\\log 3}{2}$",
+          "correct": false,
+          "mis": "LOG_BASE_DROPPED"
+        },
+        {
+          "key": "b",
+          "text": "$t = \\dfrac{5\\ln 150}{2\\ln 50}$",
+          "correct": false,
+          "mis": "INV_LOG_AS_DIV"
+        },
+        {
+          "key": "c",
+          "text": "$t = \\dfrac{5\\left(\\ln 350 - \\ln 200 - \\ln 50\\right)}{2}$",
+          "correct": false,
+          "mis": "LIN_LOG_SUM"
+        },
+        {
+          "key": "d",
+          "text": "$t = \\dfrac{5\\ln 3}{2}$",
+          "correct": true
+        }
+      ]
+    }
+  ]
+}

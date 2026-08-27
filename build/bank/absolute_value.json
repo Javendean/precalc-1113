@@ -1,0 +1,65 @@
+{
+  "kc": "absolute_value",
+  "items": [
+    {
+      "id": "absolute_value-01",
+      "kc": "absolute_value",
+      "difficulty": 2,
+      "est_seconds": 45,
+      "stem": "Solve for $x$: $|x-3|+2=9$.",
+      "hint": "Get the absolute value alone on one side before you split anything, and remember that the bars produce two separate equations.",
+      "worked": [
+        "Isolate the bars first: $|x-3|=7$.",
+        "Positive case: $x-3=7$, so $x=10$.",
+        "Negative case: $x-3=-7$, so $x=-4$.",
+        "Both check: $|10-3|+2=9$ and $|-4-3|+2=9$."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=10$", "correct": false, "mis": "INC_ABS_ONE_CASE"},
+        {"key": "b", "text": "$x=10$ or $x=-10$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "c", "text": "$x=10$ or $x=-4$", "correct": true},
+        {"key": "d", "text": "$x=10$ or $x=-8$", "correct": false, "mis": null}
+      ]
+    },
+    {
+      "id": "absolute_value-02",
+      "kc": "absolute_value",
+      "difficulty": 3,
+      "est_seconds": 75,
+      "stem": "A student solves $|2x-1| \\ge 7$ as follows. Case 1: $2x-1 \\ge 7$, so $x \\ge 4$. Case 2: $-(2x-1) \\ge 7$, so $2x-1 \\ge -7$, so $x \\ge -3$. She reports the solution $[-3,\\infty)$. Which correction is right?",
+      "hint": "Look hard at the move from $-(2x-1) \\ge 7$ to a statement about $2x-1$: what does dividing an inequality by a negative number do to the symbol?",
+      "worked": [
+        "Case 1 is fine: $2x-1 \\ge 7$ gives $2x \\ge 8$, so $x \\ge 4$.",
+        "Case 2 divides by $-1$, which reverses the symbol: $2x-1 \\le -7$.",
+        "Then $2x \\le -6$, so $x \\le -3$, not $x \\ge -3$.",
+        "A $\\ge$ absolute value is an OR, so the solution is $(-\\infty,-3] \\cup [4,\\infty)$."
+      ],
+      "options": [
+        {"key": "a", "text": "The second case is unnecessary; the solution is $[4,\\infty)$.", "correct": false, "mis": "INC_ABS_ONE_CASE"},
+        {"key": "b", "text": "Case 2 must reverse the symbol to $2x-1 \\le -7$, giving $x \\le -3$, so the solution is $(-\\infty,-3] \\cup [4,\\infty)$.", "correct": true},
+        {"key": "c", "text": "Case 2 should have been written $-2x-1 \\ge 7$, giving $x \\le -4$, so the solution is $(-\\infty,-4] \\cup [4,\\infty)$.", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "Nothing is wrong; the solution is $[-3,\\infty)$.", "correct": false, "mis": "DOM_INEQ_NO_FLIP"}
+      ]
+    },
+    {
+      "id": "absolute_value-03",
+      "kc": "absolute_value",
+      "difficulty": 4,
+      "est_seconds": 110,
+      "stem": "Solve for $x$: $|x-2|=2x-1$.",
+      "hint": "An absolute value can never come out negative, so once you have candidate roots you must substitute each one back into the original equation.",
+      "worked": [
+        "Case 1: $x-2=2x-1$ gives $x=-1$.",
+        "Case 2: $-(x-2)=2x-1$, so $-x+2=2x-1$, giving $3=3x$ and $x=1$.",
+        "Check $x=-1$: the left side is $3$ but the right side is $-3$, so it is extraneous.",
+        "Check $x=1$: both sides equal $1$, so $x=1$ is the only solution."
+      ],
+      "options": [
+        {"key": "a", "text": "$x=-1$", "correct": false, "mis": "INC_ABS_ONE_CASE"},
+        {"key": "b", "text": "$x=-1$ or $x=1$", "correct": false, "mis": "INC_EXTRANEOUS_UNCHECKED"},
+        {"key": "c", "text": "$x=-1$ or $x=-\\dfrac{1}{3}$", "correct": false, "mis": "SIGN_DISTRIB_NEG"},
+        {"key": "d", "text": "$x=1$", "correct": true}
+      ]
+    }
+  ]
+}

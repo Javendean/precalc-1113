@@ -1,0 +1,103 @@
+{
+  "kc": "fn_inverse",
+  "items": [
+    {
+      "id": "fn_inverse-01",
+      "kc": "fn_inverse",
+      "difficulty": 1,
+      "est_seconds": 40,
+      "stem": "Let $f(x)=2x+1$. Find $f^{-1}(9)$.",
+      "hint": "Asking for $f^{-1}(9)$ is asking which input to $f$ produces the output $9$.",
+      "worked": [
+        "$f^{-1}(9)$ is the input whose output is $9$, so set $2x+1=9$.",
+        "Undo the operations in reverse order: subtract $1$ to get $2x=8$.",
+        "Then divide by $2$: $x=4$, so $f^{-1}(9)=4$."
+      ],
+      "options": [
+        {"key": "a", "text": "$19$", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"},
+        {"key": "b", "text": "$\\dfrac{7}{2}$", "correct": false, "mis": "DIR_TRANSFORM_ORDER"},
+        {"key": "c", "text": "$4$", "correct": true},
+        {"key": "d", "text": "$\\dfrac{1}{19}$", "correct": false, "mis": "INV_FN_RECIPROCAL"}
+      ]
+    },
+    {
+      "id": "fn_inverse-02",
+      "kc": "fn_inverse",
+      "difficulty": 2,
+      "est_seconds": 60,
+      "stem": "Let $f(x)=3x-12$. Which expression is $f^{-1}(x)$?",
+      "hint": "Write $y=3x-12$, swap $x$ and $y$, then undo the operations in the reverse of the order $f$ applied them.",
+      "worked": [
+        "Write $y=3x-12$ and swap the variables: $x=3y-12$.",
+        "Add $12$ to both sides first: $x+12=3y$.",
+        "Now divide by $3$: $y=\\dfrac{x+12}{3}=\\dfrac{x}{3}+4$."
+      ],
+      "options": [
+        {"key": "a", "text": "$\\dfrac{x}{3}+4$", "correct": true},
+        {"key": "b", "text": "$\\dfrac{x}{3}+12$", "correct": false, "mis": "DIR_TRANSFORM_ORDER"},
+        {"key": "c", "text": "$x+4$", "correct": false, "mis": "DOM_CANCEL_ADDEND"},
+        {"key": "d", "text": "$\\dfrac{1}{3x-12}$", "correct": false, "mis": "INV_FN_RECIPROCAL"}
+      ]
+    },
+    {
+      "id": "fn_inverse-03",
+      "kc": "fn_inverse",
+      "difficulty": 3,
+      "est_seconds": 55,
+      "stem": "Let $f$ be a one-to-one function with inverse $f^{-1}$. Which statement is true for every such $f$?",
+      "hint": "Test each claim against the one job an inverse has: send an output of $f$ back to the input it came from.",
+      "worked": [
+        "The inverse undoes $f$, so feeding $f(x)$ into $f^{-1}$ must return the original $x$.",
+        "That is the definition: $f^{-1}(f(x))=x$ for every $x$ in the domain of $f$.",
+        "Test the others on $f(x)=2x$, where $f^{-1}(x)=\\dfrac{x}{2}$: that is not $\\dfrac{1}{2x}$, and the product $f(x)\\cdot f^{-1}(x)=x^{2}$ is not $x$.",
+        "Test the domain claim on $f(x)=\\sqrt{x}$: $f$ has domain $x \\ge 0$ and $f^{-1}(x)=x^{2}$ has domain $x \\ge 0$ only because the range of $f$ is $y \\ge 0$, so the matching set is the range, not the domain."
+      ],
+      "options": [
+        {"key": "a", "text": "$f^{-1}(x)=\\dfrac{1}{f(x)}$ for every $x$.", "correct": false, "mis": "INV_FN_RECIPROCAL"},
+        {"key": "b", "text": "$f^{-1}(f(x))=x$ for every $x$ in the domain of $f$.", "correct": true},
+        {"key": "c", "text": "The domain of $f^{-1}$ is always the same as the domain of $f$.", "correct": false, "mis": "FN_DOMAIN_RANGE_SWAP"},
+        {"key": "d", "text": "$(f \\circ f^{-1})(x)=f(x)\\cdot f^{-1}(x)$.", "correct": false, "mis": "NOT_COMPOSITION_MULT"}
+      ]
+    },
+    {
+      "id": "fn_inverse-04",
+      "kc": "fn_inverse",
+      "difficulty": 4,
+      "est_seconds": 75,
+      "stem": "A student is asked for the inverse of $f(x)=x^{2}-9$ with domain $x \\ge 0$. She writes $f^{-1}(x)=\\sqrt{x}+3$. Which choice repairs her work?",
+      "hint": "Undo the two operations in reverse order: add $9$ first, and only then take the square root of that whole quantity.",
+      "worked": [
+        "Swap the variables in $y=x^{2}-9$: $x=y^{2}-9$, so $y^{2}=x+9$.",
+        "The domain $x \\ge 0$ means the outputs of $f^{-1}$ must be nonnegative, so keep only the positive root: $y=\\sqrt{x+9}$.",
+        "Her move $\\sqrt{x+9}=\\sqrt{x}+3$ is not legal; at $x=16$ it claims $\\sqrt{25}=4+3$, so $5=7$.",
+        "The inverse is $f^{-1}(x)=\\sqrt{x+9}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$f^{-1}(x)=\\pm\\sqrt{x+9}$", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"},
+        {"key": "b", "text": "$f^{-1}(x)=\\dfrac{1}{x^{2}-9}$", "correct": false, "mis": "INV_FN_RECIPROCAL"},
+        {"key": "c", "text": "Nothing needs repairing, because $\\sqrt{x+9}=\\sqrt{x}+3$.", "correct": false, "mis": "LIN_SQRT_SUM"},
+        {"key": "d", "text": "$f^{-1}(x)=\\sqrt{x+9}$", "correct": true}
+      ]
+    },
+    {
+      "id": "fn_inverse-05",
+      "kc": "fn_inverse",
+      "difficulty": 5,
+      "est_seconds": 110,
+      "stem": "The function $f(x)=\\sqrt{x-4}-1$ has domain $x \\ge 4$. Which choice gives $f^{-1}$ together with its correct domain?",
+      "hint": "The domain of $f^{-1}$ is the range of $f$, so ask how small $\\sqrt{x-4}-1$ can possibly get.",
+      "worked": [
+        "Swap the variables: $x=\\sqrt{y-4}-1$, so $x+1=\\sqrt{y-4}$.",
+        "Square both sides: $(x+1)^{2}=y-4$, giving $y=(x+1)^{2}+4$.",
+        "Since $\\sqrt{x-4} \\ge 0$, the smallest output of $f$ is $-1$, so the range of $f$ is $y \\ge -1$.",
+        "That range is the domain of the inverse: $f^{-1}(x)=(x+1)^{2}+4$ for $x \\ge -1$."
+      ],
+      "options": [
+        {"key": "a", "text": "$f^{-1}(x)=(x+1)^{2}+4$, domain $x \\ge -1$", "correct": true},
+        {"key": "b", "text": "$f^{-1}(x)=x^{2}+5$, domain $x \\ge -1$", "correct": false, "mis": "LIN_SQUARE_SUM"},
+        {"key": "c", "text": "$f^{-1}(x)=\\dfrac{1}{\\sqrt{x-4}-1}$, domain $x \\ge 4$", "correct": false, "mis": "INV_FN_RECIPROCAL"},
+        {"key": "d", "text": "$f^{-1}(x)=(x+1)^{2}+4$, domain all real numbers", "correct": false, "mis": "DOM_IGNORE_RESTRICTION"}
+      ]
+    }
+  ]
+}

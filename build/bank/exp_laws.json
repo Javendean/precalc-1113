@@ -1,0 +1,65 @@
+{
+  "kc": "exp_laws",
+  "items": [
+    {
+      "id": "exp_laws-01",
+      "kc": "exp_laws",
+      "difficulty": 2,
+      "est_seconds": 40,
+      "stem": "Exactly one of the four statements below is true for every nonzero real number $x$. Which statement is true?",
+      "hint": "Write each power out as repeated factors and count the $x$'s; the three exponent laws use three different operations on the exponents.",
+      "worked": [
+        "Product rule: multiplying like bases ADDS the exponents, so $x^{5}\\cdot x^{3}=x^{5+3}=x^{8}$.",
+        "Power rule: a power raised to a power MULTIPLIES the exponents, so $(x^{5})^{3}=x^{15}$, not $x^{8}$.",
+        "Quotient rule: top exponent minus bottom exponent, so $\\dfrac{x^{5}}{x^{3}}=x^{5-3}=x^{2}$, not $x^{-2}$.",
+        "Only $x^{5}\\cdot x^{3}=x^{8}$ is true."
+      ],
+      "options": [
+        {"key": "a", "text": "$x^{5}\\cdot x^{3}=x^{8}$", "correct": true},
+        {"key": "b", "text": "$x^{5}\\cdot x^{3}=x^{15}$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "c", "text": "$(x^{5})^{3}=x^{8}$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "d", "text": "$\\dfrac{x^{5}}{x^{3}}=x^{-2}$", "correct": false, "mis": "EXP_QUOT_REVERSED"}
+      ]
+    },
+    {
+      "id": "exp_laws-02",
+      "kc": "exp_laws",
+      "difficulty": 3,
+      "est_seconds": 60,
+      "stem": "Evaluate $\\dfrac{(3^{2})^{3}\\cdot 3^{2}}{3^{6}}$ without a calculator.",
+      "hint": "Collapse the numerator into one power of $3$ before you touch the denominator.",
+      "worked": [
+        "Power rule: $(3^{2})^{3}=3^{2\\cdot 3}=3^{6}$.",
+        "Product rule: $3^{6}\\cdot 3^{2}=3^{6+2}=3^{8}$.",
+        "Quotient rule, top minus bottom: $\\dfrac{3^{8}}{3^{6}}=3^{8-6}=3^{2}$.",
+        "$3^{2}=9$."
+      ],
+      "options": [
+        {"key": "a", "text": "$9$", "correct": true},
+        {"key": "b", "text": "$3$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "c", "text": "$729$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "d", "text": "$\\dfrac{1}{9}$", "correct": false, "mis": "EXP_QUOT_REVERSED"}
+      ]
+    },
+    {
+      "id": "exp_laws-03",
+      "kc": "exp_laws",
+      "difficulty": 4,
+      "est_seconds": 75,
+      "stem": "Simplify $(-2x^{3})^{2}\\cdot x^{4}$.",
+      "hint": "The outer exponent lands on every factor inside the bracket, and the bracket says the base is $-2$, not $2$.",
+      "worked": [
+        "Give the outer power to each factor: $(-2x^{3})^{2}=(-2)^{2}(x^{3})^{2}$.",
+        "$(-2)^{2}=4$ and, by the power rule, $(x^{3})^{2}=x^{3\\cdot 2}=x^{6}$, so that factor is $4x^{6}$.",
+        "Product rule with the remaining factor: $4x^{6}\\cdot x^{4}=4x^{6+4}$.",
+        "The simplified form is $4x^{10}$."
+      ],
+      "options": [
+        {"key": "a", "text": "$4x^{10}$", "correct": true},
+        {"key": "b", "text": "$4x^{9}$", "correct": false, "mis": "EXP_POWER_ADD"},
+        {"key": "c", "text": "$4x^{24}$", "correct": false, "mis": "EXP_PROD_MULTIPLY"},
+        {"key": "d", "text": "$-4x^{10}$", "correct": false, "mis": "SIGN_SQUARE_NEG"}
+      ]
+    }
+  ]
+}
