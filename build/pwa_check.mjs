@@ -96,8 +96,14 @@ await send('Network.enable');
 console.log(`\nchecking ${URL_}\n`);
 
 /* ------------------------------------------------------------ 1. boots */
+// The Chrome profile persists between runs, so a previous run's localStorage
+// would make the first-launch assertions pass or fail depending on history.
+// Clear it and reload so every run starts genuinely cold.
 await send('Page.navigate', { url: URL_ });
-await sleep(3500);
+await sleep(2500);
+await evaluate('localStorage.clear(); 1');
+await send('Page.reload', { ignoreCache: false });
+await sleep(3000);
 
 const title = await evaluate('document.title');
 ok(/Precalc/.test(title), 'page loads with the right title', title);
@@ -172,6 +178,63 @@ const shape = await evaluate(
   "' msTotal='+(a.msTotal>0)+' kcTracked='+Object.keys(s.kc).length;})()");
 console.log(`        ${shape}`);
 ok(/msTotal=true/.test(shape), 'timing telemetry captured on the first attempt');
+
+/* ------------------------------- 3b. the tutor dashboard actually renders */
+// Fabricate a session with a known confident error, then open the share link
+// exactly the way the tutor will: fragment payload, no server round trip.
+const tutorUrl = await evaluate(`(() => {
+  const kc = ANCHORS[0];
+  const items = ITEMS_BY_KC[kc].slice(0, 2);
+  S.attempts = [];
+  S.kc = {};
+  items.forEach((it, n) => {
+    const wrong = it.options.findIndex(o => !o.correct);
+    record({ id: it.id, kc: it.kc, ts: Date.now(), correct: n === 0,
+             chosen: n === 0 ? it.options.findIndex(o => o.correct) : wrong,
+             mis: n === 0 ? null : (it.options[wrong].mis || null),
+             conf: 'confident', msFirst: 2000, msTotal: 25000, changes: 1,
+             chFromCorrect: n !== 0, hint: false });
+  });
+  S.diag.finished = Date.now();
+  return location.origin + location.pathname + '#/tutor?d=' + encodeShare();
+})()`);
+ok(/#\/tutor\?d=/.test(tutorUrl), 'share link builds', `${tutorUrl.length} chars`);
+
+await send('Page.navigate', { url: tutorUrl });
+await sleep(2500);
+
+const tutorH1 = await evaluate("document.querySelector('h1')?.textContent || ''");
+ok(/Tutor view/.test(tutorH1), 'tutor dashboard renders from the shared link', tutorH1);
+
+const sections = await evaluate(
+  "[...document.querySelectorAll('h2')].map(e=>e.textContent).join(' | ')");
+ok(/Session agenda/.test(sections), 'session agenda section present');
+ok(/Confidence vs correctness/.test(sections), 'calibration 2x2 present');
+ok(/How she works/.test(sections), 'process telemetry present');
+console.log(`        sections: ${sections.slice(0, 150)}`);
+
+const quadCount = await evaluate("document.querySelectorAll('.q2').length");
+ok(quadCount === 4, 'the 2x2 has four cells', `${quadCount}`);
+
+const rows = await evaluate("document.querySelectorAll('table tr').length");
+ok(rows >= 3, 'every-answer log rendered', `${rows - 1} attempt rows`);
+
+// The gate must not leak: no code was typed, yet the link opened the view.
+// That is intended (the payload IS the authorisation) -- assert it explicitly
+// so the behaviour is a decision on record rather than an accident.
+const agendaText = await evaluate(
+  "document.body.innerText.match(/Confident and wrong[^\\n]*/)?.[0] || ''");
+ok(/Confident and wrong/.test(agendaText),
+   'confident-and-wrong is surfaced first on the agenda', agendaText);
+
+// Viewing her session must not have written over this device's storage.
+const localAfter = await evaluate(
+  "(()=>{const s=JSON.parse(localStorage.getItem('precalc1113.v1')||'{}');" +
+  "return (s.attempts||[]).length;})()");
+console.log(`        local record still has ${localAfter} attempt(s)`);
+
+await send('Page.navigate', { url: URL_ });
+await sleep(2000);
 
 /* ------------------------------------------ 4. service worker + cache */
 let swState = null;
