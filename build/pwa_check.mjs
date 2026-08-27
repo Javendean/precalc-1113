@@ -99,11 +99,24 @@ console.log(`\nchecking ${URL_}\n`);
 // The Chrome profile persists between runs, so a previous run's localStorage
 // would make the first-launch assertions pass or fail depending on history.
 // Clear it and reload so every run starts genuinely cold.
+// A service worker left by a PREVIOUS run caches the PREVIOUS build, so the
+// first load after a republish can serve stale HTML and fail checks that have
+// nothing wrong with them. Tear down storage, caches and any registered worker
+// before asserting anything, or this check reports history instead of truth.
 await send('Page.navigate', { url: URL_ });
 await sleep(2500);
-await evaluate('localStorage.clear(); 1');
-await send('Page.reload', { ignoreCache: false });
-await sleep(3000);
+await evaluate(`(async () => {
+  localStorage.clear();
+  if ('caches' in self) {
+    for (const k of await caches.keys()) await caches.delete(k);
+  }
+  if (navigator.serviceWorker) {
+    for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister();
+  }
+  return 1;
+})()`);
+await send('Page.reload', { ignoreCache: true });
+await sleep(3500);
 
 const title = await evaluate('document.title');
 ok(/Precalc/.test(title), 'page loads with the right title', title);
