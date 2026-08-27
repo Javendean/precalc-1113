@@ -1,0 +1,20 @@
+{"items":[
+{"id":"fx-01","kc":"exp_laws","difficulty":2,
+ "stem":"Simplify $\\dfrac{x^{-3}}{x^{5}}$.",
+ "hint":"Top minus bottom.",
+ "worked":["$x^{-3-5}$","$=x^{-8}$"],
+ "options":[
+   {"key":"a","text":"$x^{-8}$","correct":true},
+   {"key":"b","text":"$\\sqrt{a^{2}+b^{2}}$","correct":false,"mis":"LIN_SQRT_SUM"},
+   {"key":"c","text":"$\\dfrac{\\pi}{6}$","correct":false,"mis":"EXP_PROD_MULTIPLY"},
+   {"key":"d","text":"$\\left(x+3\\right)^{2}$","correct":false,"mis":"EXP_NEG_AS_SIGN"}]},
+{"id":"fx-02","kc":"unit_circle","difficulty":3,
+ "stem":"Evaluate $\\cos\\left(\\dfrac{2\\pi}{3}\\right)$.",
+ "hint":"Reference angle, then quadrant sign.",
+ "worked":["Reference angle is $\\dfrac{\\pi}{3}$","Quadrant II, so cosine is negative"],
+ "options":[
+   {"key":"a","text":"$-\\dfrac{1}{2}$","correct":true},
+   {"key":"b","text":"$\\dfrac{1}{2}$","correct":false,"mis":"TRIG_QUADRANT_SIGN"},
+   {"key":"c","text":"$-\\dfrac{\\sqrt{3}}{2}$","correct":false,"mis":"TRIG_COORD_SWAP"},
+   {"key":"d","text":"$\\dfrac{\\sqrt{3}}{2}$","correct":false,"mis":null}]}
+]}
