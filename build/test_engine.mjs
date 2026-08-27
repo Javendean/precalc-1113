@@ -42,6 +42,11 @@ function makeEl(id = '') {
       if (i >= 0) this.children.splice(i, 1);
       return c;
     },
+    replaceChild(n, o) {
+      const i = this.children.indexOf(o);
+      if (i >= 0) this.children[i] = n; else this.children.push(n);
+      return o;
+    },
     get textContent() { return this._html.replace(/<[^>]*>/g, ''); },
     set textContent(v) { this._html = String(v); this.children = []; },
     get innerHTML() { return this._html; },

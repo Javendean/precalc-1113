@@ -135,6 +135,16 @@ ok(!jsErrs, 'no uncaught script errors on boot');
 await evaluate("document.querySelector('.btn-primary').click()");
 await sleep(700);
 
+// The options must be READABLE before confidence is asked: several items put
+// the entire question in the options ("exactly one of these is true"), so a
+// confidence rating given without them on screen would be meaningless.
+const preOpts = await evaluate("document.querySelectorAll('.opt').length");
+ok(preOpts === 4, 'all four options are readable before confidence is asked', `${preOpts}`);
+const preDisabled = await evaluate(
+  "[...document.querySelectorAll('button')].filter(b=>b.querySelector('.opt'))" +
+  ".every(b=>b.disabled)");
+ok(preDisabled === true, 'but they are inert until she has rated her confidence');
+
 const mathCount = await evaluate("document.querySelectorAll('math').length");
 ok(mathCount > 0, 'MathML present in the question', `${mathCount} <math> nodes`);
 
@@ -159,6 +169,10 @@ await evaluate("document.querySelectorAll('.conf button')[2].click()");
 await sleep(400);
 const optCount = await evaluate("document.querySelectorAll('.opt').length");
 ok(optCount === 4, 'four answer options render', `${optCount} options`);
+const armed = await evaluate(
+  "[...document.querySelectorAll('button')].filter(b=>b.querySelector('.opt'))" +
+  ".every(b=>!b.disabled)");
+ok(armed === true, 'options become answerable once confidence is recorded');
 
 await evaluate("[...document.querySelectorAll('button')].find(b=>b.querySelector('.opt')).click()");
 await sleep(250);

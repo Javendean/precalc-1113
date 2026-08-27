@@ -644,10 +644,27 @@ function viewDiagnostic() {
   card.appendChild(el('div', '', item.stem));
   a.appendChild(card);
 
-  // Confidence is asked BEFORE the answer. Crossed with correctness it gives
-  // the single most useful signal in the whole app.
+  // The options are on screen from the start, but inert until she has said how
+  // sure she is. Confidence must be asked before she ANSWERS, not before she
+  // READS -- several items put the whole question in the options ("exactly one
+  // of these statements is true"), and asking how confident she feels about
+  // statements she cannot see yet is meaningless.
+  const optWrap = el('div', '');
+  optWrap.appendChild(el('h3', '', 'The options'));
+  const btns = [];
+  item.options.forEach((o, i) => {
+    const b = el('button', '',
+      '<span class="opt"><span class="k">' + 'ABCD'[i] + '</span>' +
+      '<span class="t">' + o.text + '</span></span>');
+    b.disabled = true;
+    b.style.opacity = '0.62';
+    btns.push(b);
+    optWrap.appendChild(b);
+  });
+  a.appendChild(optWrap);
+
   const confWrap = el('div', '');
-  confWrap.appendChild(el('h3', '', 'First — how sure are you?'));
+  confWrap.appendChild(el('h3', '', 'Before you answer — how sure are you?'));
   const conf = el('div', 'conf');
   [['guessing', '\u{1F937}', 'No idea'], ['shaky', '\u{1F914}', 'Think so'],
    ['confident', '\u{1F4AA}', 'Got this']].forEach(([v, e, label]) => {
@@ -656,23 +673,20 @@ function viewDiagnostic() {
       Q.conf = v;
       if (!Q.tFirst) Q.tFirst = Date.now() - Q.t0;
       a.removeChild(confWrap);
-      a.appendChild(optionsBlock());
-      if (typeof window !== 'undefined' && window.scrollTo) window.scrollTo(0, 0);
+      arm();
     };
     conf.appendChild(b);
   });
   confWrap.appendChild(conf);
   a.appendChild(confWrap);
 
-  function optionsBlock() {
-    const wrap = el('div', '');
-    wrap.appendChild(el('h3', '', 'Your answer'));
-    const btns = [];
-    item.options.forEach((o, i) => {
-      const b = el('button', '',
-        '<span class="opt"><span class="k">' + 'ABCD'[i] + '</span>' +
-        '<span class="t">' + o.text + '</span></span>');
+  function arm() {
+    optWrap.replaceChild(el('h3', '', 'Your answer'), optWrap.children[0]);
+    btns.forEach((b, i) => {
+      b.disabled = false;
+      b.style.opacity = '1';
       b.onclick = () => {
+        const o = item.options[i];
         if (Q.chosen !== null) {
           Q.changes++;
           const prev = item.options[Q.chosen];
@@ -683,8 +697,6 @@ function viewDiagnostic() {
         btns.forEach((x, j) => { x.style.borderColor = j === i ? '#2f7ff0' : '#2f3b59'; });
         sub.disabled = false;
       };
-      btns.push(b);
-      wrap.appendChild(b);
     });
 
     const hint = el('button', 'btn-ghost small', 'Give me a nudge');
@@ -692,13 +704,12 @@ function viewDiagnostic() {
       Q.hint = true;
       hint.outerHTML = '<div class="card tight small"><b>Nudge:</b> ' + item.hint + '</div>';
     };
-    wrap.appendChild(hint);
+    a.appendChild(hint);
 
-    const sub = el('button', 'btn-primary', 'Submit');
+    var sub = el('button', 'btn-primary', 'Submit');
     sub.disabled = true;
     sub.onclick = () => submitAnswer();
-    wrap.appendChild(sub);
-    return wrap;
+    a.appendChild(sub);
   }
   renderNav();
 }
