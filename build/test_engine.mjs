@@ -87,7 +87,8 @@ const src = scripts[0] + `
 ;globalThis.__T = {
   DATA, KCS, ITEMS, MIS, FAM, KC_BY_ID, ITEMS_BY_KC, ITEM_BY_ID, ANCHORS,
   DIAG_CAP, DIAG_TARGET, CONF_VALUE,
-  bktUpdate, displayedProficiency, eloExpected, reviewPriority, prereqClosure,
+  bktUpdate, displayedProficiency, reviewPriority, prereqClosure, startPractice,
+  weakKcs, getP: () => P,
   blank, load, save, kcState, tested, kcPassed, pickItem, buildPlan, nextEntry,
   onDiagnosticResult, record, rootCauses, familyFindings, calibration,
   queueDescent, rootKnownUnder,
@@ -348,6 +349,36 @@ console.log('\n6b. viewing a shared session never overwrites the viewer\'s own d
   T.load();
   ok(T.getS().name !== 'Someone Else', 'his own session reloads after leaving the tutor view');
   console.log('   imported session is read-only; local record intact');
+}
+
+/* ===================================================================== */
+console.log('\n6c. practice puts confident-and-wrong first');
+/* ===================================================================== */
+{
+  store = {};
+  const S = T.blank();
+  S.name = 'X';
+  T.setS(S);
+  const kc = T.ANCHORS.find(a => (T.ITEMS_BY_KC[a] || []).length >= 3);
+  const pool = T.ITEMS_BY_KC[kc];
+  // She answered the LAST item confidently and got it wrong; the first she got
+  // right while unsure. Practice must lead with the confident error.
+  const wrongOne = pool[pool.length - 1];
+  T.record({ id: pool[0].id, kc, ts: Date.now(), correct: true, chosen: 0, mis: null,
+             conf: 'guessing', msFirst: 1000, msTotal: 9000, changes: 0,
+             chFromCorrect: false, hint: false });
+  T.record({ id: wrongOne.id, kc, ts: Date.now(), correct: false, chosen: 1,
+             mis: null, conf: 'confident', msFirst: 1000, msTotal: 9000, changes: 0,
+             chFromCorrect: false, hint: false });
+  T.startPractice(kc);
+  const q = T.getP();
+  ok(q && q.queue.length > 0, 'practice builds a queue');
+  ok(q.queue[0].id === wrongOne.id,
+     `practice leads with the confident error (got ${q.queue[0] && q.queue[0].id}, ` +
+     `expected ${wrongOne.id})`);
+  ok(T.reviewPriority(0.88, false, 1) > T.reviewPriority(0.88, true, 3),
+     'a confident error outranks a confident success');
+  console.log(`   ${kc}: queue leads with ${q.queue[0].id} (answered confidently, wrong)`);
 }
 
 /* ===================================================================== */

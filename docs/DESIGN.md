@@ -160,12 +160,24 @@ first on the tutor's agenda, following the hypercorrection effect already encode
 Ported to JavaScript from `MathCST-Prep/backend/math_tutor/learning.py`, whose parameters are
 already tuned and unit-tested:
 
-- **BKT** per KC — `L0=0.30, T=0.35, slip=0.10, guess_mc=0.25`.
+Three of that module's mechanics are carried over; two are deliberately **not**.
+
+Carried over:
+
+- **BKT** per KC — `L0=0.30, T=0.35, slip=0.10, guess_mc=0.25`. Drives the proficiency estimate.
 - **Recency decay** — displayed proficiency droops as a KC goes stale (`tau = 48h`).
-- **Elo** — item difficulty for practice selection, targeting P(correct) 0.70–0.85.
-- **Leitner** — spaced review boxes for practice mode.
-- **Review priority** — `4·conf·wrong + 1.5·|conf−correct| + 1·(box==1)`, so confident errors
-  dominate the queue.
+- **Review priority** — `4·conf·wrong + 1.5·|conf−correct| + 1·(box==1)`. This orders the
+  practice queue, so the questions she was *confident* about and still got wrong come first.
+  Those are the most correctable (being surprised by an error is what makes the correction
+  stick) and the ones she would never choose to practise, precisely because they did not feel
+  wrong.
+
+Deliberately omitted, and the reason matters: **Elo** and **Leitner** were built for a
+multi-week cram against a fixed exam date. This app has no exam date and a session count in the
+low single digits before the next tutoring meeting, so item-difficulty ratings would never
+accumulate enough observations to mean anything, and spaced-repetition intervals measured in
+days would never fire. Shipping them would have been decoration. They can be added if this
+becomes a term-long tool.
 
 **Honesty constraint:** the diagnostic contributes only 1–2 observations per KC, so BKT
 posteriors are wide. Every proficiency figure is displayed with its evidence count, and any KC

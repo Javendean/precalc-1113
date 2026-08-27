@@ -149,8 +149,6 @@ function displayedProficiency(pL, hoursStale) {
   return clamp(pL, 0, 1) * Math.exp(-Math.max(0, hoursStale) / TAU_HOURS);
 }
 
-function eloExpected(theta, diff) { return 1 / (1 + Math.pow(10, (diff - theta) / 400)); }
-
 function reviewPriority(conf, correct, box) {
   const c = clamp(conf, 0, 1), wrong = correct ? 0 : 1;
   const miscal = Math.abs(c - (correct ? 1 : 0));
@@ -835,9 +833,21 @@ function viewPractice() {
   renderNav();
 }
 function startPractice(kcId) {
+  /* Order by review priority, so the ones she was CONFIDENT about and still got
+     wrong come first. Those are the most correctable (being surprised by an
+     error is what makes the correction stick) and the ones she would never
+     think to practise, precisely because they did not feel wrong. Items she has
+     never seen come next; everything else backfills. */
   const pool = ITEMS_BY_KC[kcId] || [];
-  const seen = {}; S.attempts.forEach(x => seen[x.id] = (seen[x.id] || 0) + 1);
-  const sorted = pool.slice().sort((x, y) => (seen[x.id] || 0) - (seen[y.id] || 0));
+  const seen = {}, last = {};
+  S.attempts.forEach(x => { seen[x.id] = (seen[x.id] || 0) + 1; last[x.id] = x; });
+  const score = it => {
+    const a = last[it.id];
+    if (!a) return 1.0;                       // unseen: worth doing, below a known error
+    return 2.0 + reviewPriority(CONF_VALUE[a.conf] || 0.55, a.correct, a.correct ? 3 : 1);
+  };
+  const sorted = pool.slice().sort((x, y) =>
+    (score(y) - score(x)) || ((seen[x.id] || 0) - (seen[y.id] || 0)));
   P = { kc: kcId, queue: sorted.slice(0, 5), i: 0 };
   practiceQuestion();
 }
