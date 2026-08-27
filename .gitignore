@@ -10,5 +10,4 @@ data/
 build/bank_synth/
 # Unverified author output; build/bank/ holds the verified version.
 build/bank_raw/
-# dist/ is rebuilt from the bank and pushed to gh-pages by publish.sh
-dist/
+# dist/ IS tracked on purpose: `git subtree push --prefix dist` needs it.
