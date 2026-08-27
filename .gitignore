@@ -5,3 +5,10 @@ node_modules/
 # Student attempt data must NEVER be committed.
 *.session.json
 data/
+
+# Throwaway: exercises the pipeline, never published.
+build/bank_synth/
+# Unverified author output; build/bank/ holds the verified version.
+build/bank_raw/
+# dist/ is rebuilt from the bank and pushed to gh-pages by publish.sh
+dist/

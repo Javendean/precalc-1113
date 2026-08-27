@@ -90,8 +90,11 @@ const src = scripts[0] + `
   bktUpdate, displayedProficiency, eloExpected, reviewPriority, prereqClosure,
   blank, load, save, kcState, tested, kcPassed, pickItem, buildPlan, nextEntry,
   onDiagnosticResult, record, rootCauses, familyFindings, calibration,
+  queueDescent, rootKnownUnder,
   processStats, agenda, encodeShare, decodeShare, packSession, toB64u, fromB64u,
   getS: () => S, setS: v => { S = v; },
+  setImporting: v => { VIEWING_IMPORT = v; }, isImporting: () => VIEWING_IMPORT,
+  KEY,
 };`;
 
 vm.createContext(sandbox);
@@ -177,7 +180,10 @@ function simulate(brokenSet, label) {
   S.diag.started = Date.now();
   S.diag.plan = T.buildPlan();
   S.diag.idx = 0;
+  S.diag.desc = [];
+  S.diag.didx = 0;
   S.diag.asked = [];
+  const askedKcs = [];
 
   // A KC is answered correctly iff it is not broken and nothing it depends on
   // is broken -- i.e. breakage propagates upward, like it does in a real student.
@@ -193,6 +199,7 @@ function simulate(brokenSet, label) {
     if (!item) { T.getS().diag.idx++; continue; }
     const correct = answers(e.kc);
     const wrongOpt = item.options.filter(o => !o.correct)[0];
+    askedKcs.push(e.kc);
     S.diag.asked.push(item.id);
     T.record({
       id: item.id, kc: item.kc, ts: Date.now(), correct,
@@ -203,7 +210,7 @@ function simulate(brokenSet, label) {
     });
     T.onDiagnosticResult(e, correct);
   }
-  return { S, asked: S.diag.asked.length };
+  return { S, asked: S.diag.asked.length, askedKcs };
 }
 
 {
@@ -241,6 +248,24 @@ function simulate(brokenSet, label) {
   const { asked } = simulate(all, 'everything broken');
   ok(asked <= T.DIAG_CAP, `worst case asked ${asked}, cap is ${T.DIAG_CAP}`);
   console.log(`   everything broken  -> asked ${asked} questions (cap ${T.DIAG_CAP})`);
+}
+
+/* --- coverage: struggling early must not cost her the later chapters --- */
+{
+  // A student broken in the very first chapter must STILL be asked every
+  // anchor, or the report would silently say nothing about trigonometry.
+  for (const [broken, label] of [
+    [new Set(['distribute', 'signed_numbers', 'frac_arith']), 'broken in chapter 1'],
+    [new Set(T.KCS.map(k => k.id)), 'broken everywhere'],
+  ]) {
+    const { askedKcs } = simulate(broken, label);
+    const missed = T.ANCHORS.filter(a => askedKcs.indexOf(a) < 0);
+    ok(missed.length === 0,
+       `${label}: ${missed.length} anchors never asked (${missed.slice(0, 5).join(', ')})`);
+    const trig = askedKcs.filter(k => /trig|unit_circle|angles|inverse_trig/.test(k)).length;
+    ok(trig > 0, `${label}: trigonometry never probed at all`);
+    console.log(`   ${label}: all ${T.ANCHORS.length} anchors asked, ${trig} trig probes`);
+  }
 }
 
 /* ===================================================================== */
@@ -300,6 +325,29 @@ console.log('\n6. share payload round-trips');
   // Unicode must survive: MathML uses U+2212 and friends.
   ok(T.fromB64u(T.toB64u('a−b · π')) === 'a−b · π',
      'base64 round-trip preserves non-ASCII');
+}
+
+/* ===================================================================== */
+console.log('\n6b. viewing a shared session never overwrites the viewer\'s own data');
+/* ===================================================================== */
+{
+  // Javen opens her link on HIS phone. His own record must survive.
+  simulate(new Set(['exp_negative']), 'his own data');
+  const his = JSON.stringify(T.getS());
+  store[T.KEY] = his;
+
+  const hers = T.blank();
+  hers.name = 'Someone Else';
+  hers.attempts = [];
+  T.setImporting(true);
+  T.setS(hers);
+  T.save();
+  ok(store[T.KEY] === his, 'save() is inert while an imported session is on screen');
+
+  T.setImporting(false);
+  T.load();
+  ok(T.getS().name !== 'Someone Else', 'his own session reloads after leaving the tutor view');
+  console.log('   imported session is read-only; local record intact');
 }
 
 /* ===================================================================== */

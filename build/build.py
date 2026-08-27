@@ -58,9 +58,14 @@ def main():
           % (len(KCS), len(ANCHORS), len(MISCONCEPTIONS), len(FAMILIES)))
 
     # ---------------------------------------------------------------- bank
-    files = sorted(BANK.glob("*.json"))
+    # `python build.py <dir>` builds from an alternative bank. Used to exercise
+    # the whole pipeline against a synthetic bank before the real one lands.
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    bank_dir = pathlib.Path(args[0]).resolve() if args else BANK
+    files = sorted(bank_dir.glob("*.json"))
     if not files:
-        sys.exit("no item files in %s -- run the generation workflow first" % BANK)
+        sys.exit("no item files in %s -- run the generation workflow first" % bank_dir)
+    print("bank: %s" % bank_dir)
     raw = []
     items = []
     for f in files:
@@ -112,10 +117,18 @@ def main():
     tmp_out.unlink(missing_ok=True)
 
     # ---------------------------------------------------------------- payload
+    # A synthetic build is stamped so it can never be published by accident.
+    # publish.sh refuses on this flag. Operating unattended, this is the rail
+    # that stops a throwaway bank reaching a real student.
+    synthetic = "synth" in bank_dir.name.lower()
+    if synthetic:
+        print("\n*** SYNTHETIC BANK -- build is stamped and must not be published ***")
+
     payload = {
         "serial": BUILD_SERIAL,
         "student": STUDENT_NAME,
         "tutorCode": TUTOR_CODE,
+        "synthetic": synthetic,
         "kcs": [{"id": k["id"], "name": k["name"], "tier": k["tier"],
                  "chapter": k["chapter"], "prereqs": k["prereqs"],
                  "anchor": bool(k["anchor"]), "blurb": k["blurb"]} for k in KCS],
@@ -165,9 +178,17 @@ def main():
     (DIST / "sw.js").write_text(SW % cache, encoding="utf-8")
 
     # ---------------------------------------------------------------- icons
-    png(DIST / "icon-192.png", 192, wave(192, 0.06))
-    png(DIST / "icon-512.png", 512, wave(512, 0.06))
-    png(DIST / "icon-512-maskable.png", 512, wave(512, 0.0))
+    # Static art -- it only changes when wave() does, so regenerate lazily.
+    # (A 512x512 RGBA buffer plus zlib is also the one part of this build that
+    # can MemoryError on a loaded machine; skipping it keeps rebuilds cheap.)
+    force_icons = "--icons" in sys.argv
+    for name, size, pad in (("icon-192.png", 192, 0.06),
+                            ("icon-512.png", 512, 0.06),
+                            ("icon-512-maskable.png", 512, 0.0)):
+        p = DIST / name
+        if force_icons or not p.exists():
+            png(p, size, wave(size, pad))
+            print("  icon %s written" % name)
 
     print("\nbuilt dist/  items=%d  kcs=%d  cache=%s" % (len(payload["items"]), len(KCS), cache))
     for p in sorted(DIST.iterdir()):

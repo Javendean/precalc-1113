@@ -123,8 +123,8 @@ const KEY = 'precalc1113.v1';
 // never in it. She is asked once and the answer stays in her own storage.
 const STUDENT = DATA.student || '';
 const TUTOR_CODE = DATA.tutorCode || 'tutor';
-const DIAG_CAP = 30;          // hard ceiling on diagnostic length
-const DIAG_TARGET = 25;       // where we aim to stop
+const DIAG_CAP = 32;          // hard ceiling on diagnostic length
+const DIAG_TARGET = 26;       // where we aim to stop
 
 /* ---------------------------------------------------------------------
  * Learning engine -- ported from MathCST-Prep/backend/math_tutor/learning.py
@@ -173,7 +173,7 @@ function prereqClosure(kcId) {
 function blank() {
   return {
     v: 1, created: Date.now(), name: STUDENT,
-    diag: { started: 0, finished: 0, plan: [], idx: 0, asked: [] },
+    diag: { started: 0, finished: 0, plan: [], idx: 0, desc: [], didx: 0, asked: [] },
     attempts: [],       // the raw log; everything else is derived from it
     kc: {},             // kcId -> {pL, n, ok, lastOk}
     practice: { box: {} },
@@ -188,7 +188,12 @@ function load() {
   } catch (e) { /* corrupt or unavailable storage must not brick the app */ }
   return S;
 }
+/* When the tutor opens a shared link, S is replaced by HER session. Any save()
+ * after that would overwrite whatever is on HIS device, so saving is disabled
+ * for as long as an imported session is on screen. */
+let VIEWING_IMPORT = false;
 function save() {
+  if (VIEWING_IMPORT) return;
   try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {}
 }
 
@@ -214,11 +219,17 @@ function pickItem(kcId, wantDiff) {
 }
 
 /* ---------------------------------------------------------------------
- * The adaptive descent
+ * The adaptive descent -- BREADTH FIRST, THEN DEPTH.
  *
- * Start at anchors. On a miss, splice in that anchor's prerequisite closure
- * DEEPEST-FIRST and stop the branch at the first prerequisite that also
- * fails -- that one is the root cause, and everything above it is collateral.
+ * Phase 1 asks every anchor once. That guarantees the report covers the whole
+ * course: if descents were spliced in inline, a student who struggled early
+ * would burn the question budget in chapter 1 and the report would silently
+ * say nothing at all about trigonometry.
+ *
+ * Phase 2 spends whatever budget is left descending into the anchors that
+ * failed, walking each prerequisite closure DEEPEST-FIRST and stopping that
+ * branch at the first prerequisite that also fails -- that one is the root
+ * cause, and everything above it is collateral damage.
  * ------------------------------------------------------------------- */
 function buildPlan() {
   const byChapter = ANCHORS.slice().sort((a, b) => {
@@ -230,12 +241,37 @@ function buildPlan() {
   return byChapter.map(kc => ({ kc: kc, anchor: kc, depth: 0 }));
 }
 
+function rootKnownUnder(kcId) {
+  /* Is something beneath this KC already known to be broken? If so we already
+     have the explanation and digging further just re-confirms it. */
+  return prereqClosure(kcId).some(p => tested(p) && !kcPassed(p));
+}
+
+function queueDescent(anchorKc) {
+  const d = S.diag;
+  const have = {};
+  d.desc.forEach(e => { have[e.kc] = 1; });
+  prereqClosure(anchorKc).forEach(p => {          // already deepest-first
+    if (!have[p] && !tested(p) && (ITEMS_BY_KC[p] || []).length) {
+      d.desc.push({ kc: p, anchor: anchorKc, depth: 1 });
+    }
+  });
+}
+
 function nextEntry() {
   const d = S.diag;
+  if (d.asked.length >= DIAG_CAP) return null;
+  // Phase 1 -- every anchor, so the report covers the whole course.
   while (d.idx < d.plan.length) {
     const e = d.plan[d.idx];
     if (tested(e.kc) || !(ITEMS_BY_KC[e.kc] || []).length) { d.idx++; continue; }
-    if (d.asked.length >= DIAG_CAP) return null;
+    return e;
+  }
+  // Phase 2 -- descend into what failed, with whatever budget is left.
+  while (d.didx < d.desc.length) {
+    const e = d.desc[d.didx];
+    if (tested(e.kc) || !(ITEMS_BY_KC[e.kc] || []).length) { d.didx++; continue; }
+    if (rootKnownUnder(e.anchor)) { d.didx++; continue; }
     return e;
   }
   return null;
@@ -243,21 +279,13 @@ function nextEntry() {
 
 function onDiagnosticResult(entry, correct) {
   const d = S.diag;
-  if (correct) { d.idx++; return; }
-
   if (entry.depth === 0) {
-    // An anchor failed. Schedule its untested prerequisites, deepest first.
-    const closure = prereqClosure(entry.kc)
-      .filter(p => !tested(p) && (ITEMS_BY_KC[p] || []).length);
-    const ins = closure.map(p => ({ kc: p, anchor: entry.anchor, depth: 1 }));
-    d.plan.splice(d.idx + 1, 0, ...ins);
     d.idx++;
+    if (!correct && !rootKnownUnder(entry.kc)) queueDescent(entry.kc);
   } else {
-    // A prerequisite failed. This is the root for that branch -- stop digging.
-    d.idx++;
-    for (let i = d.plan.length - 1; i > d.idx - 1; i--) {
-      if (d.plan[i].anchor === entry.anchor && d.plan[i].depth === 1) d.plan.splice(i, 1);
-    }
+    // A failed prerequisite is the root for that branch; nextEntry's
+    // rootKnownUnder guard stops the rest of that anchor's descent.
+    d.didx++;
   }
 }
 
@@ -606,7 +634,10 @@ function viewDiagnostic() {
 
   const a = clear();
   const n = S.diag.asked.length + 1;
-  const pct = Math.min(100, Math.round(100 * (n - 1) / DIAG_TARGET));
+  // Never let the bar read full while questions remain: past the target the
+  // denominator switches to the hard cap, and it tops out at 97%.
+  const denom = (n - 1) >= DIAG_TARGET ? DIAG_CAP : DIAG_TARGET;
+  const pct = Math.min(97, Math.round(100 * (n - 1) / denom));
   a.appendChild(el('div', 'bar', '<i style="width:' + pct + '%"></i>'));
   a.appendChild(el('div', 'small muted',
     'Question ' + n + (entry.depth ? ' · checking a step further back' : '')));
@@ -893,6 +924,7 @@ function viewShare() {
 /* ---------- tutor dashboard ---------- */
 function viewTutor() {
   const a = clear();
+  renderNav();
   const hash = (typeof location !== 'undefined' ? location.hash : '');
   const m = hash.match(/[?&]d=([A-Za-z0-9\-_]+)/);
   let imported = null;
@@ -903,7 +935,7 @@ function viewTutor() {
     a.appendChild(el('div', 'card', '<p>Could not read that code: ' + esc(imported.error) + '</p>'));
     return;
   }
-  if (imported) { S = imported.state; }
+  if (imported) { S = imported.state; VIEWING_IMPORT = true; }
   else if (!sessionUnlocked()) { return renderGate(a); }
 
   const st = processStats();
@@ -1025,7 +1057,7 @@ function viewTutor() {
   a.appendChild(tbl);
 
   const back = el('button', 'btn-ghost', 'Back');
-  back.onclick = () => { load(); go('#/'); };
+  back.onclick = () => { VIEWING_IMPORT = false; load(); go('#/'); };
   a.appendChild(back);
 }
 
