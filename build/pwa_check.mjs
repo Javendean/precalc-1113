@@ -309,7 +309,75 @@ const offMathW = await evaluate(
 ok(offMathW > 4, 'OFFLINE: math still renders (nothing was fetched from a CDN)',
    `${offMathW}px`);
 
+/* ------------------------------------------- 6. the iPhone install guide */
+// She is on an iPhone, so the install path is verified by pretending to be one
+// rather than by hoping. Network back on first.
+await send('Network.emulateNetworkConditions', {
+  offline: false, latency: 0, downloadThroughput: -1, uploadThroughput: -1,
+});
+
+const IPHONE_SAFARI =
+  'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 ' +
+  '(KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1';
+const IPHONE_INAPP =
+  'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 ' +
+  '(KHTML, like Gecko) Mobile/15E148';
+
+async function asDevice(agent) {
+  await send('Emulation.setUserAgentOverride', { userAgent: agent });
+  await send('Page.navigate', { url: URL_ });
+  await sleep(1500);
+  await evaluate('localStorage.clear(); 1');
+  await send('Page.reload', { ignoreCache: true });
+  await sleep(2500);
+}
+
+await asDevice(IPHONE_SAFARI);
+const iH1 = await evaluate("document.querySelector('h1')?.textContent || ''");
+ok(/Home Screen/.test(iH1), 'on iPhone the install guide is the FIRST screen', iH1);
+
+const body = await evaluate('document.body.innerText');
+ok(/separate progress from Safari/.test(body),
+   'warns that installing later strands her Safari answers');
+ok(/Add to Home Screen/.test(body), 'names the exact button to tap');
+ok(/Edit Actions/.test(body), 'covers the case where that button is hidden');
+ok(/Add<\/b>|Tap <b>Add<\/b>/.test(await evaluate('document.body.innerHTML')) ||
+   /top-right/.test(body), 'tells her to confirm with Add');
+const svgs = await evaluate("document.querySelectorAll('svg').length");
+ok(svgs >= 1, 'draws the Share icon so she can match it by eye', `${svgs} svg`);
+const skipped = await evaluate(
+  "!!([...document.querySelectorAll('button')].find(b=>/Skip/.test(b.textContent)))");
+ok(skipped, 'she can decline and use it in the browser');
+
+// Declining must take her onward, not trap her on the guide.
+await evaluate(
+  "[...document.querySelectorAll('button')].find(b=>/Skip/.test(b.textContent)).click()");
+await sleep(600);
+const afterSkip = await evaluate("document.querySelector('h1')?.textContent || ''");
+ok(/Precalculus|Hi /.test(afterSkip), 'skipping leads into the app', afterSkip);
+
+// Skipping lands on the name prompt; the reminder lives on the home screen
+// after that, so walk the real path rather than asserting one step too early.
+await evaluate(
+  "(()=>{const i=document.querySelector('input[type=text]');i.value='Testy';" +
+  "[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Start').click();" +
+  "return 1;})()");
+await sleep(600);
+const banner = await evaluate("/Add this to your Home Screen/.test(document.body.innerText)");
+ok(banner === true, 'a reminder banner remains on the home screen after skipping');
+const bannerBtn = await evaluate(
+  "!!([...document.querySelectorAll('button')].find(b=>/Show me how/.test(b.textContent)))");
+ok(bannerBtn, 'and it links back to the guide');
+
+await asDevice(IPHONE_INAPP);
+const inapp = await evaluate('document.body.innerText');
+ok(/open this in Safari/i.test(inapp),
+   'in the Messages in-app browser it says to open Safari first');
+ok(/compass/i.test(inapp), 'tells her which icon opens Safari');
+
+await send('Emulation.setUserAgentOverride', { userAgent: '' });
+
 console.log(`\n${'='.repeat(58)}`);
-console.log(fails === 0 ? 'PASS — PWA verified online and offline'
+console.log(fails === 0 ? 'PASS — PWA verified online, offline, and on iPhone'
                         : `FAIL — ${fails} problems`);
 cleanup(fails === 0 ? 0 : 1);

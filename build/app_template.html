@@ -484,6 +484,9 @@ function decodeShare(code) {
     const k = st.kc[a.kc];
     k.pL = bktUpdate(k.pL, a.correct); k.n++; if (a.correct) { k.ok++; k.lastOk = a.ts; }
   });
+  // So a session carried across from Safari does not re-serve questions she
+  // has already answered.
+  st.diag.asked = st.attempts.map(a => a.id);
   return { state: st, stale: p.b !== DATA.serial };
 }
 
@@ -526,6 +529,177 @@ function renderNav() {
     b.onclick = () => go(r);
     n.appendChild(b);
   });
+}
+
+/* ---------------------------------------------------------------------
+ * Installing on iPhone
+ *
+ * Two iOS behaviours make this worth doing properly rather than in a README:
+ *
+ * 1. A home-screen web app on iOS gets its OWN storage container. localStorage
+ *    is NOT shared with Safari. So if she works through the check-up in Safari
+ *    and installs afterwards, the installed app opens completely empty and her
+ *    answers are stranded in the browser. Hence: install FIRST, and a way to
+ *    carry progress across if she did not.
+ * 2. "Add to Home Screen" does not appear in in-app browsers -- and tapping a
+ *    texted link opens exactly that. She has to get into real Safari first,
+ *    which she has no reason to know.
+ * ------------------------------------------------------------------- */
+function ua() {
+  return (typeof navigator !== 'undefined' && navigator.userAgent) || '';
+}
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(ua());
+}
+function isStandalone() {
+  if (typeof navigator !== 'undefined' && navigator.standalone === true) return true;
+  return typeof window !== 'undefined' && window.matchMedia
+    ? window.matchMedia('(display-mode: standalone)').matches : false;
+}
+function isInAppBrowser() {
+  // Real Safari reports both "Version/" and "Safari/". Embedded WKWebViews
+  // (Messages, Mail, Instagram) generally do not.
+  return isIOS() && !(/Safari\//.test(ua()) && /Version\//.test(ua()));
+}
+
+const SHARE_SVG =
+  '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" ' +
+  'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" ' +
+  'style="vertical-align:-5px">' +
+  '<path d="M8.5 11H6.6A1.6 1.6 0 0 0 5 12.6v6.8A1.6 1.6 0 0 0 6.6 21h10.8a1.6 1.6 0 0 0 ' +
+  '1.6-1.6v-6.8A1.6 1.6 0 0 0 17.4 11H15.5"/>' +
+  '<path d="M12 3v11"/><path d="M8.6 6.4 12 3l3.4 3.4"/></svg>';
+
+function step(n, html) {
+  return '<div style="display:flex;gap:12px;margin:0 0 15px">' +
+    '<div style="flex:0 0 26px;height:26px;border-radius:99px;background:#2f7ff0;color:#fff;' +
+    'display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">' +
+    n + '</div><div style="flex:1;min-width:0;padding-top:2px">' + html + '</div></div>';
+}
+
+function viewInstall() {
+  const a = clear();
+  renderNav();
+
+  if (isStandalone()) {
+    a.appendChild(el('div', '', '<h1>You’re all set ✅</h1>'));
+    a.appendChild(el('div', 'card',
+      '<p>You’re running the installed app — that’s exactly right.</p>' +
+      '<p class="small muted">It works with no signal, so the bus, the library basement and ' +
+      'the parking deck are all fine.</p>'));
+    a.appendChild(restoreBlock());
+    const b = el('button', 'btn-primary', 'Start');
+    b.onclick = () => go('#/');
+    a.appendChild(b);
+    return;
+  }
+
+  a.appendChild(el('div', '', '<h1>Put this on your Home Screen</h1>' +
+    '<p class="muted">Takes about 30 seconds. Worth doing before you start.</p>'));
+
+  a.appendChild(el('div', 'card flag',
+    '<p class="small" style="margin:0"><b>Do this first.</b> On an iPhone the installed app ' +
+    'keeps its own separate progress from Safari. If you answer questions here in the browser ' +
+    'and install afterwards, the app opens empty and those answers stay behind.</p>'));
+  a.lastChild.style.setProperty('--c', '#f0a93f');
+
+  if (isInAppBrowser()) {
+    const c = el('div', 'card flag');
+    c.style.setProperty('--c', '#f2607a');
+    c.innerHTML = '<h2 style="margin-top:0">First — open this in Safari</h2>' +
+      '<p class="small">You’re in the mini browser inside another app (Messages, Mail, ' +
+      'Instagram — whatever you tapped the link from). It <b>cannot</b> add things to your ' +
+      'Home Screen, and the button simply won’t be there.</p>' +
+      step(1, 'Look for the <b>compass icon</b> ' +
+              '<span style="color:#6fb2ff">◎</span> — usually bottom-right. Tap it.') +
+      step(2, 'Or tap ' + SHARE_SVG + ' and choose <b>Open in Safari</b>.') +
+      '<p class="small muted" style="margin:6px 0 0">Once Safari opens, come back to this ' +
+      'page and the steps below will work.</p>';
+    a.appendChild(c);
+  }
+
+  const c = el('div', 'card');
+  c.innerHTML = '<h2 style="margin-top:0">In Safari</h2>' +
+    step(1, 'Tap the <b>Share</b> button ' + SHARE_SVG + ' — a square with an arrow ' +
+            'pointing up out of it. It sits in the <b>bar at the bottom</b> of the screen, ' +
+            'in the middle.') +
+    step(2, 'A panel slides up. <b>Scroll down</b> past the row of apps and past ' +
+            '<i>Add Bookmark</i>.') +
+    step(3, 'Tap <b>Add to Home Screen</b>. Its icon is a square with a <b>+</b> in it.') +
+    step(4, 'Tap <b>Add</b> in the top-right corner. You can leave the name as ' +
+            '<b>Precalc</b>.') +
+    step(5, 'Leave Safari and open <b>Precalc</b> from your Home Screen. It opens full ' +
+            'screen with no address bar — that’s how you know it worked.');
+  a.appendChild(c);
+
+  const t = el('div', 'card tight');
+  t.innerHTML = '<p class="small" style="margin:0 0 8px"><b>Don’t see “Add to Home Screen”?</b></p>' +
+    '<p class="small muted" style="margin:0 0 6px">Scroll further — it sits well down the ' +
+    'list, below the sharing options.</p>' +
+    '<p class="small muted" style="margin:0">Still missing: scroll to the very bottom of that ' +
+    'panel, tap <b>Edit Actions…</b>, find <b>Add to Home Screen</b> and tap the green ' +
+    '<b>+</b> next to it. Then go back and it will be there.</p>';
+  a.appendChild(t);
+
+  a.appendChild(restoreBlock());
+
+  const skip = el('button', 'btn-ghost', S.name ? 'Back' : 'Skip — just use it in the browser');
+  skip.onclick = () => { S.skipInstall = 1; save(); go('#/'); };
+  a.appendChild(skip);
+}
+
+/* Carry a Safari session into the installed app (or the reverse). iOS keeps the
+   two storages apart, so this is the only bridge -- a code she copies across. */
+function restoreBlock() {
+  const wrap = el('div', 'card');
+  const n = S.attempts.length;
+  let h = '<h2 style="margin-top:0">Moving answers across</h2>';
+
+  if (n) {
+    h += '<p class="small">You’ve already answered <b>' + n + '</b> question' +
+         (n === 1 ? '' : 's') + ' here. Copy this code, open the installed app, and paste it ' +
+         'in the same box there — nothing gets lost.</p>';
+  } else {
+    h += '<p class="small muted">If you already answered some questions somewhere else, paste ' +
+         'that code here to bring them over.</p>';
+  }
+  wrap.innerHTML = h;
+
+  if (n) {
+    const copy = el('button', '', 'Copy my progress code');
+    copy.onclick = () => {
+      const code = encodeShare();
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(
+          () => { copy.textContent = 'Copied ✓'; },
+          () => { box.value = code; copy.textContent = 'Copy it from the box below'; });
+      } else { box.value = code; copy.textContent = 'Copy it from the box below'; }
+    };
+    wrap.appendChild(copy);
+  }
+
+  const box = document.createElement('textarea');
+  box.setAttribute('placeholder', 'Paste your progress code here');
+  wrap.appendChild(box);
+  const go2 = el('button', '', 'Bring my answers over');
+  go2.onclick = () => {
+    const v = String(box.value || '').trim();
+    if (!v) return;
+    try {
+      const r = decodeShare(v);
+      const keepName = S.name;
+      S = r.state;
+      if (keepName) S.name = keepName;
+      S.skipInstall = 1;
+      save();
+      go2.textContent = 'Brought ' + S.attempts.length + ' answers over ✓';
+      setTimeout(() => go('#/'), 400);
+    } catch (e) {
+      go2.textContent = 'That code didn’t read properly — try copying it again';
+    }
+  };
+  wrap.appendChild(go2);
+  return wrap;
 }
 
 /* ---------- first run: who is this? ----------
@@ -593,6 +767,18 @@ function viewHome() {
     b3.onclick = () => go('#/share');
     a.appendChild(b3);
   }
+  if (isIOS() && !isStandalone()) {
+    const banner = el('div', 'card tight flag');
+    banner.style.setProperty('--c', '#f0a93f');
+    banner.innerHTML = '<p class="small" style="margin:0 0 8px">📲 <b>Add this to your Home ' +
+      'Screen.</b> It’ll work with no signal, and it keeps your progress in one place.</p>';
+    const b = el('button', '', 'Show me how (30 seconds)');
+    b.style.margin = '0';
+    b.onclick = () => go('#/install');
+    banner.appendChild(b);
+    a.appendChild(banner);
+  }
+
   const t = el('button', 'btn-ghost small', 'Tutor view');
   t.style.marginTop = '20px';
   t.onclick = () => go('#/tutor');
@@ -1112,6 +1298,12 @@ function renderGate(a) {
 function render() {
   const h = (typeof location !== 'undefined' ? location.hash : route) || '#/';
   route = h.split('?')[0];
+  if (route.indexOf('#/install') === 0) return viewInstall();
+  // On an iPhone, offer the install BEFORE she answers anything: the installed
+  // app cannot see answers given in Safari, so installing later loses them.
+  if (route === '#/' && !S.name && !S.skipInstall && isIOS() && !isStandalone()) {
+    return viewInstall();
+  }
   if (route.indexOf('#/diagnostic') === 0) return viewDiagnostic();
   if (route.indexOf('#/results') === 0) return viewResults();
   if (route.indexOf('#/practice') === 0) return viewPractice();

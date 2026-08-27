@@ -100,7 +100,7 @@ const src = scripts[0] + `
   processStats, agenda, encodeShare, decodeShare, packSession, toB64u, fromB64u,
   getS: () => S, setS: v => { S = v; },
   setImporting: v => { VIEWING_IMPORT = v; }, isImporting: () => VIEWING_IMPORT,
-  KEY,
+  isIOS, isStandalone, isInAppBrowser, KEY,
 };`;
 
 vm.createContext(sandbox);
@@ -384,6 +384,55 @@ console.log('\n6c. practice puts confident-and-wrong first');
   ok(T.reviewPriority(0.88, false, 1) > T.reviewPriority(0.88, true, 3),
      'a confident error outranks a confident success');
   console.log(`   ${kc}: queue leads with ${q.queue[0].id} (answered confidently, wrong)`);
+}
+
+/* ===================================================================== */
+console.log('\n6d. iPhone detection and carrying a session across storages');
+/* ===================================================================== */
+{
+  const IPHONE_SAFARI =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 ' +
+    '(KHTML, like Gecko) Version/18.1 Mobile/15E148 Safari/604.1';
+  const IPHONE_INAPP =   // Messages / Mail / Instagram style WKWebView
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 ' +
+    '(KHTML, like Gecko) Mobile/15E148';
+  const DESKTOP =
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' +
+    'Chrome/126.0 Safari/537.36';
+
+  sandbox.navigator.userAgent = IPHONE_SAFARI;
+  ok(T.isIOS() === true, 'iPhone Safari detected as iOS');
+  ok(T.isInAppBrowser() === false, 'real Safari is not treated as an in-app browser');
+
+  sandbox.navigator.userAgent = IPHONE_INAPP;
+  ok(T.isIOS() === true, 'in-app browser still detected as iOS');
+  ok(T.isInAppBrowser() === true,
+     'Messages-style WKWebView flagged — Add to Home Screen is absent there');
+
+  sandbox.navigator.userAgent = DESKTOP;
+  ok(T.isIOS() === false, 'desktop Chrome is not iOS');
+  ok(T.isInAppBrowser() === false, 'desktop Chrome is not an in-app browser');
+  sandbox.navigator.userAgent = undefined;
+
+  // iOS keeps Safari's storage and the installed app's storage apart, so the
+  // ONLY way her answers survive installing is the copied code. If this
+  // round-trip breaks she silently loses a whole session.
+  simulate(new Set(['unit_circle']), 'carry across');
+  const before = T.getS();
+  const code = T.encodeShare();
+  const r = T.decodeShare(code);
+  ok(r.state.attempts.length === before.attempts.length,
+     `carried ${r.state.attempts.length} of ${before.attempts.length} answers`);
+  ok(r.state.diag.asked.length === r.state.attempts.length,
+     'carried session marks answered items as asked, so they are not served again');
+  const askedSet = new Set(r.state.diag.asked);
+  ok(r.state.attempts.every(x => askedSet.has(x.id)),
+     'every carried attempt is in the asked list');
+  // And the analysis still works on the far side.
+  T.setS(r.state);
+  ok(T.rootCauses().map(x => x.kc).indexOf('unit_circle') >= 0,
+     'diagnosis survives being carried into the installed app');
+  console.log(`   ${code.length}-char code carries ${r.state.attempts.length} answers intact`);
 }
 
 /* ===================================================================== */
