@@ -8,7 +8,7 @@ description: Use when building, testing, republishing or extending the Precalc 1
 ## Overview
 A **static** PWA: no server, no backend, no runtime dependencies. `build.py` inlines everything
 into one `dist/index.html`, and GitHub Pages serves it. There is deliberately nothing to launch
-— unlike `EAS-Prep` / `MathCST-Prep`, which need this machine awake.
+— unlike the server-backed study apps in this environment, which need this machine awake.
 
 ## The commands
 

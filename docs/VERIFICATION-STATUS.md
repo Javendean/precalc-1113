@@ -45,14 +45,9 @@ bank as good-but-unaudited until the pass below is run.
 
 ## Completing the verification
 
-The workflow is resumable. Cached agents replay instantly; only the failed ones re-run:
-
-```
-Workflow({
-  scriptPath: "C:\\Users\\javen\\.claude\\projects\\C--Users-javen-OneDrive-Desktop-AgentAIMO\\4a40adac-01dd-44d9-9b6f-0647cfaa793a\\workflows\\scripts\\precalc-item-bank-v2-wf_6524c049-2dc.js",
-  resumeFromRunId: "wf_6524c049-2dc"
-})
-```
+The generation workflow is resumable: its script and run id live locally, outside this
+repository. Cached agents replay instantly, so a resume re-runs only the verifier agents
+that failed.
 
 Two caveats on the resume:
 

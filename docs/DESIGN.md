@@ -1,8 +1,8 @@
 # Precalc 1113 — Design
 
-**A diagnostic and practice PWA for Kaleice, taking MATH 1113 Precalculus at Georgia State
-University Perimeter College with Ashraful Chowdhury. Built for her device; instrumented for
-her tutor.**
+**A diagnostic and practice PWA for one student taking MATH 1113 Precalculus. Built for
+her device; instrumented for her tutor. No names, hers or anyone else's, appear in this
+repository.**
 
 Built autonomously overnight on 2026-08-27. This document is the build contract.
 
@@ -10,7 +10,7 @@ Built autonomously overnight on 2026-08-27. This document is the build contract.
 
 ## 1. What the operator asked for
 
-1. A PWA for Kaleice.
+1. A PWA for the student.
 2. **A diagnostic sequence** that gauges proficiency and finds the areas of weakness to focus on.
 3. **Visibility on her progress** for the tutor.
 4. **Insights into what she does and how she does it**, to inform tutoring sessions.
@@ -27,21 +27,18 @@ capture the *process*, and the item bank is built so that process is machine-rea
 
 ### 2.1 It must not depend on the tutor's laptop
 
-The existing study apps in this environment (`EAS-Prep`, `MathCST-Prep`, `Verbo`) are
-FastAPI + React servers that run on the operator's machine and reach the phone through a
-Cloudflare tunnel. Their own launch skill documents the disqualifying failure mode:
-
-> **Closing the laptop** → the tutor runs server-side on this machine, so the phone needs this
-> machine awake and the process running.
-> — `MathCST-Prep/.claude/skills/launching-mathcst-prep/SKILL.md`
+The other study apps in this environment are FastAPI + React servers that run on the
+operator's machine and reach the phone through a Cloudflare tunnel. Their own launch notes
+record the disqualifying failure mode: close the laptop and the phone loses the app, because
+the tutor runs server-side on that machine.
 
 Those apps were built for the operator, on the operator's machine. This one is for **someone
-else's phone**, used at 11pm the night before a quiz. The precedent that matches is `HealthPrep`
-— built for a different student, shipped as a self-contained static PWA on GitHub Pages, works
-offline with no server at all.
+else's phone**, used at 11pm the night before a quiz. The precedent that matches is an earlier
+static study PWA built for a different student and shipped on GitHub Pages, which works offline
+with no server at all.
 
 **Decision: static PWA on GitHub Pages. No backend. Data local to her device.**
-Delivery from `HealthPrep`; learning engine from `MathCST-Prep`.
+Delivery pattern from that static app; learning engine ported from the server-based tutor.
 
 ### 2.2 Tutor visibility without a server
 
@@ -74,7 +71,7 @@ ever committed. The repository carries questions only.
 - **Tier 0 — the algebra substrate** (19 KCs): exponent laws, factoring, fraction arithmetic,
   signs, radicals, equation solving.
 - **Tier 1 — precalculus proper** (39 KCs): aligned to OpenStax Precalculus 2e chapters 1–11,
-  the text GSU MATH 1113 uses.
+  the text MATH 1113 uses.
 
 The tier split is the thesis of the app. A student failing precalculus rarely has a precalculus
 problem. `log_solve` sits on a **20-KC prerequisite closure** that bottoms out at `exp_laws`,
@@ -103,7 +100,7 @@ the report can say *"negative exponents, which is why logarithms look broken"* r
 
 ## 4. The misconception registry (`build/misconceptions.py`)
 
-45 named misconceptions in **8 error families**. Every incorrect option in the bank carries a
+51 named misconceptions in **8 error families**. Every incorrect option in the bank carries a
 misconception id, and the option text is the value a student actually gets by committing exactly
 that error on that stem. A wrong answer therefore reports *which rule she ran*.
 
@@ -150,15 +147,15 @@ Captured per item, silently:
 | **Unsure** | Fragile — knows it, does not trust it. Needs consolidation, not reteaching | Gap — teachable, nothing to unlearn first |
 
 Confident-and-wrong is the most valuable cell and the one a grade cannot show. It is ranked
-first on the tutor's agenda, following the hypercorrection effect already encoded in
-`MathCST-Prep/backend/math_tutor/learning.py`.
+first on the tutor's agenda, following the hypercorrection effect already encoded in the
+learning module this engine was ported from.
 
 ---
 
 ## 6. Learning engine
 
-Ported to JavaScript from `MathCST-Prep/backend/math_tutor/learning.py`, whose parameters are
-already tuned and unit-tested:
+Ported to JavaScript from an existing Python learning module whose parameters are already
+tuned and unit-tested:
 
 Three of that module's mechanics are carried over; two are deliberately **not**.
 
@@ -188,7 +185,7 @@ questions into a confident mastery claim about a real person.
 
 ## 7. Diagnostic session shape
 
-Target **25 items / ~20 minutes**, hard-capped at 30.
+Target **26 items / ~20 minutes**, hard-capped at 32 (DIAG_TARGET / DIAG_CAP in the app).
 
 Feedback during the diagnostic is deliberately thin — correct or incorrect, one line, no
 teaching — so that measurement stays clean and momentum stays high. Full worked solutions and
@@ -204,12 +201,12 @@ march through remedial algebra, which would read as an accusation.
 
 | Route | Audience | Purpose |
 |---|---|---|
-| `#/` | Kaleice | Welcome, resume, start diagnostic |
-| `#/diagnostic` | Kaleice | The adaptive sequence |
-| `#/results` | Kaleice | Strengths first, then 2–3 focus areas, then review missed items |
-| `#/practice` | Kaleice | Targeted practice on weak KCs, spaced |
-| `#/share` | Kaleice | One-tap send-to-tutor |
-| `#/tutor` | Javen | Root causes, families, calibration, pace, agenda, raw log |
+| `#/` | Student | Welcome, resume, start diagnostic |
+| `#/diagnostic` | Student | The adaptive sequence |
+| `#/results` | Student | Strengths first, then 2–3 focus areas, then review missed items |
+| `#/practice` | Student | Targeted practice on weak KCs, spaced |
+| `#/share` | Student | One-tap send-to-tutor |
+| `#/tutor` | Tutor | Root causes, families, calibration, pace, agenda, raw log |
 
 The tutor route is behind a light code. That is **obfuscation, not security** — it exists so the
 student does not wander into clinical language about herself, and it is documented as such.
@@ -218,7 +215,7 @@ student does not wander into clinical language about herself, and it is document
 
 ## 9. Build pipeline
 
-Follows `HealthPrep/build/build.py` exactly:
+Follows the build script of the earlier static study PWA exactly:
 
 ```
 build/kc_graph.py + misconceptions.py + bank/*.json + app_template.html
@@ -227,8 +224,8 @@ dist/index.html  (everything inlined: no CDN, no fonts, no second file to 404)
 dist/manifest.webmanifest, dist/sw.js, dist/icon-*.png (hand-written via zlib/struct)
 ```
 
-**LaTeX is rendered to MathML at build time** with the KaTeX already vendored in
-`MathCST-Prep/frontend/node_modules/katex`. The shipped app therefore carries **zero math-library
+**LaTeX is rendered to MathML at build time** with the KaTeX vendored under
+`build/vendor/katex`. The shipped app therefore carries **zero math-library
 runtime** — no KaTeX JS, no web fonts, no CDN. MathML Core is native in current Chrome, Safari
 and Firefox, which is what her phone runs.
 
@@ -239,7 +236,7 @@ republish**, or installed copies serve stale questions forever.
 
 ## 10. Testing
 
-Both suites run against the **shipped artifact**, per the HealthPrep precedent:
+Both suites run against the **shipped artifact**, per the precedent set by the earlier app:
 
 - `build/test_engine.mjs` — loads `dist/index.html`, extracts the inline script, runs it in a
   `vm` context with a stubbed DOM. Asserts: graph integrity, descent terminates and finds the
@@ -258,4 +255,4 @@ Both suites run against the **shipped artifact**, per the HealthPrep precedent:
 
 No accounts. No backend. No LLM tutor (it would require a server and the operator's
 subscription, reintroducing the laptop dependency §2.1 exists to remove). No multi-student
-support. No grading integration with GSU. Content is aligned to OpenStax, not copied from it.
+support. No grading integration with the college. Content is aligned to OpenStax, not copied from it.

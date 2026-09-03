@@ -127,7 +127,7 @@ const DIAG_CAP = 32;          // hard ceiling on diagnostic length
 const DIAG_TARGET = 26;       // where we aim to stop
 
 /* ---------------------------------------------------------------------
- * Learning engine -- ported from MathCST-Prep/backend/math_tutor/learning.py
+ * Learning engine -- ported from an existing Python learning module (BKT + review priority)
  * ------------------------------------------------------------------- */
 const BKT_L0 = 0.30, BKT_T = 0.35, BKT_SLIP = 0.10, BKT_GUESS = 0.25;
 const TAU_HOURS = 48.0;
@@ -1278,7 +1278,7 @@ function sessionUnlocked() { return _unlocked; }
 function renderGate(a) {
   a.appendChild(el('h1', '', 'Tutor view'));
   a.appendChild(el('p', 'muted small',
-    'Kaleice’s own results live under Results. This view is the clinical one.'));
+    'The student’s own results live under Results. This view is the clinical one.'));
   const inp = document.createElement('input');
   inp.type = 'password'; inp.placeholder = 'code';
   a.appendChild(inp);
