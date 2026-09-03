@@ -38,7 +38,7 @@ from misconceptions import (MISCONCEPTIONS, MISCONCEPTION_BY_ID, FAMILIES,  # no
                             validate as validate_mis)
 import verify_bank                                                        # noqa: E402
 
-BUILD_SERIAL = 3
+BUILD_SERIAL = 4
 # Deliberately NOT the student's name. This repo is public (GitHub Pages needs
 # it to be), so no student's name goes in it -- the app asks her on first launch
 # and keeps the answer in her own device's storage.

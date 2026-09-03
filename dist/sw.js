@@ -1,5 +1,5 @@
 /* Offline shell for the Precalc 1113 PWA. */
-const CACHE = 'precalc1113-v3-218';
+const CACHE = 'precalc1113-v4-218';
 const FILES = ['./', './index.html', './manifest.webmanifest',
                './icon-192.png', './icon-512.png', './icon-512-maskable.png'];
 
